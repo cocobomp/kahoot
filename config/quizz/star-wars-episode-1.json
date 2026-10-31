@@ -13,7 +13,7 @@
     {
       "type": "single",
       "question": "Sur quelle planète se trouve Kilian ?",
-      "note": "Tatooine ! Kilian se balade dans les vrais décors de Mos Espa, la ville où vit le petit Anakin.",
+      "note": "Tatooine ! Kilian se balade dans le vrai décor de Mos Espa, la ville du petit Anakin, à côté d'un évaporateur d'humidité.",
       "media": {
         "type": "image",
         "url": "/media/kilian-tatooine.jpg"
@@ -107,8 +107,8 @@
     },
     {
       "type": "single",
-      "question": "Corentin fait un selfie dans le quartier des esclaves de Mos Espa, sur Tatooine. Qui vit ici avec sa mère ?",
-      "note": "Anakin et sa mère Shmi y vivent comme esclaves du ferrailleur Watto. Ce décor existe vraiment : c'est un ancien grenier fortifié, le Ksar Hadada.",
+      "question": "Corentin fait un selfie à Mos Espa, sur Tatooine. Qui vit dans cette ville, esclave avec sa mère ?",
+      "note": "Anakin et sa mère Shmi y vivent, esclaves du ferrailleur Watto. Derrière Corentin : le vrai décor du film, avec un évaporateur d'humidité.",
       "media": {
         "type": "image",
         "url": "/media/corentin-tatooine.jpg"
@@ -284,8 +284,8 @@
     },
     {
       "type": "single",
-      "question": "Papoutchki (alias Célien) visite le palais de la reine Amidala. Sur quelle planète est-il ?",
-      "note": "Naboo ! Les scènes du palais royal de Theed ont été tournées dans ce grand escalier, au palais royal de Caserte, près de Naples.",
+      "question": "Papoutchki (alias Célien) profite de la vue au bord d'un lac. Sur quelle planète est-il ?",
+      "note": "Naboo ! La villa del Balbianello, au bord du lac de Côme, en Italie, a servi de décor à la planète de la reine Amidala.",
       "media": {
         "type": "image",
         "url": "/media/celien-naboo.jpg"
