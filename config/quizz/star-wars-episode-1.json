@@ -197,6 +197,25 @@
     },
     {
       "type": "single",
+      "question": "Sur quelle planète Fabien fait-il la fête ?",
+      "note": "Coruscant, la planète-ville où siège le Sénat galactique… et où la nuit ne s'arrête jamais ! Au loin, on aperçoit le Temple Jedi.",
+      "media": {
+        "type": "image",
+        "url": "/media/fabien-coruscant.jpg"
+      },
+      "answers": [
+        "Tatooine",
+        "Naboo",
+        "Coruscant"
+      ],
+      "solutions": [
+        2
+      ],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "single",
       "question": "Quel droïde célèbre Anakin a-t-il construit lui-même ?",
       "note": "Anakin a assemblé C-3PO avec des pièces de récupération. Le droïde n'a pas encore son revêtement doré !",
       "answers": [
