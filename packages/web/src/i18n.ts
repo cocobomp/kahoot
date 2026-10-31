@@ -25,11 +25,14 @@ i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    fallbackLng: "en",
+    // French by default: only a language picked in the switcher is remembered
+    // (a new storage key, so languages detected before are forgotten)
+    fallbackLng: "fr",
     defaultNS: "common",
     resources,
     detection: {
-      order: ["localStorage", "navigator"],
+      order: ["localStorage"],
+      lookupLocalStorage: "questionnaireLang",
       caches: ["localStorage"],
     },
     interpolation: { escapeValue: false },

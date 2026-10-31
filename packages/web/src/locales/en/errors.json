@@ -20,7 +20,7 @@
     "kickedByManager": "You have been kicked by the manager",
     "locked": "Game locked",
     "managerAlreadyConnected": "Manager already connected",
-    "managerCannotJoin": "You cannot join your own game",
+    "managerCannotJoin": "You are hosting this game in this browser: join from your phone or a private window",
     "managerDisconnected": "Manager disconnected",
     "noPlayersConnected": "No players connected",
     "notFound": "Game not found",

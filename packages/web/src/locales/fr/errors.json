@@ -20,7 +20,7 @@
     "kickedByManager": "Vous avez été expulsé par le manager",
     "locked": "Partie verrouillée",
     "managerAlreadyConnected": "Un manager est déjà connecté",
-    "managerCannotJoin": "Vous ne pouvez pas rejoindre votre propre partie",
+    "managerCannotJoin": "Tu es déjà l'animateur dans ce navigateur : rejoins la partie avec ton téléphone ou une fenêtre de navigation privée",
     "managerDisconnected": "Le manager s'est déconnecté",
     "noPlayersConnected": "Aucun joueur connecté",
     "notFound": "Partie introuvable",
