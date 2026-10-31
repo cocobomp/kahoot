@@ -13,7 +13,7 @@
     {
       "type": "single",
       "question": "Sur quelle planète se trouve Kilian ?",
-      "note": "Tatooine ! Kilian se balade dans le vrai décor de Mos Espa, la ville du petit Anakin, à côté d'un évaporateur d'humidité.",
+      "note": "Tatooine ! Kilian encourage les pilotes de la course de modules de Mos Espa, sous les deux soleils.",
       "media": {
         "type": "image",
         "url": "/media/kilian-tatooine.jpg"
@@ -107,20 +107,20 @@
     },
     {
       "type": "single",
-      "question": "Corentin fait un selfie au milieu des cascades. Sur quelle planète est-il ?",
-      "note": "Naboo ! La planète verte de la reine Amidala, avec ses cascades et ses palais en forme de dôme.",
+      "question": "Papoutchki (alias Célien) monte la garde devant un palais. Sur quelle planète est-il ?",
+      "note": "Naboo ! Derrière lui : Theed, la capitale, et le palais de la reine Amidala au bord des cascades.",
       "media": {
         "type": "image",
-        "url": "/media/corentin-naboo.jpg"
+        "url": "/media/celien-naboo.jpg"
       },
       "answers": [
+        "Coruscant",
         "Tatooine",
         "Naboo",
-        "Coruscant",
         "Malastare"
       ],
       "solutions": [
-        1
+        2
       ],
       "cooldown": 5,
       "time": 20
@@ -177,8 +177,8 @@
     },
     {
       "type": "single",
-      "question": "Sur quelle planète Fabien fait-il la fête ?",
-      "note": "Coruscant, la planète-ville entièrement couverte de gratte-ciel, où siège le Sénat galactique… et où la nuit ne s'arrête jamais !",
+      "question": "Fabien conduit sa voiture volante entre les gratte-ciel. Sur quelle planète est-il ?",
+      "note": "Coruscant, la planète-ville entièrement couverte de gratte-ciel, où siège le Sénat galactique… et où même les voitures volent !",
       "media": {
         "type": "image",
         "url": "/media/fabien-coruscant.jpg"
@@ -284,20 +284,20 @@
     },
     {
       "type": "single",
-      "question": "Papoutchki (alias Célien) profite de la vue au bord d'un lac. Sur quelle planète est-il ?",
-      "note": "Naboo ! La villa del Balbianello, au bord du lac de Côme, en Italie, a servi de décor à la planète de la reine Amidala.",
+      "question": "Corentin fait un selfie pendant le duel final. Quel Jedi va mourir dans ce combat ?",
+      "note": "Qui-Gon Jinn, transpercé par le sabre du Sith. Obi-Wan le venge juste après.",
       "media": {
         "type": "image",
-        "url": "/media/celien-naboo.jpg"
+        "url": "/media/corentin-maul.jpg"
       },
       "answers": [
-        "Coruscant",
-        "Tatooine",
-        "Naboo",
-        "Malastare"
+        "Obi-Wan Kenobi",
+        "Qui-Gon Jinn",
+        "Mace Windu",
+        "Yoda"
       ],
       "solutions": [
-        2
+        1
       ],
       "cooldown": 5,
       "time": 20

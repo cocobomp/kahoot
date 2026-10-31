@@ -152,7 +152,7 @@ Les quiz sont enregistrés dans `config/quizz/` (un fichier JSON par quiz) et le
 Le fichier [`config/quizz/star-wars-episode-1.json`](config/quizz/star-wars-episode-1.json) contient 20 questions en français :
 
 - 18 questions à choix unique, 1 à choix multiple, 1 estimation au curseur ;
-- 10 questions avec photo : les quatre invités de la soirée dans l'univers Star Wars (Kilian sur Tatooine, Corentin et Célien sur Naboo, Fabien sur Coruscant), acteurs, lieu de tournage, compositeur, réalisateur ;
+- 10 questions avec photo : les quatre invités de la soirée dans l'univers Star Wars (Kilian à la course de modules sur Tatooine, Célien sur Naboo, Fabien sur Coruscant, Corentin pendant le duel contre Dark Maul), acteurs, lieu de tournage, compositeur, réalisateur ;
 - une anecdote affichée à chaque réponse, et une dernière question à points doublés ;
 - des gages proposés par les joueurs au début, avec 4 gages de secours (imiter Jar Jar Binks, chanter « Duel of the Fates »…).
 
@@ -186,7 +186,7 @@ Ce fork modifie quelques fichiers de Razzia (gages, hébergement, documentation)
 
 - Moteur de jeu : [Razzia](https://github.com/Ralex91/Razzia) par Ralex91 et ses contributeurs, licence [MIT](LICENSE).
 - Fond étoilé : image originale générée pour ce projet.
-- Images des invités : montages de photos personnelles dans de vraies photos de lieux, ou images générées par l'organisateur, listées dans le second tableau. Un montage fait sur une photo CC BY-SA garde la même licence.
+- Images des invités (`kilian-tatooine.jpg`, `celien-naboo.jpg`, `fabien-coruscant.jpg`, `corentin-maul.jpg`) : générées par l'organisateur de la soirée.
 - Photos du quiz : [Wikimedia Commons](https://commons.wikimedia.org/). Elles ont été redimensionnées et leurs métadonnées retirées ; chacune reste sous sa licence d'origine (les versions modifiées d'une photo CC BY-SA doivent garder la même licence). Les captures d'écran de `docs/captures/` contiennent certaines de ces photos.
 
 | Photo                                                       | Sujet                                                                                                                                            | Auteur          | Licence                                                         |
@@ -197,12 +197,5 @@ Ce fork modifie quelques fichiers de Razzia (gages, hébergement, documentation)
 | [`ray-park.jpg`](config/media/ray-park.jpg)                 | [Ray Park en 2012](https://commons.wikimedia.org/wiki/File:Ray_Park_%287281768204%29.jpg)                                                        | Gordon Tarpley  | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/)       |
 | [`john-williams.jpg`](config/media/john-williams.jpg)       | [John Williams dirigeant le Boston Pops, 2011](https://commons.wikimedia.org/wiki/File:John_Williams_with_Boston_Pops-1.jpg)                     | Chris Devers    | [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/) |
 | [`george-lucas.jpg`](config/media/george-lucas.jpg)         | [George Lucas à la Mostra de Venise 2009](https://commons.wikimedia.org/wiki/File:George_Lucas_66%C3%A8me_Festival_de_Venise_%28Mostra%29_5.jpg) | Nicolas Genin   | [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/) |
-
-| Montage                                                     | Invité   | Décor (photo d'origine)                                                                                                                     | Auteur du décor | Licence                                                         |
-| ----------------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------- | --------------- | --------------------------------------------------------------- |
-| [`kilian-tatooine.jpg`](config/media/kilian-tatooine.jpg)   | Kilian   | [Décor de Mos Espa (Tunisie)](https://commons.wikimedia.org/wiki/File:Mos_Espa,_site_du_tournage_de_Starwars,_Tunisie,_20220324_112648.jpg) | Habib M'henni   | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) |
-| [`corentin-naboo.jpg`](config/media/corentin-naboo.jpg)     | Corentin | Image générée par l'organisateur de la soirée                                                                                               |                 |                                                                 |
-| [`celien-naboo.jpg`](config/media/celien-naboo.jpg)         | Célien   | [Terrasse de la villa del Balbianello, lac de Côme](https://commons.wikimedia.org/wiki/File:23VillaBalbianello.jpg)                         | MarkusMark      | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) |
-| [`fabien-coruscant.jpg`](config/media/fabien-coruscant.jpg) | Fabien   | [Pudong (Shanghai) la nuit](https://commons.wikimedia.org/wiki/File:The_skyline_of_Pudong_at_night.jpg)                                     | Lloyd Tudor     | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) |
 
 Ce quiz est un projet de fan, non officiel, sans lien avec Lucasfilm Ltd. ou The Walt Disney Company. Star Wars est une marque de Lucasfilm Ltd. Kahoot! est une marque de Kahoot! ASA ; ce projet n'est ni affilié à Kahoot ni approuvé par Kahoot.
