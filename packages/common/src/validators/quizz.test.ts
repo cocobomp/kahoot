@@ -49,6 +49,20 @@ const issues = (data: unknown) =>
   []
 
 describe("quizzValidator", () => {
+  it("keeps up to four gages and rejects more", () => {
+    const gages = ["A", "B", "C", "D"]
+
+    expect(
+      quizzValidator.parse({ ...quizz([choiceQuestion()]), gages }).gages,
+    ).toEqual(gages)
+    expect(
+      issues({ ...quizz([choiceQuestion()]), gages: [...gages, "E"] }),
+    ).toEqual(["errors:quizz.tooManyGages"])
+    expect(quizzValidator.parse(quizz([choiceQuestion()]))).not.toHaveProperty(
+      "gages",
+    )
+  })
+
   it("accepts a valid quizz mixing every question type", () => {
     const data = quizz([
       choiceQuestion(),

@@ -5,6 +5,7 @@ Un jeu de quiz multijoueur en temps réel, façon Kahoot, à héberger soi-même
 Ce dépôt est un fork de **[Razzia](https://github.com/Ralex91/Razzia)** (anciennement _Rahoot_), un clone open-source de Kahoot sous licence MIT. Tout le moteur de jeu vient de Razzia : pas besoin de réinventer la roue. Ce fork ajoute :
 
 - un quiz d'exemple **Star Wars Épisode I : La Menace fantôme** (19 questions, 8 photos libres de droits, une anecdote à chaque réponse) ;
+- des **gages** : les joueurs votent au début de la partie, et le dernier du classement fait le gage le plus voté ;
 - un fond étoilé pour les écrans de jeu ;
 - un hébergement gratuit en ligne sur Render, en quelques clics ;
 - cette documentation en français.
@@ -142,6 +143,8 @@ Pour une adresse permanente, utilise plutôt [Render](#en-ligne-gratuitement-ren
 
 Astuces : un « vrai ou faux » est une question à choix unique avec deux réponses ; des points doublés, c'est **Points max** à 2000.
 
+**Gages** : dans l'éditeur, le bouton **Gages** (en mode Quiz) permet d'écrire 2 à 4 gages. Au début de la partie, chaque joueur vote pour un gage sur son téléphone ; le plus voté est validé (en cas d'égalité, il est tiré au sort). À la fin, le podium annonce le gage et le dernier du classement qui doit le faire (ou les derniers, s'ils sont à égalité), et son téléphone le lui rappelle. Avec un seul gage, il est validé sans vote ; sans gage, la partie commence directement. Le gage de chaque partie apparaît aussi dans l'onglet **Résultats**.
+
 Les quiz sont enregistrés dans `config/quizz/` (un fichier JSON par quiz) et les photos dans `config/media/`. Ces dossiers sont suivis par git : fais un commit pour sauvegarder tes quiz. Tu peux aussi exporter ou importer un quiz en JSON depuis l'onglet **Quizz**. Le format des fichiers est décrit dans [docs/quiz.md](docs/quiz.md).
 
 ## Le quiz Star Wars d'exemple
@@ -150,7 +153,8 @@ Le fichier [`config/quizz/star-wars-episode-1.json`](config/quizz/star-wars-epis
 
 - 16 questions à choix unique (dont un vrai ou faux), 1 à choix multiple, 2 estimations au curseur ;
 - 8 questions avec photo : acteurs, lieux de tournage, réalisateur, compositeur ;
-- une anecdote affichée à chaque réponse, et une dernière question à points doublés.
+- une anecdote affichée à chaque réponse, et une dernière question à points doublés ;
+- 4 gages à voter au début (imiter Jar Jar Binks, chanter la Marche impériale…).
 
 Compte environ 20 minutes de jeu. Le quiz se modifie dans l'éditeur comme n'importe quel autre.
 
@@ -176,7 +180,7 @@ git fetch upstream --tags
 git merge 4.1.0
 ```
 
-En cas de conflit, garde les modifications de ce dépôt (`README.md`, `compose.yml`, `Dockerfile`, `.dockerignore`, `packages/web/vite.config.ts`). Relance ensuite `docker compose up -d --build` (ou `pnpm install && pnpm build`). La première commande n'est à faire qu'une fois.
+Ce fork modifie quelques fichiers de Razzia (gages, hébergement, documentation) : en cas de conflit, garde les deux modifications. Relance ensuite `docker compose up -d --build` (ou `pnpm install && pnpm build`). La première commande n'est à faire qu'une fois.
 
 ## Crédits et licences
 

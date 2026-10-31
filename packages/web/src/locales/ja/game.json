@@ -64,5 +64,14 @@
   },
   "showQrCode": "QRコードを表示",
   "streak": "連続正解",
-  "pinDigit": "PIN の {{position}} 桁目"
+  "pinDigit": "PIN の {{position}} 桁目",
+  "gage": {
+    "voteTitle": "最下位の罰ゲームに投票しよう！",
+    "voteHint": "一番票を集めた罰ゲームを最下位の人が行います。",
+    "validated": "決定した罰ゲーム：{{gage}}",
+    "tie": "（同票のため抽選）",
+    "chosen": "罰ゲームが決まりました。画面を見てね！",
+    "forLosers": "罰ゲーム（{{names}}）：{{gage}}",
+    "youLose": "あなたが罰ゲームを行います：{{gage}}"
+  }
 }

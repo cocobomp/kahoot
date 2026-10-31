@@ -1,4 +1,5 @@
 import type { CommonStatusDataMap } from "@razzia/common/types/game/status"
+import GageBanner from "@razzia/web/features/game/components/GageBanner"
 import { usePlayerStore } from "@razzia/web/features/game/stores/player"
 import { useTranslation } from "react-i18next"
 
@@ -6,7 +7,7 @@ interface Props {
   data: CommonStatusDataMap["FINISHED"]
 }
 
-const PlayerFinished = ({ data: { rank, subject } }: Props) => {
+const PlayerFinished = ({ data: { rank, subject, gage, isLoser } }: Props) => {
   const { player } = usePlayerStore()
   const { t } = useTranslation()
 
@@ -25,6 +26,12 @@ const PlayerFinished = ({ data: { rank, subject } }: Props) => {
       <p className="mt-2 rounded bg-black/40 px-6 py-2 text-2xl font-bold text-white">
         {player?.points ?? 0} pts
       </p>
+
+      {gage && (
+        <div className="mt-4 w-full">
+          <GageBanner gage={gage} isLoser={isLoser} />
+        </div>
+      )}
     </div>
   )
 }

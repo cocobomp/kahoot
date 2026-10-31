@@ -1,4 +1,5 @@
 import type { ManagerStatusDataMap } from "@razzia/common/types/game/status"
+import GageBanner from "@razzia/web/features/game/components/GageBanner"
 import { SFX } from "@razzia/web/features/game/utils/constants"
 import useScreenSize from "@razzia/web/hooks/useScreenSize"
 import clsx from "clsx"
@@ -93,7 +94,7 @@ const Medal = ({ rank }: { rank: number }) => {
   )
 }
 
-const Podium = ({ data: { subject, top } }: Props) => {
+const Podium = ({ data: { subject, top, gage } }: Props) => {
   const { apparition, hasSuspense } = usePodiumAnimation(top.length)
 
   const { width, height } = useScreenSize()
@@ -117,6 +118,12 @@ const Podium = ({ data: { subject, top } }: Props) => {
         <h2 className="anim-show text-center text-3xl font-bold text-white drop-shadow-lg md:text-4xl lg:text-5xl">
           {subject}
         </h2>
+
+        {gage && apparition >= 4 && (
+          <div className="mt-6 w-full">
+            <GageBanner gage={gage} />
+          </div>
+        )}
 
         <div
           style={{ gridTemplateColumns: `repeat(${top.length}, 1fr)` }}

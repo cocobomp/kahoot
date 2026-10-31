@@ -64,5 +64,14 @@
   },
   "showQrCode": "Mostrar código QR",
   "streak": "Racha de respuestas",
-  "pinDigit": "Dígito {{position}} del PIN"
+  "pinDigit": "Dígito {{position}} del PIN",
+  "gage": {
+    "voteTitle": "¡Votad la prenda del perdedor!",
+    "voteHint": "La prenda más votada será para el último de la clasificación.",
+    "validated": "Prenda elegida: {{gage}}",
+    "tie": "(empate: sorteo)",
+    "chosen": "¡La prenda está elegida, mira la pantalla!",
+    "forLosers": "Prenda para {{names}}: {{gage}}",
+    "youLose": "Te toca hacer la prenda: {{gage}}"
+  }
 }

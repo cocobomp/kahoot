@@ -64,5 +64,14 @@
   },
   "showQrCode": "Pokaż kod QR",
   "streak": "Seria poprawnych odpowiedzi",
-  "pinDigit": "Cyfra PIN nr {{position}}"
+  "pinDigit": "Cyfra PIN nr {{position}}",
+  "gage": {
+    "voteTitle": "Głosujcie na karę dla przegranego!",
+    "voteHint": "Kara z największą liczbą głosów przypadnie ostatniej osobie w rankingu.",
+    "validated": "Wybrana kara: {{gage}}",
+    "tie": "(remis: losowanie)",
+    "chosen": "Kara wybrana, spójrz na ekran!",
+    "forLosers": "Kara dla: {{names}} – {{gage}}",
+    "youLose": "To ty wykonujesz karę: {{gage}}"
+  }
 }

@@ -9,9 +9,19 @@ const ResultModalHeader = () => {
 
   return (
     <div className="border-accent flex shrink-0 items-center gap-3 border-b-2 px-5 py-3">
-      <h2 className="text-foreground flex-1 truncate text-base font-bold">
-        {result.subject}
-      </h2>
+      <div className="min-w-0 flex-1">
+        <h2 className="text-foreground truncate text-base font-bold">
+          {result.subject}
+        </h2>
+        {result.gage && (
+          <p className="text-muted-foreground truncate text-sm">
+            {t("game:gage.forLosers", {
+              names: result.gage.losers.join(", "),
+              gage: result.gage.text,
+            })}
+          </p>
+        )}
+      </div>
       <div className="flex shrink-0 items-center gap-1">
         <span className="text-muted-foreground text-sm">
           {questionIndex + 1}

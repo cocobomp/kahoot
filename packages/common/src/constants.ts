@@ -63,6 +63,11 @@ export const MIN_ANSWERS = 2
 
 export const MAX_ANSWERS = 4
 
+// Forfeits ("gages") players vote on before the first question
+export const MAX_GAGES = 4
+
+export const GAGE_VOTE_TIME = 20
+
 export const QUIZZ_MODES = {
   QUIZ: "quiz",
   SURVEY: "survey",

@@ -67,5 +67,14 @@
   },
   "showQrCode": "Show QR code",
   "streak": "Answer streak",
-  "pinDigit": "PIN digit {{position}}"
+  "pinDigit": "PIN digit {{position}}",
+  "gage": {
+    "voteTitle": "Vote for the loser's forfeit!",
+    "voteHint": "The most voted forfeit goes to the last player.",
+    "validated": "Forfeit chosen: {{gage}}",
+    "tie": "(tie: drawn at random)",
+    "chosen": "The forfeit is chosen, look at the screen!",
+    "forLosers": "Forfeit for {{names}}: {{gage}}",
+    "youLose": "You have to do the forfeit: {{gage}}"
+  }
 }

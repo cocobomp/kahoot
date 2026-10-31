@@ -64,5 +64,14 @@
   },
   "showQrCode": "QR-Code anzeigen",
   "streak": "Antwortserie",
-  "pinDigit": "PIN-Ziffer {{position}}"
+  "pinDigit": "PIN-Ziffer {{position}}",
+  "gage": {
+    "voteTitle": "Stimmt über die Strafe für den Verlierer ab!",
+    "voteHint": "Die Strafe mit den meisten Stimmen bekommt der Letzte.",
+    "validated": "Gewählte Strafe: {{gage}}",
+    "tie": "(Gleichstand: ausgelost)",
+    "chosen": "Die Strafe steht fest, schau auf den Bildschirm!",
+    "forLosers": "Strafe für {{names}}: {{gage}}",
+    "youLose": "Du musst die Strafe machen: {{gage}}"
+  }
 }

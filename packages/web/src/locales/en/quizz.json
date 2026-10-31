@@ -101,5 +101,14 @@
   },
   "addAnswer": "Add answer",
   "removeAnswer": "Remove answer",
-  "markCorrect": "Mark {{label}} as correct"
+  "markCorrect": "Mark {{label}} as correct",
+  "gages": {
+    "button": "Forfeits",
+    "title": "Loser's forfeits",
+    "hint": "At the start of the game, each player votes for a forfeit. The most voted one is chosen and the last player has to do it. Leave empty to play without a forfeit.",
+    "placeholder": "E.g. imitate Jar Jar Binks for 1 minute",
+    "add": "Add a forfeit",
+    "remove": "Remove the forfeit",
+    "label": "Forfeit {{number}}"
+  }
 }

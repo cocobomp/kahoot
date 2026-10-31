@@ -65,5 +65,14 @@
   },
   "showQrCode": "Hiện mã QR",
   "streak": "Chuỗi trả lời đúng",
-  "pinDigit": "Chữ số {{position}} của mã PIN"
+  "pinDigit": "Chữ số {{position}} của mã PIN",
+  "gage": {
+    "voteTitle": "Bình chọn hình phạt cho người thua!",
+    "voteHint": "Hình phạt được bình chọn nhiều nhất sẽ dành cho người xếp cuối.",
+    "validated": "Hình phạt được chọn: {{gage}}",
+    "tie": "(hòa: bốc thăm ngẫu nhiên)",
+    "chosen": "Hình phạt đã được chọn, hãy nhìn lên màn hình!",
+    "forLosers": "Hình phạt cho {{names}}: {{gage}}",
+    "youLose": "Bạn phải thực hiện hình phạt: {{gage}}"
+  }
 }

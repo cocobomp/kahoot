@@ -58,7 +58,8 @@
     "estimationSolutionOutOfRange": "正解は最小値と最大値の間である必要があります",
     "estimationStepInvalid": "刻み幅は 0 より大きくする必要があります",
     "estimationMarginNegative": "許容範囲は負の値にできません",
-    "estimationInvalidOptions": "数値推定の設定がないか、無効です"
+    "estimationInvalidOptions": "数値推定の設定がないか、無効です",
+    "tooManyGages": "罰ゲームは最大4つまでです"
   },
   "result": {
     "notFound": "結果が見つかりません"

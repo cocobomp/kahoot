@@ -64,5 +64,14 @@
   },
   "showQrCode": "QR kodunu göster",
   "streak": "Doğru cevap serisi",
-  "pinDigit": "PIN'in {{position}}. rakamı"
+  "pinDigit": "PIN'in {{position}}. rakamı",
+  "gage": {
+    "voteTitle": "Kaybedenin cezasına oy verin!",
+    "voteHint": "En çok oy alan ceza sıralamada sonuncu olana verilecek.",
+    "validated": "Seçilen ceza: {{gage}}",
+    "tie": "(eşitlik: kurayla seçildi)",
+    "chosen": "Ceza seçildi, ekrana bak!",
+    "forLosers": "{{names}} için ceza: {{gage}}",
+    "youLose": "Cezayı sen yapacaksın: {{gage}}"
+  }
 }

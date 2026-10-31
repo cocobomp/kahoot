@@ -101,5 +101,14 @@
   },
   "addAnswer": "Aggiungi risposta",
   "removeAnswer": "Rimuovi risposta",
-  "markCorrect": "Segna {{label}} come corretta"
+  "markCorrect": "Segna {{label}} come corretta",
+  "gages": {
+    "button": "Penitenze",
+    "title": "Penitenze per chi perde",
+    "hint": "All'inizio della partita, ogni giocatore vota una penitenza. La più votata viene scelta e l'ultimo in classifica dovrà farla. Lascia vuoto per giocare senza penitenza.",
+    "placeholder": "Es.: imitare Jar Jar Binks per 1 minuto",
+    "add": "Aggiungi una penitenza",
+    "remove": "Rimuovi la penitenza",
+    "label": "Penitenza {{number}}"
+  }
 }

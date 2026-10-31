@@ -101,5 +101,14 @@
   },
   "addAnswer": "Añadir respuesta",
   "removeAnswer": "Quitar respuesta",
-  "markCorrect": "Marcar {{label}} como correcta"
+  "markCorrect": "Marcar {{label}} como correcta",
+  "gages": {
+    "button": "Prendas",
+    "title": "Prendas del perdedor",
+    "hint": "Al empezar la partida, cada jugador vota una prenda. La más votada queda elegida y el último de la clasificación tendrá que hacerla. Déjalo vacío para jugar sin prenda.",
+    "placeholder": "Ej.: imitar a Jar Jar Binks durante 1 minuto",
+    "add": "Añadir una prenda",
+    "remove": "Quitar la prenda",
+    "label": "Prenda {{number}}"
+  }
 }

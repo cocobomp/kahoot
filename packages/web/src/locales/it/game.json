@@ -65,5 +65,14 @@
   },
   "showQrCode": "Mostra codice QR",
   "streak": "Serie di risposte",
-  "pinDigit": "Cifra {{position}} del PIN"
+  "pinDigit": "Cifra {{position}} del PIN",
+  "gage": {
+    "voteTitle": "Votate la penitenza per chi perde!",
+    "voteHint": "La penitenza più votata toccherà all'ultimo in classifica.",
+    "validated": "Penitenza scelta: {{gage}}",
+    "tie": "(pareggio: estratta a sorte)",
+    "chosen": "La penitenza è scelta, guarda lo schermo!",
+    "forLosers": "Penitenza per {{names}}: {{gage}}",
+    "youLose": "Tocca a te fare la penitenza: {{gage}}"
+  }
 }

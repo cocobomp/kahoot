@@ -1,4 +1,5 @@
 import {
+  MAX_GAGES,
   MAX_MEDIA_SIZE,
   MEDIA_TYPES,
   MEDIA_URL_PREFIX,
@@ -65,6 +66,10 @@ export const quizzValidator = z
   .object({
     gameMode: z.enum(QUIZZ_MODES),
     subject: z.string().min(1, "errors:quizz.subjectEmpty"),
+    gages: z
+      .array(z.string())
+      .max(MAX_GAGES, "errors:quizz.tooManyGages")
+      .optional(),
     questions: z.array(questionValidator).min(1, "errors:quizz.noQuestions"),
   })
   .superRefine((quizz, ctx) => {

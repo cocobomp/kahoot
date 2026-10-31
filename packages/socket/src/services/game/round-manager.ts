@@ -1,14 +1,18 @@
 // oxlint-disable typescript/no-unnecessary-condition
 import {
   EVENTS,
+  GAGE_VOTE_TIME,
+  MAX_GAGES,
   MAX_POINTS,
   MEDIA_TYPES,
   NO_TIME_LIMIT,
+  QUESTION_TYPES,
   QUIZZ_MODES,
 } from "@razzia/common/constants"
 import { isEstimationOptions } from "@razzia/common/questions/options"
 import type {
   Answer,
+  GameGage,
   GameResult,
   GameSettings,
   GameUpdateQuestion,
@@ -80,6 +84,10 @@ export class RoundManager {
   private tempOldLeaderboard: Player[] | null = null
   private questionsHistory: QuestionResult[] = []
   private autoAdvanceTimer: NodeJS.Timeout | null = null
+  // Forfeit vote ("gage") held before the first question
+  private phase: "gageVote" | "gageResult" | "questions" = "questions"
+  private gageChoices: string[] = []
+  private gage: string | null = null
 
   constructor(opts: RoundManagerOptions) {
     this.opts = opts
@@ -134,6 +142,17 @@ export class RoundManager {
 
   private isSurvey(): boolean {
     return this.opts.quizz.gameMode === QUIZZ_MODES.SURVEY
+  }
+
+  private getGageChoices(): string[] {
+    if (this.isSurvey()) {
+      return []
+    }
+
+    return (this.opts.quizz.gages ?? [])
+      .map((gage) => gage.trim())
+      .filter(Boolean)
+      .slice(0, MAX_GAGES)
   }
 
   // ── Auto advance ─────────────────────────────────────────────────────────
@@ -215,6 +234,15 @@ export class RoundManager {
     this.opts.io.to(this.opts.gameId).emit(EVENTS.GAME.START_COOLDOWN)
     await this.opts.cooldown.start(3)
 
+    const gages = this.getGageChoices()
+
+    if (gages.length > 1) {
+      void this.startGageVote(gages)
+
+      return
+    }
+
+    this.gage = gages.at(0) ?? null
     void this.newQuestion()
   }
 
@@ -224,6 +252,13 @@ export class RoundManager {
     }
 
     this.clearAutoAdvance()
+
+    if (this.phase === "gageResult") {
+      this.phase = "questions"
+      void this.newQuestion()
+
+      return
+    }
 
     if (this.isAskingQuestion()) {
       this.acceptingAnswers = false
@@ -272,6 +307,7 @@ export class RoundManager {
     }
 
     this.currentStep = -1
+    this.phase = "questions"
 
     this.opts.onNewQuestion()
 
@@ -335,6 +371,88 @@ export class RoundManager {
     }
 
     this.runStep(0)
+  }
+
+  // ── Gage vote ────────────────────────────────────────────────────────────
+
+  private async startGageVote(gages: string[]): Promise<void> {
+    this.phase = "gageVote"
+    this.gageChoices = gages
+    this.playersAnswers = []
+    this.acceptingAnswers = true
+
+    this.opts.broadcast(STATUS.SELECT_ANSWER, {
+      question: "",
+      answers: gages,
+      time: GAGE_VOTE_TIME,
+      totalPlayer: this.opts.players.count(),
+      questionType: QUESTION_TYPES.SINGLE,
+      answersOnly: false,
+      isGageVote: true,
+    })
+
+    await this.opts.cooldown.start(GAGE_VOTE_TIME)
+
+    this.acceptingAnswers = false
+
+    if (!this.started) {
+      return
+    }
+
+    this.showGageResult()
+  }
+
+  /** The most voted gage wins, a tie (or no vote at all) is drawn at random. */
+  private showGageResult(): void {
+    const gages = this.gageChoices
+    const responses = countAnswers(this.playersAnswers)
+    const votes = gages.map((_, index) => responses[index] ?? 0)
+    const best = Math.max(...votes)
+    const tied = votes.flatMap((count, index) =>
+      count === best ? [index] : [],
+    )
+    const winner = tied[Math.floor(Math.random() * tied.length)]
+
+    this.gage = gages[winner]
+    this.phase = "gageResult"
+    this.playersAnswers = []
+
+    this.opts.send(this.opts.getManagerId(), STATUS.SHOW_RESPONSES, {
+      question: "",
+      answers: gages,
+      responses,
+      solutions: [winner],
+      type: QUESTION_TYPES.SINGLE,
+      isGageVote: true,
+      gageTie: tied.length > 1,
+    })
+
+    this.opts.players.getAll().forEach((player) => {
+      this.opts.send(player.id, STATUS.WAIT, { text: "game:gage.chosen" })
+    })
+
+    this.scheduleAutoAdvance(this.opts.getSettings().autoAdvance.responsesDelay)
+  }
+
+  /** The validated gage goes to the last of the leaderboard (all of them on a tie). */
+  private getFinalGage(): { gage: GameGage; loserIds: string[] } | null {
+    const last = this.leaderboard.at(-1)
+
+    if (!this.gage || !last) {
+      return null
+    }
+
+    const losers = this.leaderboard.filter(
+      (player) => player.points === last.points,
+    )
+
+    return {
+      gage: {
+        text: this.gage,
+        losers: losers.map((player) => player.username),
+      },
+      loserIds: losers.map((player) => player.id),
+    }
   }
 
   // ── Steps ────────────────────────────────────────────────────────────────
@@ -458,6 +576,7 @@ export class RoundManager {
     const finalPlayers = this.isSurvey()
       ? this.opts.players.getAll()
       : this.leaderboard
+    const finalGage = this.getFinalGage()
 
     this.opts.onGameFinished({
       id: `${Date.now()}-${nanoid(8)}`,
@@ -470,6 +589,7 @@ export class RoundManager {
         rank: index + 1,
       })),
       questions: this.questionsHistory,
+      ...(finalGage && { gage: finalGage.gage }),
     })
 
     if (this.isSurvey()) {
@@ -485,6 +605,7 @@ export class RoundManager {
     this.opts.send(this.opts.getManagerId(), STATUS.FINISHED, {
       subject: this.opts.quizz.subject,
       top,
+      ...(finalGage && { gage: finalGage.gage }),
     })
 
     this.leaderboard.forEach((player, index) => {
@@ -492,6 +613,10 @@ export class RoundManager {
         subject: this.opts.quizz.subject,
         top,
         rank: index + 1,
+        ...(finalGage && {
+          gage: finalGage.gage,
+          isLoser: finalGage.loserIds.includes(player.id),
+        }),
       })
     })
   }
@@ -518,6 +643,38 @@ export class RoundManager {
     return [Math.min(options.max, Math.max(options.min, value))]
   }
 
+  private normalizeGageVote(answerIds: number[]): number[] | null {
+    const choice = answerIds.at(0)
+
+    if (
+      answerIds.length !== 1 ||
+      choice === undefined ||
+      !Number.isInteger(choice) ||
+      choice < 0 ||
+      choice >= this.gageChoices.length
+    ) {
+      return null
+    }
+
+    return [choice]
+  }
+
+  private answerPoints(): number {
+    if (isEstimationOptions(this.question.options)) {
+      return this.question.maxPoints ?? MAX_POINTS
+    }
+
+    if (this.question.time === NO_TIME_LIMIT) {
+      return orderToPoint(
+        this.playersAnswers.length,
+        this.opts.players.count(),
+        this.question.maxPoints,
+      )
+    }
+
+    return timeToPoint(this.startTime, this.question)
+  }
+
   selectAnswer(socket: Socket, answerIds: number[]): void {
     const player = this.opts.players.findById(socket.id)
 
@@ -529,27 +686,16 @@ export class RoundManager {
       return
     }
 
-    const submitted = this.normalizeAnswer(answerIds)
+    const isGageVote = this.phase === "gageVote"
+    const submitted = isGageVote
+      ? this.normalizeGageVote(answerIds)
+      : this.normalizeAnswer(answerIds)
 
     if (!submitted) {
       return
     }
 
-    const points = (() => {
-      if (isEstimationOptions(this.question.options)) {
-        return this.question.maxPoints ?? MAX_POINTS
-      }
-
-      if (this.question.time === NO_TIME_LIMIT) {
-        return orderToPoint(
-          this.playersAnswers.length,
-          this.opts.players.count(),
-          this.question.maxPoints,
-        )
-      }
-
-      return timeToPoint(this.startTime, this.question)
-    })()
+    const points = isGageVote ? 0 : this.answerPoints()
 
     this.playersAnswers.push({
       playerId: player.id,

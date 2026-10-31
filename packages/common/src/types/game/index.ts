@@ -80,7 +80,14 @@ export interface Question {
 export interface Quizz {
   gameMode: QuizzMode
   subject: string
+  /** Forfeits voted on before the first question; the last player does the winner. */
+  gages?: string[]
   questions: Question[]
+}
+
+export interface GameGage {
+  text: string
+  losers: string[]
 }
 
 export type QuizzWithId = Quizz & { id: string }
@@ -131,6 +138,7 @@ export interface GameResult {
   date: string
   players: GameResultPlayer[]
   questions: QuestionResult[]
+  gage?: GameGage
 }
 
 export interface GameResultMeta {

@@ -101,5 +101,14 @@
   },
   "addAnswer": "Dodaj odpowiedź",
   "removeAnswer": "Usuń odpowiedź",
-  "markCorrect": "Oznacz {{label}} jako poprawną"
+  "markCorrect": "Oznacz {{label}} jako poprawną",
+  "gages": {
+    "button": "Kary",
+    "title": "Kary dla przegranego",
+    "hint": "Na początku gry każdy gracz głosuje na karę. Najczęściej wybrana zostaje zatwierdzona, a ostatnia osoba w rankingu musi ją wykonać. Zostaw puste, aby grać bez kary.",
+    "placeholder": "Np. naśladuj Jar Jar Binksa przez 1 minutę",
+    "add": "Dodaj karę",
+    "remove": "Usuń karę",
+    "label": "Kara {{number}}"
+  }
 }

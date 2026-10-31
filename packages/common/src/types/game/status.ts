@@ -1,4 +1,5 @@
 import type {
+  GameGage,
   Player,
   QuestionMedia,
   QuestionOptions,
@@ -42,6 +43,7 @@ export interface CommonStatusDataMap {
     questionType: QuestionType
     options?: QuestionOptions
     answersOnly: boolean
+    isGageVote?: boolean
   }
   SHOW_RESULT: {
     correct: boolean
@@ -56,6 +58,8 @@ export interface CommonStatusDataMap {
     subject: string
     top: Array<Pick<Player, "username" | "points">>
     rank?: number
+    gage?: GameGage
+    isLoser?: boolean
   }
   SUMMARY: { subject: string; totalPlayers: number; totalQuestions: number }
 }
@@ -71,6 +75,8 @@ interface ManagerExtraStatus {
     type: QuestionType
     options?: QuestionOptions
     note?: string
+    isGageVote?: boolean
+    gageTie?: boolean
   }
   SHOW_LEADERBOARD: { oldLeaderboard: Player[]; leaderboard: Player[] }
 }

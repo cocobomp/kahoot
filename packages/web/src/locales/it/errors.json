@@ -58,7 +58,8 @@
     "estimationSolutionOutOfRange": "La risposta corretta deve essere compresa tra il minimo e il massimo",
     "estimationStepInvalid": "Il passo deve essere maggiore di 0",
     "estimationMarginNegative": "Il margine non può essere negativo",
-    "estimationInvalidOptions": "Le impostazioni della stima mancano o non sono valide"
+    "estimationInvalidOptions": "Le impostazioni della stima mancano o non sono valide",
+    "tooManyGages": "Massimo 4 penitenze"
   },
   "result": {
     "notFound": "Risultato non trovato"

@@ -65,5 +65,14 @@
   },
   "showQrCode": "Afficher le QR code",
   "streak": "Série de bonnes réponses",
-  "pinDigit": "Chiffre {{position}} du code PIN"
+  "pinDigit": "Chiffre {{position}} du code PIN",
+  "gage": {
+    "voteTitle": "Votez pour le gage du perdant !",
+    "voteHint": "Le gage le plus voté sera pour le dernier du classement.",
+    "validated": "Gage validé : {{gage}}",
+    "tie": "(égalité : tiré au sort)",
+    "chosen": "Le gage est choisi, regarde l'écran !",
+    "forLosers": "Gage pour {{names}} : {{gage}}",
+    "youLose": "C'est toi qui fais le gage : {{gage}}"
+  }
 }

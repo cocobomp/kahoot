@@ -2,6 +2,12 @@
   "id": "star-wars-episode-1",
   "gameMode": "quiz",
   "subject": "Star Wars Épisode I : La Menace fantôme",
+  "gages": [
+    "Imiter Jar Jar Binks pendant 1 minute",
+    "Chanter la Marche impériale a cappella",
+    "Mimer un duel au sabre laser, bruitages compris",
+    "Parler comme Yoda pendant 10 minutes, tu devras"
+  ],
   "questions": [
     {
       "type": "single",

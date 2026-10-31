@@ -4,6 +4,7 @@ import Button from "@razzia/web/components/Button"
 import FieldError from "@razzia/web/components/forms/FieldError"
 import Input from "@razzia/web/components/Input"
 import ToggleGroup from "@razzia/web/components/ToggleGroup"
+import QuizzEditorGages from "@razzia/web/features/quizz/components/QuizzEditorGages"
 import {
   createQuizz,
   quizzKeys,
@@ -64,13 +65,16 @@ const QuizzEditorHeader = () => {
 
   const handleSave = handleSubmit(
     (values) => {
+      const gages = values.gages?.map((gage) => gage.trim()).filter(Boolean)
+      const json = { ...values, gages: gages?.length ? gages : undefined }
+
       if (quizzId) {
-        update({ id: quizzId, json: values })
+        update({ id: quizzId, json })
 
         return
       }
 
-      create(values)
+      create(json)
     },
     (invalid) => {
       if (!Array.isArray(invalid.questions)) {
@@ -128,6 +132,8 @@ const QuizzEditorHeader = () => {
             />
           )}
         />
+
+        <QuizzEditorGages />
       </div>
 
       <div className="flex gap-2">

@@ -101,5 +101,14 @@
   },
   "addAnswer": "Cevap ekle",
   "removeAnswer": "Cevabı kaldır",
-  "markCorrect": "{{label}} seçeneğini doğru olarak işaretle"
+  "markCorrect": "{{label}} seçeneğini doğru olarak işaretle",
+  "gages": {
+    "button": "Cezalar",
+    "title": "Kaybedenin cezaları",
+    "hint": "Oyunun başında her oyuncu bir cezaya oy verir. En çok oy alan seçilir ve sıralamada sonuncu olan onu yapar. Cezasız oynamak için boş bırak.",
+    "placeholder": "Örn. 1 dakika boyunca Jar Jar Binks taklidi yap",
+    "add": "Ceza ekle",
+    "remove": "Cezayı kaldır",
+    "label": "Ceza {{number}}"
+  }
 }

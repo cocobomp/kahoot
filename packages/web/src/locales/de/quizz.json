@@ -101,5 +101,14 @@
   },
   "addAnswer": "Antwort hinzufügen",
   "removeAnswer": "Antwort entfernen",
-  "markCorrect": "{{label}} als richtig markieren"
+  "markCorrect": "{{label}} als richtig markieren",
+  "gages": {
+    "button": "Strafen",
+    "title": "Strafen für den Verlierer",
+    "hint": "Zu Beginn des Spiels stimmt jeder Spieler für eine Strafe ab. Die meistgewählte gilt, und der Letzte muss sie machen. Leer lassen, um ohne Strafe zu spielen.",
+    "placeholder": "z. B. 1 Minute lang Jar Jar Binks nachmachen",
+    "add": "Strafe hinzufügen",
+    "remove": "Strafe entfernen",
+    "label": "Strafe {{number}}"
+  }
 }

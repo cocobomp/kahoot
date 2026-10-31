@@ -668,3 +668,136 @@ describe("manager grace period", () => {
     expect(onTimeout).not.toHaveBeenCalled()
   })
 })
+
+describe("gages", () => {
+  // 3 s start screen + 3 s countdown before the vote
+  const GAGE_VOTE_DELAY_MS = 6000
+
+  const withGages = (gages: string[], questions = [createQuestion()]) => ({
+    ...createQuizz(questions),
+    gages,
+  })
+
+  it("lets players vote, then gives the gage to the last player", async () => {
+    const question = createQuestion()
+    const { game, manager, sockets, status, reachAnswers } = setup(
+      withGages(["Chanter", "Danser", "  "], [question]),
+    )
+    const [alice, bob] = sockets
+
+    void game.start(manager)
+    await vi.advanceTimersByTimeAsync(GAGE_VOTE_DELAY_MS)
+
+    expect(status(game.gameId)).toMatchObject({
+      name: STATUS.SELECT_ANSWER,
+      data: { answers: ["Chanter", "Danser"], isGageVote: true },
+    })
+
+    game.selectAnswer(alice, [1])
+    game.selectAnswer(bob, [1])
+    await vi.advanceTimersByTimeAsync(TICK_MS)
+
+    expect(status(MANAGER)).toMatchObject({
+      name: STATUS.SHOW_RESPONSES,
+      data: {
+        isGageVote: true,
+        responses: { 1: 2 },
+        solutions: [1],
+        gageTie: false,
+      },
+    })
+    expect(status("alice")).toMatchObject({
+      name: STATUS.WAIT,
+      data: { text: "game:gage.chosen" },
+    })
+
+    game.advance()
+    await reachAnswers(question, false)
+
+    expect(status(game.gameId)?.data.isGageVote).toBeUndefined()
+
+    game.selectAnswer(alice, [0])
+    game.selectAnswer(bob, [1])
+    await vi.advanceTimersByTimeAsync(TICK_MS)
+    game.advance()
+
+    expect(status(MANAGER)).toMatchObject({
+      name: STATUS.FINISHED,
+      data: { gage: { text: "Danser", losers: ["Bob"] } },
+    })
+    expect(status("bob")?.data).toMatchObject({
+      isLoser: true,
+      gage: { text: "Danser" },
+    })
+    expect(status("alice")?.data).toMatchObject({ isLoser: false })
+    expect(getResultById(getResultsMeta()[0].id).gage).toEqual({
+      text: "Danser",
+      losers: ["Bob"],
+    })
+  })
+
+  it("draws the gage among the most voted ones", async () => {
+    const random = vi.spyOn(Math, "random").mockReturnValue(0.99)
+    const { game, manager, sockets, status } = setup(withGages(["A", "B", "C"]))
+    const [alice, bob] = sockets
+
+    void game.start(manager)
+    await vi.advanceTimersByTimeAsync(GAGE_VOTE_DELAY_MS)
+    game.selectAnswer(alice, [0])
+    game.selectAnswer(bob, [2])
+    await vi.advanceTimersByTimeAsync(TICK_MS)
+
+    expect(status(MANAGER)?.data).toMatchObject({
+      solutions: [2],
+      gageTie: true,
+    })
+
+    random.mockRestore()
+  })
+
+  it("ignores invalid votes and lets the manager end the vote", async () => {
+    const random = vi.spyOn(Math, "random").mockReturnValue(0)
+    const { game, manager, sockets, status } = setup(withGages(["A", "B"]))
+    const [alice] = sockets
+
+    void game.start(manager)
+    await vi.advanceTimersByTimeAsync(GAGE_VOTE_DELAY_MS)
+    game.selectAnswer(alice, [5])
+    game.selectAnswer(alice, [0, 1])
+    game.advance()
+    await vi.advanceTimersByTimeAsync(TICK_MS)
+
+    expect(status(MANAGER)).toMatchObject({
+      name: STATUS.SHOW_RESPONSES,
+      data: { responses: {}, solutions: [0], gageTie: true },
+    })
+
+    random.mockRestore()
+  })
+
+  it("validates a single gage without a vote and shares it on a tie", async () => {
+    const { game, status, start } = setup(withGages(["Seul gage"]))
+
+    await start()
+
+    expect(status(game.gameId)?.data.isGageVote).toBeUndefined()
+
+    await vi.advanceTimersByTimeAsync(10_000)
+    game.advance()
+
+    expect(status(MANAGER)?.data).toMatchObject({
+      gage: { text: "Seul gage", losers: ["Alice", "Bob"] },
+    })
+  })
+
+  it("ignores gages in survey mode", async () => {
+    const { game, status, start } = setup({
+      ...createQuizz([createQuestion()], QUIZZ_MODES.SURVEY),
+      gages: ["A", "B"],
+    })
+
+    await start()
+
+    expect(status(game.gameId)?.data.isGageVote).toBeUndefined()
+  })
+})
