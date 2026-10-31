@@ -1,0 +1,20 @@
+# Hébergement gratuit du jeu sur Render (https://render.com), voir le README.
+# Render construit l'image Docker du dépôt, avec le quiz Star Wars intégré.
+services:
+  - type: web
+    name: quiz-star-wars
+    runtime: docker
+    plan: free
+    region: frankfurt
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /
+    # Redéploie à chaque commit : un quiz ajouté dans config/quizz devient
+    # permanent.
+    autoDeploy: true
+    envVars:
+      # Mot de passe de l'animateur, demandé par Render à la création.
+      - key: MANAGER_PASSWORD
+        sync: false
+      # Port sur lequel le jeu répond dans le conteneur.
+      - key: PORT
+        value: "3000"

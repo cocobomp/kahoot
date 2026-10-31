@@ -6,6 +6,7 @@ Ce dépôt est un fork de **[Razzia](https://github.com/Ralex91/Razzia)** (ancie
 
 - un quiz d'exemple **Star Wars Épisode I : La Menace fantôme** (16 questions, 8 photos libres de droits, une anecdote à chaque réponse) ;
 - un fond étoilé pour les écrans de jeu ;
+- un hébergement gratuit en ligne sur Render, en quelques clics ;
 - cette documentation en français.
 
 <p align="center">
@@ -27,7 +28,26 @@ Ce dépôt est un fork de **[Razzia](https://github.com/Ralex91/Razzia)** (ancie
 
 ## Démarrage
 
-### Avec Docker (recommandé)
+Trois façons de lancer le jeu : en ligne sur Render (rien à installer), ou sur ton ordinateur avec Docker ou Node.js.
+
+### En ligne, gratuitement (Render)
+
+[Render](https://render.com) héberge le jeu gratuitement et donne une adresse publique : les joueurs peuvent rejoindre depuis n'importe où, sans être sur le même Wi-Fi.
+
+1. Clique sur ce bouton :
+
+   [![Déployer sur Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/cocobomp/kahoot)
+
+2. Crée un compte Render en te connectant avec GitHub. Render peut demander une carte bancaire pour vérifier le compte ; l'offre gratuite n'est pas facturée.
+3. Render affiche le service `quiz-star-wars` : saisis le mot de passe de l'animateur dans `MANAGER_PASSWORD`, puis valide.
+4. Attends la fin de la construction (environ 5 minutes). Le jeu est en ligne à l'adresse affichée par Render, du type `https://quiz-star-wars.onrender.com`. L'animateur ouvre cette adresse suivie de `/manager`.
+
+Les limites de l'offre gratuite :
+
+- **Mise en veille** : le serveur s'endort après 15 minutes sans visite, et la visite suivante le réveille en une minute environ. Ouvre la page manager un peu avant la partie.
+- **Quiz créés en ligne** : les quiz créés ou modifiés dans l'éditeur, et les photos importées, sont effacés quand le serveur s'endort ou redémarre. Le quiz Star Wars, lui, fait partie du dépôt et reste toujours là. Pour garder un quiz, exporte-le (icône de téléchargement dans l'onglet **Quizz**) et ajoute le fichier JSON dans le dossier `config/quizz` du dépôt sur GitHub (**Add file** > **Upload files**). Render redéploie alors le jeu tout seul avec ton quiz. Si tu utilises des images en ligne (**Ajouter depuis une URL** dans l'éditeur), le fichier JSON suffit ; sinon, ajoute aussi les photos dans `config/media`, sous le même nom.
+
+### Avec Docker (recommandé sur ton ordinateur)
 
 Il faut [Docker Desktop](https://www.docker.com/products/docker-desktop/) (ou Docker + Docker Compose).
 
@@ -108,7 +128,7 @@ cloudflared tunnel --url http://localhost:3000
 
 Il affiche une adresse du type `https://xxxx.trycloudflare.com`. Ouvre `https://xxxx.trycloudflare.com/manager` : le QR code et l'adresse affichée aux joueurs utiliseront cette adresse publique.
 
-Pour un hébergement permanent (serveur, nom de domaine, HTTPS), voir [docs/reverse-proxy.md](docs/reverse-proxy.md).
+Pour une adresse permanente, utilise plutôt [Render](#en-ligne-gratuitement-render). Pour un hébergement sur ton propre serveur (nom de domaine, HTTPS), voir [docs/reverse-proxy.md](docs/reverse-proxy.md) ; sans Docker, ajoute ton nom de domaine à `ALLOWED_HOSTS` dans `.env`.
 
 ## Créer ses propres quiz
 
@@ -138,7 +158,7 @@ Compte environ 15 minutes de jeu. Le quiz se modifie dans l'éditeur comme n'imp
 
 - **Fond des écrans de jeu** : défini dans [`config/branding/theme.json`](config/branding/theme.json). Supprime le dossier `config/branding/` pour revenir au décor d'origine (une salle de classe).
 - **Nom, couleurs, logo, police** : ajoute les champs correspondants dans `theme.json`, voir [docs/branding.md](docs/branding.md).
-- **Variables d'environnement** (ports, secret de session) : voir [docs/configuration.md](docs/configuration.md).
+- **Variables d'environnement** (ports, secret de session) : voir [docs/configuration.md](docs/configuration.md). Sans Docker, `ALLOWED_HOSTS` autorise des noms de domaine supplémentaires (les adresses Codespaces et des tunnels Cloudflare sont déjà acceptées).
 
 ## Mettre à jour Razzia
 
@@ -156,7 +176,7 @@ git fetch upstream --tags
 git merge 4.1.0
 ```
 
-En cas de conflit sur `README.md` ou `compose.yml`, garde la version de ce dépôt. Relance ensuite `docker compose up -d --build` (ou `pnpm install && pnpm build`). La première commande n'est à faire qu'une fois.
+En cas de conflit, garde les modifications de ce dépôt (`README.md`, `compose.yml`, `Dockerfile`, `.dockerignore`, `packages/web/vite.config.ts`). Relance ensuite `docker compose up -d --build` (ou `pnpm install && pnpm build`). La première commande n'est à faire qu'une fois.
 
 ## Crédits et licences
 
