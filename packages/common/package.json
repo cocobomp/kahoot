@@ -1,0 +1,12 @@
+{
+  "name": "@razzia/common",
+  "type": "module",
+  "dependencies": {
+    "socket.io": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "typescript": "catalog:"
+  }
+}

@@ -1,0 +1,151 @@
+import { EVENTS } from "@razzia/common/constants"
+import type { Player, QuizzMode } from "@razzia/common/types/game"
+import type { Server, Socket } from "@razzia/common/types/game/socket"
+import { usernameValidator } from "@razzia/common/validators/auth"
+import { getClientId } from "@razzia/socket/utils/socket"
+
+export interface PlayerManagerOptions {
+  io: Server
+  gameId: string
+  gameMode: QuizzMode
+  getManagerId: () => string
+  isStarted: () => boolean
+}
+
+export class PlayerManager {
+  private readonly io: Server
+  private readonly gameId: string
+  private readonly gameMode: QuizzMode
+  private readonly getManagerId: () => string
+  private readonly isStarted: () => boolean
+  private players: Player[] = []
+
+  constructor({
+    io,
+    gameId,
+    gameMode,
+    getManagerId,
+    isStarted,
+  }: PlayerManagerOptions) {
+    this.io = io
+    this.gameId = gameId
+    this.gameMode = gameMode
+    this.getManagerId = getManagerId
+    this.isStarted = isStarted
+  }
+
+  join(socket: Socket, username: string): string | null {
+    const clientId = getClientId(socket)
+
+    if (this.findByClientId(clientId)) {
+      return "errors:game.playerAlreadyConnected"
+    }
+
+    const result = usernameValidator.safeParse(username)
+
+    if (result.error) {
+      return result.error.issues[0].message
+    }
+
+    socket.join(this.gameId)
+
+    const player: Player = {
+      id: socket.id,
+      clientId,
+      connected: true,
+      username,
+      points: 0,
+      streak: 0,
+    }
+
+    this.players.push(player)
+    this.io.to(this.getManagerId()).emit(EVENTS.MANAGER.NEW_PLAYER, player)
+    this.broadcastCount()
+    socket.emit(EVENTS.GAME.SUCCESS_JOIN, {
+      gameId: this.gameId,
+      username,
+      gameMode: this.gameMode,
+    })
+
+    return null
+  }
+
+  kick(playerId: string): boolean {
+    const player = this.findById(playerId)
+
+    if (!player) {
+      return false
+    }
+
+    this.players = this.players.filter((p) => p.id !== playerId)
+
+    this.io.in(playerId).socketsLeave(this.gameId)
+    this.io.to(player.id).emit(EVENTS.GAME.RESET, "errors:game.kickedByManager")
+    this.io
+      .to(this.getManagerId())
+      .emit(EVENTS.MANAGER.PLAYER_KICKED, player.id)
+    this.broadcastCount()
+
+    return true
+  }
+
+  remove(socketId: string): Player | undefined {
+    const player = this.findById(socketId)
+
+    if (!player) {
+      return undefined
+    }
+
+    this.players = this.players.filter((p) => p.id !== socketId)
+
+    return player
+  }
+
+  setDisconnected(socketId: string): void {
+    const player = this.findById(socketId)
+
+    if (player) {
+      player.connected = false
+    }
+  }
+
+  updateSocketId(oldId: string, newId: string): void {
+    const player = this.findById(oldId)
+
+    if (player) {
+      player.id = newId
+    }
+  }
+
+  replace(players: Player[]): void {
+    this.players = players
+  }
+
+  findById(socketId: string): Player | undefined {
+    return this.players.find((p) => p.id === socketId)
+  }
+
+  findByClientId(clientId: string): Player | undefined {
+    return this.players.find((p) => p.clientId === clientId)
+  }
+
+  getAll(): Player[] {
+    return this.players
+  }
+
+  count(): number {
+    return this.players.length
+  }
+
+  joinedCount(): number {
+    if (this.isStarted()) {
+      return this.players.length
+    }
+
+    return this.players.filter((p) => p.connected).length
+  }
+
+  broadcastCount(): void {
+    this.io.to(this.gameId).emit(EVENTS.GAME.TOTAL_PLAYERS, this.joinedCount())
+  }
+}

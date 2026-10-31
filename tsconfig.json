@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "noEmit": true,
+    "noErrorTruncation": true,
+    "esModuleInterop": true,
+    "paths": {
+      "@razzia/common/*": ["./packages/common/src/*"],
+      "@razzia/e2e/*": ["./packages/e2e/*"],
+      "@razzia/socket/*": ["./packages/socket/src/*"],
+      "@razzia/web/*": ["./packages/web/src/*"]
+    },
+    "strict": true,
+    "strictNullChecks": true
+  }
+}

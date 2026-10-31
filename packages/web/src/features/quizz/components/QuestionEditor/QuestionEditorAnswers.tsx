@@ -1,0 +1,134 @@
+import { MAX_ANSWERS, MIN_ANSWERS, QUIZZ_MODES } from "@razzia/common/constants"
+import FieldError from "@razzia/web/components/forms/FieldError"
+import {
+  ANSWERS_COLORS,
+  ANSWERS_LABELS,
+} from "@razzia/web/features/game/utils/constants"
+import { QUESTION_REGISTRY } from "@razzia/web/features/questions"
+import {
+  useQuizzEditor,
+  type QuizzFormValues,
+} from "@razzia/web/features/quizz/contexts/quizz-editor-context"
+import clsx from "clsx"
+import { Minus, Plus } from "lucide-react"
+import { Controller, useFormContext } from "react-hook-form"
+import { useTranslation } from "react-i18next"
+
+const QuestionEditorAnswers = () => {
+  const {
+    currentQuestion,
+    currentIndex,
+    gameMode,
+    updateQuestion,
+    questionPath,
+  } = useQuizzEditor()
+  const { control } = useFormContext<QuizzFormValues>()
+  const { t } = useTranslation()
+
+  const questionType = currentQuestion.type
+  const { SolutionPicker } = QUESTION_REGISTRY[questionType]
+
+  const addAnswer = () => {
+    if (currentQuestion.answers.length >= MAX_ANSWERS) {
+      return
+    }
+
+    updateQuestion(currentIndex, { answers: [...currentQuestion.answers, ""] })
+  }
+
+  const removeAnswer = () => {
+    if (currentQuestion.answers.length <= MIN_ANSWERS) {
+      return
+    }
+
+    const next = currentQuestion.answers.slice(0, -1)
+    const maxIndex = next.length - 1
+    const nextSolution = (currentQuestion.solutions ?? []).filter(
+      (s) => s <= maxIndex,
+    )
+
+    updateQuestion(currentIndex, {
+      answers: next,
+      solutions: nextSolution.length > 0 ? nextSolution : [0],
+    })
+  }
+
+  return (
+    <div className="z-10 flex flex-col gap-3">
+      <div className="flex items-center justify-between px-1">
+        <div className="text-muted-foreground bg-background rounded-lg px-2 py-1 text-sm font-semibold">
+          {currentQuestion.answers.length}
+          {t("quizz:answersCountSuffix")}
+        </div>
+        <div className="flex gap-2">
+          <button
+            onClick={removeAnswer}
+            aria-label={t("quizz:removeAnswer")}
+            disabled={currentQuestion.answers.length <= MIN_ANSWERS}
+            className="bg-accent text-accent-foreground hover:bg-accent flex size-7 items-center justify-center rounded-lg disabled:opacity-40"
+          >
+            <Minus className="size-4" />
+          </button>
+          <button
+            onClick={addAnswer}
+            aria-label={t("quizz:addAnswer")}
+            disabled={currentQuestion.answers.length >= MAX_ANSWERS}
+            className="bg-accent text-accent-foreground hover:bg-accent flex size-7 items-center justify-center rounded-lg disabled:opacity-40"
+          >
+            <Plus className="size-4" />
+          </button>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-2 gap-3">
+        {currentQuestion.answers.map((_, i) => {
+          const isSelected = currentQuestion.solutions?.includes(i) ?? false
+
+          return (
+            <Controller
+              key={i}
+              control={control}
+              name={questionPath(`answers.${i}`)}
+              render={({ field, fieldState }) => (
+                <div className="flex flex-col gap-1">
+                  <div
+                    className={clsx(
+                      "flex items-center gap-3 rounded-2xl px-4 py-6",
+                      ANSWERS_COLORS[i],
+                      fieldState.invalid && "ring-2 ring-red-500",
+                    )}
+                  >
+                    <span className="flex size-7 shrink-0 items-center justify-center rounded-md bg-black/20 text-sm font-bold text-white md:size-8 md:text-base">
+                      {ANSWERS_LABELS[i]}
+                    </span>
+                    <div className="flex flex-1 items-center justify-between gap-1.5 drop-shadow-md">
+                      <input
+                        {...field}
+                        aria-invalid={fieldState.invalid}
+                        aria-describedby={
+                          fieldState.invalid ? `${field.name}-error` : undefined
+                        }
+                        className="w-full bg-transparent font-semibold text-white placeholder-white/70 outline-none"
+                        placeholder={t("quizz:addAnswerPlaceholder")}
+                      />
+                      {gameMode !== QUIZZ_MODES.SURVEY && SolutionPicker && (
+                        <SolutionPicker index={i} isSelected={isSelected} />
+                      )}
+                    </div>
+                  </div>
+                  <FieldError
+                    id={`${field.name}-error`}
+                    errors={[fieldState.error]}
+                    pill
+                  />
+                </div>
+              )}
+            />
+          )
+        })}
+      </div>
+    </div>
+  )
+}
+
+export default QuestionEditorAnswers
