@@ -691,9 +691,9 @@ describe("gages", () => {
 
     expect(status(game.gameId)?.name).toBe(STATUS.SHOW_GAGE_PROPOSALS)
 
-    game.proposeGage(alice, "  Chanter   fort ")
-    game.proposeGage(alice, "Encore")
-    game.proposeGage(bob, "Danser")
+    game.proposeGages(alice, ["  Chanter   fort "])
+    game.proposeGages(alice, ["Encore"])
+    game.proposeGages(bob, ["Danser"])
 
     expect(status("alice")).toMatchObject({
       name: STATUS.WAIT,
@@ -746,6 +746,59 @@ describe("gages", () => {
     })
   })
 
+  it("lets each player send several gages or none", async () => {
+    const { game, manager, sockets, status } = setup(withGageVote(), [
+      "Alice",
+      "Bob",
+      "Carol",
+    ])
+    const [alice, bob, carol] = sockets
+
+    void game.start(manager)
+    await vi.advanceTimersByTimeAsync(GAGE_DELAY_MS)
+    game.proposeGages(alice, ["Chanter", "Danser", "Mimer", "En trop"])
+    game.proposeGages(bob, [])
+
+    expect(status("bob")).toMatchObject({
+      name: STATUS.WAIT,
+      data: { text: "game:gage.proposalSent" },
+    })
+
+    game.proposeGages(carol, ["Imiter Yoda"])
+    await vi.advanceTimersByTimeAsync(TICK_MS)
+
+    expect(status(MANAGER)).toMatchObject({
+      name: STATUS.SHOW_GAGE_VOTE,
+      data: { choices: ["Chanter", "Danser", "Mimer", "Imiter Yoda"] },
+    })
+    expect(status("alice")?.data).toMatchObject({ ownChoices: [0, 1, 2] })
+    expect(status("bob")?.data).toMatchObject({ ownChoices: [] })
+  })
+
+  it("ends the vote without a player who wrote every gage", async () => {
+    const { game, manager, sockets, status } = setup(withGageVote(), [
+      "Alice",
+      "Bob",
+    ])
+    const [alice, bob] = sockets
+
+    void game.start(manager)
+    await vi.advanceTimersByTimeAsync(GAGE_DELAY_MS)
+    game.proposeGages(alice, ["Chanter", "Danser"])
+    game.proposeGages(bob, [])
+    await vi.advanceTimersByTimeAsync(TICK_MS)
+
+    expect(status("alice")?.data).toMatchObject({ ownChoices: [0, 1] })
+
+    game.selectAnswer(bob, [1])
+    await vi.advanceTimersByTimeAsync(TICK_MS)
+
+    expect(status(MANAGER)).toMatchObject({
+      name: STATUS.SHOW_GAGE_RESULT,
+      data: { votes: [0, 1], winner: 1, tie: false },
+    })
+  })
+
   it("merges identical proposals and shortens long ones", async () => {
     const { game, manager, sockets, status } = setup(withGageVote(), [
       "Alice",
@@ -756,9 +809,9 @@ describe("gages", () => {
 
     void game.start(manager)
     await vi.advanceTimersByTimeAsync(GAGE_DELAY_MS)
-    game.proposeGage(alice, "Chanter")
-    game.proposeGage(bob, "  CHANTER ")
-    game.proposeGage(carol, "x".repeat(200))
+    game.proposeGages(alice, ["Chanter"])
+    game.proposeGages(bob, ["  CHANTER "])
+    game.proposeGages(carol, ["x".repeat(200)])
     await vi.advanceTimersByTimeAsync(TICK_MS)
 
     expect(status(MANAGER)?.data).toMatchObject({
@@ -775,7 +828,7 @@ describe("gages", () => {
 
     void game.start(manager)
     await vi.advanceTimersByTimeAsync(GAGE_DELAY_MS)
-    game.proposeGage(alice, "Chanter")
+    game.proposeGages(alice, ["Chanter"])
     game.advance()
     await vi.advanceTimersByTimeAsync(TICK_MS)
 
@@ -790,7 +843,7 @@ describe("gages", () => {
 
     void game.start(manager)
     await vi.advanceTimersByTimeAsync(GAGE_DELAY_MS)
-    game.proposeGage(alice, "Chanter")
+    game.proposeGages(alice, ["Chanter"])
     game.advance()
     await vi.advanceTimersByTimeAsync(TICK_MS)
 
@@ -825,8 +878,8 @@ describe("gages", () => {
 
     void game.start(manager)
     await vi.advanceTimersByTimeAsync(GAGE_DELAY_MS)
-    game.proposeGage(alice, "Chanter")
-    game.proposeGage(bob, "Danser")
+    game.proposeGages(alice, ["Chanter"])
+    game.proposeGages(bob, ["Danser"])
     await vi.advanceTimersByTimeAsync(TICK_MS)
     game.selectAnswer(alice, [1])
     game.selectAnswer(bob, [0])

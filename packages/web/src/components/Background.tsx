@@ -7,6 +7,8 @@ const Background = ({ children }: PropsWithChildren) => {
   const branding = getBranding()
   const logo = branding?.logo ?? defaultLogo
   const appName = branding?.appName ?? "Razzia"
+  // A custom name without a custom logo is shown as text
+  const showName = Boolean(branding?.appName && !branding.logo)
 
   return (
     <section className="relative flex min-h-dvh flex-col items-center justify-center">
@@ -15,12 +17,18 @@ const Background = ({ children }: PropsWithChildren) => {
         <div className="bg-primary/15 absolute right-[-10vmin] bottom-[-45vmin] min-h-[75vmin] min-w-[75vmin] rotate-20 rounded-4xl" />
       </div>
 
-      <img
-        src={logo}
-        onError={imageFallback(defaultLogo)}
-        className="mb-10 h-16"
-        alt={appName}
-      />
+      {showName ? (
+        <h1 className="font-display text-primary mb-10 px-4 text-center text-4xl font-extrabold drop-shadow-lg md:text-6xl">
+          {appName}
+        </h1>
+      ) : (
+        <img
+          src={logo}
+          onError={imageFallback(defaultLogo)}
+          className="mb-10 h-16"
+          alt={appName}
+        />
+      )}
       {children}
 
       <a

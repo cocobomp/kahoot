@@ -80,6 +80,10 @@
     "proposalSent": "Penitenza inviata! In attesa degli altri giocatori…",
     "proposals": "Penitenze",
     "ownProposal": "la tua proposta",
-    "resultTitle": "Risultato del voto"
+    "resultTitle": "Risultato del voto",
+    "addGage": "Add",
+    "removeGage": "Remove this forfeit",
+    "sendGages": "Send ({{number}})",
+    "noGage": "I have no forfeit"
   }
 }

@@ -75,11 +75,15 @@
     "forLosers": "Gage pour {{names}} : {{gage}}",
     "youLose": "C'est toi qui fais le gage : {{gage}}",
     "proposeTitle": "Proposez vos gages !",
-    "proposeHint": "Chacun écrit un gage sur son téléphone, puis tout le monde vote.",
+    "proposeHint": "Propose jusqu'à {{max}} gages, ou aucun, puis envoie. Ensuite, tout le monde vote.",
     "proposePlaceholder": "Ton idée de gage…",
-    "proposalSent": "Gage envoyé ! En attente des autres joueurs…",
+    "proposalSent": "C'est envoyé ! En attente des autres joueurs…",
     "proposals": "Gages",
     "ownProposal": "ta proposition",
-    "resultTitle": "Résultat du vote"
+    "resultTitle": "Résultat du vote",
+    "addGage": "Ajouter",
+    "removeGage": "Retirer ce gage",
+    "sendGages": "Envoyer ({{number}})",
+    "noGage": "Je n'ai pas de gage"
   }
 }

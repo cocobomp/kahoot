@@ -79,6 +79,10 @@
     "proposalSent": "Ceza gönderildi! Diğer oyuncular bekleniyor…",
     "proposals": "Cezalar",
     "ownProposal": "senin önerin",
-    "resultTitle": "Oylama sonucu"
+    "resultTitle": "Oylama sonucu",
+    "addGage": "Add",
+    "removeGage": "Remove this forfeit",
+    "sendGages": "Send ({{number}})",
+    "noGage": "I have no forfeit"
   }
 }

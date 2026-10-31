@@ -79,6 +79,10 @@
     "proposalSent": "Strafe gesendet! Warte auf die anderen Spieler…",
     "proposals": "Strafen",
     "ownProposal": "dein Vorschlag",
-    "resultTitle": "Abstimmungsergebnis"
+    "resultTitle": "Abstimmungsergebnis",
+    "addGage": "Add",
+    "removeGage": "Remove this forfeit",
+    "sendGages": "Send ({{number}})",
+    "noGage": "I have no forfeit"
   }
 }

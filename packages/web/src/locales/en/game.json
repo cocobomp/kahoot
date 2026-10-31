@@ -77,11 +77,15 @@
     "forLosers": "Forfeit for {{names}}: {{gage}}",
     "youLose": "You have to do the forfeit: {{gage}}",
     "proposeTitle": "Propose your forfeits!",
-    "proposeHint": "Everyone writes a forfeit on their phone, then everyone votes.",
+    "proposeHint": "Suggest up to {{max}} forfeits, or none, then send them. Then everyone votes.",
     "proposePlaceholder": "Your forfeit idea…",
-    "proposalSent": "Forfeit sent! Waiting for the other players…",
+    "proposalSent": "Sent! Waiting for the other players…",
     "proposals": "Forfeits",
     "ownProposal": "your proposal",
-    "resultTitle": "Vote results"
+    "resultTitle": "Vote results",
+    "addGage": "Add",
+    "removeGage": "Remove this forfeit",
+    "sendGages": "Send ({{number}})",
+    "noGage": "I have no forfeit"
   }
 }

@@ -80,6 +80,10 @@
     "proposalSent": "Đã gửi hình phạt! Đang chờ những người chơi khác…",
     "proposals": "Hình phạt",
     "ownProposal": "đề xuất của bạn",
-    "resultTitle": "Kết quả bình chọn"
+    "resultTitle": "Kết quả bình chọn",
+    "addGage": "Add",
+    "removeGage": "Remove this forfeit",
+    "sendGages": "Send ({{number}})",
+    "noGage": "I have no forfeit"
   }
 }

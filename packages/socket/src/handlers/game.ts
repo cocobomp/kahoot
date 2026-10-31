@@ -121,8 +121,8 @@ export const gameSocketHandlers = ({ io, socket }: SocketContext) => {
     ),
   )
 
-  socket.on(EVENTS.PLAYER.PROPOSE_GAGE, ({ gameId, gage }) =>
-    withPlayerGame(gameId, socket, (game) => game.proposeGage(socket, gage)),
+  socket.on(EVENTS.PLAYER.PROPOSE_GAGE, ({ gameId, gages }) =>
+    withPlayerGame(gameId, socket, (game) => game.proposeGages(socket, gages)),
   )
 
   socket.on(EVENTS.MANAGER.ADVANCE, ({ gameId }) =>

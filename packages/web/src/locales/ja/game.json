@@ -79,6 +79,10 @@
     "proposalSent": "罰ゲームを送信しました！ほかのプレイヤーを待っています…",
     "proposals": "罰ゲーム",
     "ownProposal": "あなたの提案",
-    "resultTitle": "投票結果"
+    "resultTitle": "投票結果",
+    "addGage": "Add",
+    "removeGage": "Remove this forfeit",
+    "sendGages": "Send ({{number}})",
+    "noGage": "I have no forfeit"
   }
 }

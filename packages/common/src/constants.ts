@@ -70,6 +70,9 @@ export const MAX_GAGES = 4
 
 export const MAX_GAGE_LENGTH = 80
 
+// Each player sends no gage, or up to this many
+export const MAX_GAGES_PER_PLAYER = 3
+
 export const GAGE_PROPOSAL_TIME = 60
 
 export const GAGE_VOTE_TIME = 30

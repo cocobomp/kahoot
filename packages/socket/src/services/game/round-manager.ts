@@ -4,6 +4,7 @@ import {
   GAGE_PROPOSAL_TIME,
   GAGE_VOTE_TIME,
   MAX_GAGE_LENGTH,
+  MAX_GAGES_PER_PLAYER,
   MAX_GAGES,
   MAX_POINTS,
   MEDIA_TYPES,
@@ -95,6 +96,8 @@ export class RoundManager {
   private phase: "gageProposals" | "gageVote" | "gageResult" | "questions" =
     "questions"
   private gageChoices: GageChoice[] = []
+  // Players who sent their proposals (possibly none)
+  private gageDone = new Set<string>()
   private gage: string | null = null
 
   constructor(opts: RoundManagerOptions) {
@@ -156,8 +159,9 @@ export class RoundManager {
     return !this.isSurvey() && this.opts.quizz.gageVote === true
   }
 
-  private hasProposedGage(playerId: string): boolean {
-    return this.gageChoices.some((choice) =>
+  /** Every gage on the ballot is one of theirs: they have nothing to vote for. */
+  private hasOnlyOwnGages(playerId: string): boolean {
+    return this.gageChoices.every((choice) =>
       choice.authorIds.includes(playerId),
     )
   }
@@ -175,7 +179,7 @@ export class RoundManager {
     )
 
     if (existing) {
-      if (authorId) {
+      if (authorId && !existing.authorIds.includes(authorId)) {
         existing.authorIds.push(authorId)
       }
 
@@ -405,6 +409,7 @@ export class RoundManager {
   private async startGageProposals(): Promise<void> {
     this.phase = "gageProposals"
     this.gageChoices = []
+    this.gageDone = new Set()
     this.acceptingAnswers = true
 
     this.opts.broadcast(STATUS.SHOW_GAGE_PROPOSALS, {
@@ -793,31 +798,31 @@ export class RoundManager {
     this.endIfEveryoneAnswered()
   }
 
-  proposeGage(socket: Socket, text: string): void {
+  /** A player sends all their gages at once: none, one or several. */
+  proposeGages(socket: Socket, gages: string[]): void {
     const player = this.opts.players.findById(socket.id)
 
     if (
       !player ||
       !this.acceptingAnswers ||
       this.phase !== "gageProposals" ||
-      this.hasProposedGage(player.id)
+      this.gageDone.has(player.id)
     ) {
       return
     }
 
-    this.addGageChoice(text, player.id)
-
-    if (!this.hasProposedGage(player.id)) {
-      return
-    }
+    gages.slice(0, MAX_GAGES_PER_PLAYER).forEach((gage) => {
+      this.addGageChoice(gage, player.id)
+    })
+    this.gageDone.add(player.id)
 
     this.opts.send(socket.id, STATUS.WAIT, { text: "game:gage.proposalSent" })
 
-    const proposers = this.opts.players
+    const done = this.opts.players
       .getAll()
-      .filter((p) => this.hasProposedGage(p.id)).length
+      .filter((p) => this.gageDone.has(p.id)).length
 
-    socket.to(this.opts.gameId).emit(EVENTS.GAME.PLAYER_ANSWER, proposers)
+    socket.to(this.opts.gameId).emit(EVENTS.GAME.PLAYER_ANSWER, done)
     this.endIfEveryoneAnswered()
   }
 
@@ -830,6 +835,10 @@ export class RoundManager {
         id === oldId ? newId : id,
       )
     })
+
+    if (this.gageDone.delete(oldId)) {
+      this.gageDone.add(newId)
+    }
   }
 
   endIfEveryoneAnswered(): void {
@@ -838,11 +847,16 @@ export class RoundManager {
     }
 
     const connected = this.opts.players.getAll().filter((p) => p.connected)
-    const everyoneAnswered = connected.every((player) =>
-      this.phase === "gageProposals"
-        ? this.hasProposedGage(player.id)
-        : this.playersAnswers.some((a) => a.playerId === player.id),
-    )
+    const everyoneAnswered = connected.every((player) => {
+      if (this.phase === "gageProposals") {
+        return this.gageDone.has(player.id)
+      }
+
+      return (
+        this.playersAnswers.some((a) => a.playerId === player.id) ||
+        (this.phase === "gageVote" && this.hasOnlyOwnGages(player.id))
+      )
+    })
 
     if (connected.length > 0 && everyoneAnswered) {
       this.opts.cooldown.abort()

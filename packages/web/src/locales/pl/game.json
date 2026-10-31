@@ -79,6 +79,10 @@
     "proposalSent": "Kara wysłana! Czekamy na pozostałych graczy…",
     "proposals": "Kary",
     "ownProposal": "twoja propozycja",
-    "resultTitle": "Wynik głosowania"
+    "resultTitle": "Wynik głosowania",
+    "addGage": "Add",
+    "removeGage": "Remove this forfeit",
+    "sendGages": "Send ({{number}})",
+    "noGage": "I have no forfeit"
   }
 }

@@ -79,6 +79,10 @@
     "proposalSent": "¡Prenda enviada! Esperando a los demás jugadores…",
     "proposals": "Prendas",
     "ownProposal": "tu propuesta",
-    "resultTitle": "Resultado de la votación"
+    "resultTitle": "Resultado de la votación",
+    "addGage": "Add",
+    "removeGage": "Remove this forfeit",
+    "sendGages": "Send ({{number}})",
+    "noGage": "I have no forfeit"
   }
 }

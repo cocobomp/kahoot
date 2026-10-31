@@ -27,7 +27,7 @@ Create `config/branding/theme.json`:
 
 All fields are optional: anything you omit keeps its default value.
 
-- `appName`: app name + browser tab title
+- `appName`: app name + browser tab title (shown as text on the home page when no `logo` is set)
 - `colors`: CSS color tokens (at least `primary` and `secondary`). `correct` sets the color used for correct answers (checkmarks, estimation range and answer)
 - `answerColors`: up to 4 answer-button colors
 - `font`: a font family + an optional stylesheet URL (e.g. Google Fonts)
