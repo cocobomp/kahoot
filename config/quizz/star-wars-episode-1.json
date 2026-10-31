@@ -13,7 +13,7 @@
     {
       "type": "single",
       "question": "Sur quelle planète se trouve Kilian ?",
-      "note": "Un désert et deux soleils : c'est Tatooine, la planète natale d'Anakin Skywalker !",
+      "note": "Tatooine ! Kilian se balade dans les vrais décors de Mos Espa, la ville où vit le petit Anakin.",
       "media": {
         "type": "image",
         "url": "/media/kilian-tatooine.jpg"
@@ -47,26 +47,6 @@
         2
       ],
       "cooldown": 5,
-      "time": 20
-    },
-    {
-      "type": "single",
-      "question": "Les scènes de Tatooine ont été tournées dans ce décor, toujours debout aujourd'hui. Dans quel pays se trouve-t-il ?",
-      "note": "Le village de Mos Espa a été construit près de Tozeur, dans le sud de la Tunisie. Le nom « Tatooine » vient d'ailleurs de la ville tunisienne de Tataouine !",
-      "media": {
-        "type": "image",
-        "url": "/media/mos-espa-tunisie.jpg"
-      },
-      "answers": [
-        "Maroc",
-        "Égypte",
-        "Jordanie",
-        "Tunisie"
-      ],
-      "solutions": [
-        3
-      ],
-      "cooldown": 6,
       "time": 20
     },
     {
@@ -127,6 +107,26 @@
     },
     {
       "type": "single",
+      "question": "Corentin fait un selfie dans le quartier des esclaves de Mos Espa, sur Tatooine. Qui vit ici avec sa mère ?",
+      "note": "Anakin et sa mère Shmi y vivent comme esclaves du ferrailleur Watto. Ce décor existe vraiment : c'est un ancien grenier fortifié, le Ksar Hadada.",
+      "media": {
+        "type": "image",
+        "url": "/media/corentin-tatooine.jpg"
+      },
+      "answers": [
+        "Sebulba",
+        "Anakin Skywalker",
+        "Watto",
+        "Jar Jar Binks"
+      ],
+      "solutions": [
+        1
+      ],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "single",
       "question": "Qui est le grand rival d'Anakin pendant la course de modules ?",
       "note": "Sebulba, le Dug, multiplie les coups bas, mais Anakin remporte la course et gagne sa liberté !",
       "answers": [
@@ -161,26 +161,6 @@
     },
     {
       "type": "single",
-      "question": "Ce palais italien a servi de décor au palais royal de Theed. Sur quelle planète se trouve Theed ?",
-      "note": "Le palais royal de Caserte, près de Naples, a prêté ses somptueux intérieurs au palais de la reine Amidala, à Theed, capitale de Naboo.",
-      "media": {
-        "type": "image",
-        "url": "/media/reggia-caserta.jpg"
-      },
-      "answers": [
-        "Coruscant",
-        "Naboo",
-        "Tatooine",
-        "Alderaan"
-      ],
-      "solutions": [
-        1
-      ],
-      "cooldown": 6,
-      "time": 20
-    },
-    {
-      "type": "single",
       "question": "À 16 min 14 du film, que dit Padmé ?",
       "note": "« On perd un temps précieux, capitaine. » Bravo à ceux qui connaissent le film par cœur !",
       "answers": [
@@ -198,7 +178,7 @@
     {
       "type": "single",
       "question": "Sur quelle planète Fabien fait-il la fête ?",
-      "note": "Coruscant, la planète-ville où siège le Sénat galactique… et où la nuit ne s'arrête jamais ! Au loin, on aperçoit le Temple Jedi.",
+      "note": "Coruscant, la planète-ville entièrement couverte de gratte-ciel, où siège le Sénat galactique… et où la nuit ne s'arrête jamais !",
       "media": {
         "type": "image",
         "url": "/media/fabien-coruscant.jpg"
@@ -232,24 +212,6 @@
     },
     {
       "type": "single",
-      "question": "Vrai ou faux : Keira Knightley, ici en photo, joue dans La Menace fantôme.",
-      "note": "Vrai ! Keira Knightley, 12 ans à l'époque, joue Sabé, la servante qui se fait passer pour la reine Amidala.",
-      "media": {
-        "type": "image",
-        "url": "/media/keira-knightley.jpg"
-      },
-      "answers": [
-        "Vrai",
-        "Faux"
-      ],
-      "solutions": [
-        0
-      ],
-      "cooldown": 4,
-      "time": 15
-    },
-    {
-      "type": "single",
       "question": "Pourquoi le tour de l'esprit Jedi de Qui-Gon ne marche-t-il pas sur Watto ?",
       "note": "Les Toydariens résistent aux tours de l'esprit. Comme le dit Watto, seul l'argent marche sur lui !",
       "answers": [
@@ -262,6 +224,26 @@
         3
       ],
       "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "single",
+      "question": "Les scènes de Tatooine ont été tournées dans ce décor, toujours debout aujourd'hui. Dans quel pays se trouve-t-il ?",
+      "note": "Le village de Mos Espa a été construit près de Tozeur, dans le sud de la Tunisie. Le nom « Tatooine » vient d'ailleurs de la ville tunisienne de Tataouine !",
+      "media": {
+        "type": "image",
+        "url": "/media/mos-espa-tunisie.jpg"
+      },
+      "answers": [
+        "Maroc",
+        "Égypte",
+        "Jordanie",
+        "Tunisie"
+      ],
+      "solutions": [
+        3
+      ],
+      "cooldown": 6,
       "time": 20
     },
     {
@@ -293,6 +275,26 @@
         "6",
         "10",
         "16"
+      ],
+      "solutions": [
+        2
+      ],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "single",
+      "question": "Papoutchki (alias Célien) visite le palais de la reine Amidala. Sur quelle planète est-il ?",
+      "note": "Naboo ! Les scènes du palais royal de Theed ont été tournées dans ce grand escalier, au palais royal de Caserte, près de Naples.",
+      "media": {
+        "type": "image",
+        "url": "/media/celien-naboo.jpg"
+      },
+      "answers": [
+        "Coruscant",
+        "Tatooine",
+        "Naboo",
+        "Malastare"
       ],
       "solutions": [
         2
@@ -339,24 +341,6 @@
       ],
       "cooldown": 5,
       "time": 20
-    },
-    {
-      "type": "estimation",
-      "question": "En quelle année La Menace fantôme est-il sorti au cinéma ?",
-      "note": "Le film sort en mai 1999 aux États-Unis et en octobre 1999 en France, 16 ans après Le Retour du Jedi.",
-      "answers": [],
-      "solutions": [
-        1999
-      ],
-      "cooldown": 5,
-      "time": 30,
-      "options": {
-        "inputMode": "slider",
-        "min": 1990,
-        "max": 2010,
-        "step": 1,
-        "margin": 2
-      }
     },
     {
       "type": "single",

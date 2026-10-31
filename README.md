@@ -4,7 +4,7 @@ Un jeu de quiz multijoueur en temps réel, façon Kahoot, à héberger soi-même
 
 Ce dépôt est un fork de **[Razzia](https://github.com/Ralex91/Razzia)** (anciennement _Rahoot_), un clone open-source de Kahoot sous licence MIT. Tout le moteur de jeu vient de Razzia : pas besoin de réinventer la roue. Ce fork ajoute :
 
-- un quiz d'exemple **Star Wars Épisode I : La Menace fantôme** (21 questions, 8 photos libres de droits et deux montages, une anecdote à chaque réponse) ;
+- un quiz d'exemple **Star Wars Épisode I : La Menace fantôme** (20 questions, les 4 invités de la soirée en montage sur de vrais lieux de tournage, 6 photos libres de droits, une anecdote à chaque réponse) ;
 - des **gages** : au début de la partie, les joueurs proposent des gages et votent, puis le dernier du classement fait le plus voté ;
 - un fond étoilé pour les écrans de jeu ;
 - un hébergement gratuit en ligne sur Render, en quelques clics ;
@@ -149,10 +149,10 @@ Les quiz sont enregistrés dans `config/quizz/` (un fichier JSON par quiz) et le
 
 ## Le quiz Star Wars d'exemple
 
-Le fichier [`config/quizz/star-wars-episode-1.json`](config/quizz/star-wars-episode-1.json) contient 21 questions en français :
+Le fichier [`config/quizz/star-wars-episode-1.json`](config/quizz/star-wars-episode-1.json) contient 20 questions en français :
 
-- 18 questions à choix unique (dont un vrai ou faux), 1 à choix multiple, 2 estimations au curseur ;
-- 10 questions avec photo : deux invités de la soirée en montage (sur Tatooine et sur Coruscant), acteurs, lieux de tournage, réalisateur, compositeur ;
+- 18 questions à choix unique, 1 à choix multiple, 1 estimation au curseur ;
+- 10 questions avec photo : les quatre invités de la soirée en montage sur de vrais lieux (Kilian et Corentin sur Tatooine, Célien sur Naboo, Fabien sur Coruscant), acteurs, lieu de tournage, compositeur, réalisateur ;
 - une anecdote affichée à chaque réponse, et une dernière question à points doublés ;
 - des gages proposés par les joueurs au début, avec 4 gages de secours (imiter Jar Jar Binks, chanter « Duel of the Fates »…).
 
@@ -186,7 +186,7 @@ Ce fork modifie quelques fichiers de Razzia (gages, hébergement, documentation)
 
 - Moteur de jeu : [Razzia](https://github.com/Ralex91/Razzia) par Ralex91 et ses contributeurs, licence [MIT](LICENSE).
 - Fond étoilé : image originale générée pour ce projet.
-- `kilian-tatooine.jpg` et `fabien-coruscant.jpg` : montages réalisés à partir de photos personnelles, avec des décors originaux générés pour ce projet.
+- Montages des invités : photos personnelles intégrées dans de vraies photos de lieux, listées dans le second tableau. Un montage fait sur une photo CC BY-SA garde la même licence.
 - Photos du quiz : [Wikimedia Commons](https://commons.wikimedia.org/). Elles ont été redimensionnées et leurs métadonnées retirées ; chacune reste sous sa licence d'origine (les versions modifiées d'une photo CC BY-SA doivent garder la même licence). Les captures d'écran de `docs/captures/` contiennent certaines de ces photos.
 
 | Photo                                                       | Sujet                                                                                                                                            | Auteur          | Licence                                                         |
@@ -194,10 +194,15 @@ Ce fork modifie quelques fichiers de Razzia (gages, hébergement, documentation)
 | [`liam-neeson.jpg`](config/media/liam-neeson.jpg)           | [Liam Neeson au festival de Toronto 2008](https://commons.wikimedia.org/wiki/File:Liam_Neeson_at_2008_TIFF.jpg)                                  | Karen Seto      | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/)       |
 | [`mos-espa-tunisie.jpg`](config/media/mos-espa-tunisie.jpg) | [Décor de Mos Espa, Ong Jemel (Tunisie)](https://commons.wikimedia.org/wiki/File:Tatooine%28js%295.jpg)                                          | Jerzystrzelecki | [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/)       |
 | [`natalie-portman.jpg`](config/media/natalie-portman.jpg)   | [Natalie Portman à la Berlinale 2015](https://commons.wikimedia.org/wiki/File:Natalie_Portman_Berlin_2015_3.jpg)                                 | Siebbi          | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) |
-| [`reggia-caserta.jpg`](config/media/reggia-caserta.jpg)     | [Grand escalier du palais royal de Caserte](https://commons.wikimedia.org/wiki/File:Reggia_di_Caserta,_scalone_d%27onore._-_panoramio.jpg)       | Carlo Pelagalli | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) |
-| [`keira-knightley.jpg`](config/media/keira-knightley.jpg)   | [Keira Knightley en 2012](https://commons.wikimedia.org/wiki/File:Keira_Knightley_2012.jpg)                                                      | Paul Bird       | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/)       |
 | [`ray-park.jpg`](config/media/ray-park.jpg)                 | [Ray Park en 2012](https://commons.wikimedia.org/wiki/File:Ray_Park_%287281768204%29.jpg)                                                        | Gordon Tarpley  | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/)       |
 | [`john-williams.jpg`](config/media/john-williams.jpg)       | [John Williams dirigeant le Boston Pops, 2011](https://commons.wikimedia.org/wiki/File:John_Williams_with_Boston_Pops-1.jpg)                     | Chris Devers    | [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/) |
 | [`george-lucas.jpg`](config/media/george-lucas.jpg)         | [George Lucas à la Mostra de Venise 2009](https://commons.wikimedia.org/wiki/File:George_Lucas_66%C3%A8me_Festival_de_Venise_%28Mostra%29_5.jpg) | Nicolas Genin   | [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/) |
+
+| Montage                                                       | Invité   | Décor (photo d'origine)                                                                                                                    | Auteur du décor | Licence                                                                    |
+| ------------------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------ | --------------- | -------------------------------------------------------------------------- |
+| [`kilian-tatooine.jpg`](config/media/kilian-tatooine.jpg)     | Kilian   | [Décor de Mos Espa, Ong Jemel (Tunisie)](https://commons.wikimedia.org/wiki/File:Tatooine%28js%295.jpg)                                    | Jerzystrzelecki | [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/)                  |
+| [`corentin-tatooine.jpg`](config/media/corentin-tatooine.jpg) | Corentin | [Ksar Hadada (Tunisie), le quartier des esclaves de Mos Espa](https://commons.wikimedia.org/wiki/File:Ksar_Hadada_int%C3%A9rieur.jpg)      | Smailtn         | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)            |
+| [`celien-naboo.jpg`](config/media/celien-naboo.jpg)           | Célien   | [Grand escalier du palais royal de Caserte](https://commons.wikimedia.org/wiki/File:Reggia_di_Caserta,_scalone_d%27onore._-_panoramio.jpg) | Carlo Pelagalli | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/)            |
+| [`fabien-coruscant.jpg`](config/media/fabien-coruscant.jpg)   | Fabien   | [Gratte-ciel de Hong Kong, la nuit](https://commons.wikimedia.org/wiki/File:Victoria_Harbour_skyscrapers.jpg)                              | Wilfredor       | [CC0 (domaine public)](https://creativecommons.org/publicdomain/zero/1.0/) |
 
 Ce quiz est un projet de fan, non officiel, sans lien avec Lucasfilm Ltd. ou The Walt Disney Company. Star Wars est une marque de Lucasfilm Ltd. Kahoot! est une marque de Kahoot! ASA ; ce projet n'est ni affilié à Kahoot ni approuvé par Kahoot.
