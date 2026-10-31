@@ -12,6 +12,25 @@
   "questions": [
     {
       "type": "single",
+      "question": "Sur quelle planète se trouve Kilian ?",
+      "note": "Un désert et deux soleils : c'est Tatooine, la planète natale d'Anakin Skywalker !",
+      "media": {
+        "type": "image",
+        "url": "/media/kilian-tatooine.jpg"
+      },
+      "answers": [
+        "Naboo",
+        "Tatooine",
+        "Coruscant"
+      ],
+      "solutions": [
+        1
+      ],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "single",
       "question": "Quel personnage cet acteur joue-t-il dans La Menace fantôme ?",
       "note": "Liam Neeson joue Qui-Gon Jinn, le maître Jedi qui découvre le jeune Anakin sur Tatooine.",
       "media": {

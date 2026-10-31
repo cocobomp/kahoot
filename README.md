@@ -4,7 +4,7 @@ Un jeu de quiz multijoueur en temps réel, façon Kahoot, à héberger soi-même
 
 Ce dépôt est un fork de **[Razzia](https://github.com/Ralex91/Razzia)** (anciennement _Rahoot_), un clone open-source de Kahoot sous licence MIT. Tout le moteur de jeu vient de Razzia : pas besoin de réinventer la roue. Ce fork ajoute :
 
-- un quiz d'exemple **Star Wars Épisode I : La Menace fantôme** (19 questions, 8 photos libres de droits, une anecdote à chaque réponse) ;
+- un quiz d'exemple **Star Wars Épisode I : La Menace fantôme** (20 questions, 8 photos libres de droits et un montage, une anecdote à chaque réponse) ;
 - des **gages** : au début de la partie, les joueurs proposent des gages et votent, puis le dernier du classement fait le plus voté ;
 - un fond étoilé pour les écrans de jeu ;
 - un hébergement gratuit en ligne sur Render, en quelques clics ;
@@ -149,10 +149,10 @@ Les quiz sont enregistrés dans `config/quizz/` (un fichier JSON par quiz) et le
 
 ## Le quiz Star Wars d'exemple
 
-Le fichier [`config/quizz/star-wars-episode-1.json`](config/quizz/star-wars-episode-1.json) contient 19 questions en français :
+Le fichier [`config/quizz/star-wars-episode-1.json`](config/quizz/star-wars-episode-1.json) contient 20 questions en français :
 
-- 16 questions à choix unique (dont un vrai ou faux), 1 à choix multiple, 2 estimations au curseur ;
-- 8 questions avec photo : acteurs, lieux de tournage, réalisateur, compositeur ;
+- 17 questions à choix unique (dont un vrai ou faux), 1 à choix multiple, 2 estimations au curseur ;
+- 9 questions avec photo : un invité de la soirée sur Tatooine, acteurs, lieux de tournage, réalisateur, compositeur ;
 - une anecdote affichée à chaque réponse, et une dernière question à points doublés ;
 - des gages proposés par les joueurs au début, avec 4 gages de secours (imiter Jar Jar Binks, chanter « Duel of the Fates »…).
 
@@ -186,6 +186,7 @@ Ce fork modifie quelques fichiers de Razzia (gages, hébergement, documentation)
 
 - Moteur de jeu : [Razzia](https://github.com/Ralex91/Razzia) par Ralex91 et ses contributeurs, licence [MIT](LICENSE).
 - Fond étoilé : image originale générée pour ce projet.
+- `kilian-tatooine.jpg` : montage réalisé à partir d'une photo personnelle, avec un décor original généré pour ce projet.
 - Photos du quiz : [Wikimedia Commons](https://commons.wikimedia.org/). Elles ont été redimensionnées et leurs métadonnées retirées ; chacune reste sous sa licence d'origine (les versions modifiées d'une photo CC BY-SA doivent garder la même licence). Les captures d'écran de `docs/captures/` contiennent certaines de ces photos.
 
 | Photo                                                       | Sujet                                                                                                                                            | Auteur          | Licence                                                         |
