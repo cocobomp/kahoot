@@ -8,6 +8,15 @@ Ce dépôt est un fork de **[Razzia](https://github.com/Ralex91/Razzia)** (ancie
 - un fond étoilé pour les écrans de jeu ;
 - cette documentation en français.
 
+<p align="center">
+  <img src="docs/captures/salle.jpg" width="49%" alt="Salle d'attente avec le code PIN et le QR code">
+  <img src="docs/captures/question.jpg" width="49%" alt="Question avec photo sur le grand écran">
+</p>
+<p align="center">
+  <img src="docs/captures/telephone.jpg" width="24%" alt="Écran d'un joueur sur téléphone">
+  <img src="docs/captures/editeur.jpg" width="73%" alt="Éditeur de quiz">
+</p>
+
 ## Fonctionnalités
 
 - **Parties en temps réel** : code PIN et QR code, les joueurs rejoignent depuis le navigateur de leur téléphone (aucune appli à installer).
