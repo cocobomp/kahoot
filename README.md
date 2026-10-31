@@ -154,7 +154,7 @@ Le fichier [`config/quizz/star-wars-episode-1.json`](config/quizz/star-wars-epis
 - 16 questions à choix unique (dont un vrai ou faux), 1 à choix multiple, 2 estimations au curseur ;
 - 8 questions avec photo : acteurs, lieux de tournage, réalisateur, compositeur ;
 - une anecdote affichée à chaque réponse, et une dernière question à points doublés ;
-- 4 gages à voter au début (imiter Jar Jar Binks, chanter la Marche impériale…).
+- 4 gages à voter au début (imiter Jar Jar Binks, chanter « Duel of the Fates »…).
 
 Compte environ 20 minutes de jeu. Le quiz se modifie dans l'éditeur comme n'importe quel autre.
 
