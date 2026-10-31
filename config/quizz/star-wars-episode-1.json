@@ -107,17 +107,17 @@
     },
     {
       "type": "single",
-      "question": "Corentin fait un selfie à Mos Espa, sur Tatooine. Qui vit dans cette ville, esclave avec sa mère ?",
-      "note": "Anakin et sa mère Shmi y vivent, esclaves du ferrailleur Watto. Derrière Corentin : le vrai décor du film, avec un évaporateur d'humidité.",
+      "question": "Corentin fait un selfie au milieu des cascades. Sur quelle planète est-il ?",
+      "note": "Naboo ! La planète verte de la reine Amidala, avec ses cascades et ses palais en forme de dôme.",
       "media": {
         "type": "image",
-        "url": "/media/corentin-tatooine.jpg"
+        "url": "/media/corentin-naboo.jpg"
       },
       "answers": [
-        "Sebulba",
-        "Anakin Skywalker",
-        "Watto",
-        "Jar Jar Binks"
+        "Tatooine",
+        "Naboo",
+        "Coruscant",
+        "Malastare"
       ],
       "solutions": [
         1
