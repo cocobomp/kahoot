@@ -70,7 +70,7 @@
   "pinDigit": "PIN digit {{position}}",
   "gage": {
     "voteTitle": "Vote for the loser's forfeit!",
-    "voteHint": "The most voted forfeit goes to the last player.",
+    "voteHint": "Tick one or more forfeits (up to {{max}}), yours included. The most voted one goes to the last player.",
     "validated": "Forfeit chosen: {{gage}}",
     "tie": "(tie: drawn at random)",
     "chosen": "The forfeit is chosen, look at the screen!",
@@ -86,6 +86,7 @@
     "addGage": "Add",
     "removeGage": "Remove this forfeit",
     "sendGages": "Send ({{number}})",
-    "noGage": "I have no forfeit"
+    "noGage": "I have no forfeit",
+    "voteButton": "Vote ({{number}})"
   }
 }

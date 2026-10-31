@@ -159,13 +159,6 @@ export class RoundManager {
     return !this.isSurvey() && this.opts.quizz.gageVote === true
   }
 
-  /** Every gage on the ballot is one of theirs: they have nothing to vote for. */
-  private hasOnlyOwnGages(playerId: string): boolean {
-    return this.gageChoices.every((choice) =>
-      choice.authorIds.includes(playerId),
-    )
-  }
-
   /** Adds a gage, merging it with an identical one (same text, any case). */
   private addGageChoice(text: string, authorId?: string): void {
     const gage = text.replace(/\s+/gu, " ").trim().slice(0, MAX_GAGE_LENGTH)
@@ -720,23 +713,20 @@ export class RoundManager {
     return [Math.min(options.max, Math.max(options.min, value))]
   }
 
-  private normalizeGageVote(
-    playerId: string,
-    answerIds: number[],
-  ): number[] | null {
-    const index = answerIds.at(0)
-    const choice = index === undefined ? undefined : this.gageChoices[index]
+  /** A vote for one or several gages, the player's own ones included. */
+  private normalizeGageVote(answerIds: number[]): number[] | null {
+    const isValid = answerIds.every(
+      (index) =>
+        Number.isInteger(index) &&
+        index >= 0 &&
+        index < this.gageChoices.length,
+    )
 
-    if (
-      answerIds.length !== 1 ||
-      index === undefined ||
-      !choice ||
-      choice.authorIds.includes(playerId)
-    ) {
+    if (answerIds.length === 0 || !isValid) {
       return null
     }
 
-    return [index]
+    return [...new Set(answerIds)]
   }
 
   private answerPoints(): number {
@@ -772,7 +762,7 @@ export class RoundManager {
 
     const isGageVote = this.phase === "gageVote"
     const submitted = isGageVote
-      ? this.normalizeGageVote(player.id, answerIds)
+      ? this.normalizeGageVote(answerIds)
       : this.normalizeAnswer(answerIds)
 
     if (!submitted) {
@@ -847,16 +837,11 @@ export class RoundManager {
     }
 
     const connected = this.opts.players.getAll().filter((p) => p.connected)
-    const everyoneAnswered = connected.every((player) => {
-      if (this.phase === "gageProposals") {
-        return this.gageDone.has(player.id)
-      }
-
-      return (
-        this.playersAnswers.some((a) => a.playerId === player.id) ||
-        (this.phase === "gageVote" && this.hasOnlyOwnGages(player.id))
-      )
-    })
+    const everyoneAnswered = connected.every((player) =>
+      this.phase === "gageProposals"
+        ? this.gageDone.has(player.id)
+        : this.playersAnswers.some((a) => a.playerId === player.id),
+    )
 
     if (connected.length > 0 && everyoneAnswered) {
       this.opts.cooldown.abort()

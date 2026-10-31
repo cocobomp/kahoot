@@ -1,12 +1,13 @@
-import { EVENTS } from "@razzia/common/constants"
+import { EVENTS, MAX_ANSWERS } from "@razzia/common/constants"
 import type { CommonStatusDataMap } from "@razzia/common/types/game/status"
+import Button from "@razzia/web/components/Button"
 import AnswerButton from "@razzia/web/features/game/components/AnswerButton"
 import GageHud from "@razzia/web/features/game/components/GageHud"
 import { useSocket } from "@razzia/web/features/game/contexts/socket-context"
 import { usePlayerStore } from "@razzia/web/features/game/stores/player"
 import { ANSWERS_COLORS, SFX } from "@razzia/web/features/game/utils/constants"
 import clsx from "clsx"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useTranslation } from "react-i18next"
 import useSound from "use-sound"
 
@@ -19,6 +20,7 @@ const GageVote = ({
 }: Props) => {
   const { socket } = useSocket()
   const { player, gameId } = usePlayerStore()
+  const [selected, setSelected] = useState<number[]>([])
   const { t } = useTranslation()
 
   const [playMusic, { stop: stopMusic }] = useSound(SFX.ANSWERS.MUSIC, {
@@ -35,14 +37,25 @@ const GageVote = ({
     }
   }, [playMusic, stopMusic])
 
-  const handleVote = (index: number) => () => {
-    if (!player || !gameId) {
+  // Several gages can be ticked, the player's own ones included
+  const toggle = (index: number) => {
+    setSelected((current) => {
+      if (current.includes(index)) {
+        return current.filter((i) => i !== index)
+      }
+
+      return current.length >= MAX_ANSWERS ? current : [...current, index]
+    })
+  }
+
+  const handleVote = () => {
+    if (!player || !gameId || selected.length === 0) {
       return
     }
 
     socket.emit(EVENTS.PLAYER.SELECTED_ANSWER, {
       gameId,
-      data: { answerKeys: [index] },
+      data: { answerKeys: selected },
     })
   }
 
@@ -53,7 +66,7 @@ const GageVote = ({
           {t("game:gage.voteTitle")}
         </h2>
         <p className="text-center text-lg font-semibold text-white drop-shadow-lg md:text-2xl">
-          {t("game:gage.voteHint")}
+          {t("game:gage.voteHint", { max: MAX_ANSWERS })}
         </p>
 
         <div
@@ -72,16 +85,26 @@ const GageVote = ({
                 className={clsx(
                   ANSWERS_COLORS[index % ANSWERS_COLORS.length],
                   "font-bold",
-                  isOwn && "opacity-50",
                 )}
-                disabled={!player || isOwn}
-                onClick={handleVote(index)}
+                disabled={!player}
+                selected={player ? selected.includes(index) : undefined}
+                onClick={() => toggle(index)}
               >
                 {isOwn ? `${choice} (${t("game:gage.ownProposal")})` : choice}
               </AnswerButton>
             )
           })}
         </div>
+
+        {player && (
+          <Button
+            onClick={handleVote}
+            disabled={selected.length === 0}
+            className="w-full max-w-xs bg-green-600"
+          >
+            {t("game:gage.voteButton", { number: selected.length })}
+          </Button>
+        )}
       </div>
 
       <GageHud time={time} total={totalPlayer} label={t("game:hud.answers")} />

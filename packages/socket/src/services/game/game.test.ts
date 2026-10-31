@@ -710,6 +710,7 @@ describe("gages", () => {
     expect(status("alice")?.data).toMatchObject({ ownChoices: [0] })
     expect(status("carol")?.data).toMatchObject({ ownChoices: [] })
 
+    // Bob may vote for his own gage, but only once
     game.selectAnswer(bob, [1])
     game.selectAnswer(bob, [0])
     game.selectAnswer(alice, [1])
@@ -718,7 +719,7 @@ describe("gages", () => {
 
     expect(status(MANAGER)).toMatchObject({
       name: STATUS.SHOW_GAGE_RESULT,
-      data: { votes: [1, 2], winner: 1, tie: false },
+      data: { votes: [0, 3], winner: 1, tie: false },
     })
     expect(status("bob")).toMatchObject({
       name: STATUS.WAIT,
@@ -775,7 +776,7 @@ describe("gages", () => {
     expect(status("bob")?.data).toMatchObject({ ownChoices: [] })
   })
 
-  it("ends the vote without a player who wrote every gage", async () => {
+  it("lets players vote for several gages, their own included", async () => {
     const { game, manager, sockets, status } = setup(withGageVote(), [
       "Alice",
       "Bob",
@@ -785,17 +786,19 @@ describe("gages", () => {
     void game.start(manager)
     await vi.advanceTimersByTimeAsync(GAGE_DELAY_MS)
     game.proposeGages(alice, ["Chanter", "Danser"])
-    game.proposeGages(bob, [])
+    game.proposeGages(bob, ["Mimer"])
     await vi.advanceTimersByTimeAsync(TICK_MS)
 
     expect(status("alice")?.data).toMatchObject({ ownChoices: [0, 1] })
 
-    game.selectAnswer(bob, [1])
+    game.selectAnswer(alice, [0, 2])
+    game.selectAnswer(bob, [2, 9])
+    game.selectAnswer(bob, [2])
     await vi.advanceTimersByTimeAsync(TICK_MS)
 
     expect(status(MANAGER)).toMatchObject({
       name: STATUS.SHOW_GAGE_RESULT,
-      data: { votes: [0, 1], winner: 1, tie: false },
+      data: { votes: [1, 0, 2], winner: 2, tie: false },
     })
   })
 

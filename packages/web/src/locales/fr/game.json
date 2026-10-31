@@ -68,7 +68,7 @@
   "pinDigit": "Chiffre {{position}} du code PIN",
   "gage": {
     "voteTitle": "Votez pour le gage du perdant !",
-    "voteHint": "Le gage le plus voté sera pour le dernier du classement.",
+    "voteHint": "Coche un ou plusieurs gages (jusqu'à {{max}}), même les tiens. Le plus voté sera pour le dernier du classement.",
     "validated": "Gage validé : {{gage}}",
     "tie": "(égalité : tiré au sort)",
     "chosen": "Le gage est choisi, regarde l'écran !",
@@ -84,6 +84,7 @@
     "addGage": "Ajouter",
     "removeGage": "Retirer ce gage",
     "sendGages": "Envoyer ({{number}})",
-    "noGage": "Je n'ai pas de gage"
+    "noGage": "Je n'ai pas de gage",
+    "voteButton": "Voter ({{number}})"
   }
 }

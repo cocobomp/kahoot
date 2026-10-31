@@ -84,6 +84,7 @@
     "addGage": "Add",
     "removeGage": "Remove this forfeit",
     "sendGages": "Send ({{number}})",
-    "noGage": "I have no forfeit"
+    "noGage": "I have no forfeit",
+    "voteButton": "Vote ({{number}})"
   }
 }

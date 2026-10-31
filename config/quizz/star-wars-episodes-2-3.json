@@ -1,0 +1,524 @@
+{
+  "id": "star-wars-episodes-2-3",
+  "gameMode": "quiz",
+  "subject": "Star Wars Épisodes II et III : L'Attaque des clones et La Revanche des Sith",
+  "gageVote": true,
+  "gages": [
+    "Ne pas aller sur son tel durant 1h",
+    "Faire 30 min de marche",
+    "Parler comme Yoda pendant 30 minutes, tu devras"
+  ],
+  "questions": [
+    {
+      "type": "single",
+      "question": "Qui joue Anakin Skywalker adulte dans L'Attaque des clones ?",
+      "category": "Épisode II : L'Attaque des clones",
+      "note": "Hayden Christensen, 19 ans au moment du tournage. Il reprend le rôle dans La Revanche des Sith.",
+      "answers": [
+        "Mark Hamill",
+        "Hayden Christensen",
+        "Jake Lloyd",
+        "Ewan McGregor"
+      ],
+      "solutions": [
+        1
+      ],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "single",
+      "question": "Quelle matière Anakin déteste-t-il, d'après sa réplique culte à Padmé ?",
+      "category": "Épisode II : L'Attaque des clones",
+      "note": "Le sable ! Anakin le trouve rugueux et irritant : un souvenir de son enfance sur Tatooine.",
+      "answers": [
+        "La neige",
+        "Le sable",
+        "La pluie",
+        "La boue"
+      ],
+      "solutions": [
+        1
+      ],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "single",
+      "question": "Sur quelle planète océan Obi-Wan découvre-t-il une armée de clones ?",
+      "category": "Épisode II : L'Attaque des clones",
+      "note": "Kamino, une planète couverte d'océans et battue par la pluie, effacée des archives Jedi.",
+      "answers": [
+        "Geonosis",
+        "Kamino",
+        "Naboo",
+        "Coruscant"
+      ],
+      "solutions": [
+        1
+      ],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "single",
+      "question": "Quel chasseur de primes sert de modèle génétique aux clones ?",
+      "category": "Épisode II : L'Attaque des clones",
+      "note": "Jango Fett. En paiement, il a demandé un clone non modifié pour l'élever comme son fils : Boba.",
+      "answers": [
+        "Boba Fett",
+        "Jango Fett",
+        "Bossk",
+        "Greedo"
+      ],
+      "solutions": [
+        1
+      ],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "single",
+      "question": "Contre qui Yoda sort-il son sabre laser à la fin de L'Attaque des clones ?",
+      "category": "Épisode II : L'Attaque des clones",
+      "note": "Le comte Dooku, son ancien apprenti passé du côté obscur.",
+      "answers": [
+        "Dark Sidious",
+        "Le comte Dooku",
+        "Jango Fett",
+        "Le général Grievous"
+      ],
+      "solutions": [
+        1
+      ],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "single",
+      "question": "De quelle couleur est le sabre laser de Mace Windu ?",
+      "category": "Épisode II : L'Attaque des clones",
+      "note": "Violet : Samuel L. Jackson a demandé cette couleur pour repérer son personnage dans les grandes batailles.",
+      "answers": [
+        "Bleu",
+        "Vert",
+        "Violet",
+        "Rouge"
+      ],
+      "solutions": [
+        2
+      ],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "single",
+      "question": "Au début de L'Attaque des clones, combien d'années se sont écoulées depuis La Menace fantôme ?",
+      "category": "Épisode II : L'Attaque des clones",
+      "note": "10 ans : Anakin a 19 ans et Padmé est devenue sénatrice.",
+      "answers": [
+        "5 ans",
+        "10 ans",
+        "15 ans",
+        "20 ans"
+      ],
+      "solutions": [
+        1
+      ],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "single",
+      "question": "Qui tue Jango Fett dans l'arène de Geonosis ?",
+      "category": "Épisode II : L'Attaque des clones",
+      "note": "Mace Windu, d'un coup de sabre, sous les yeux du jeune Boba.",
+      "answers": [
+        "Obi-Wan Kenobi",
+        "Yoda",
+        "Mace Windu",
+        "Anakin Skywalker"
+      ],
+      "solutions": [
+        2
+      ],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "single",
+      "question": "Comment Anakin perd-il son bras droit ?",
+      "category": "Épisode II : L'Attaque des clones",
+      "note": "Le comte Dooku le lui tranche pendant leur duel. Anakin finit le film avec un bras mécanique.",
+      "answers": [
+        "Dévoré dans l'arène",
+        "En duel contre le comte Dooku",
+        "En réparant un droïde",
+        "Dans un accident de speeder"
+      ],
+      "solutions": [
+        1
+      ],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "single",
+      "question": "Quel acteur joue le comte Dooku ?",
+      "category": "Épisode II : L'Attaque des clones",
+      "note": "Christopher Lee, aussi célèbre pour Saroumane dans Le Seigneur des anneaux et pour Dracula.",
+      "answers": [
+        "Peter Cushing",
+        "Christopher Lee",
+        "Ian McDiarmid",
+        "Max von Sydow"
+      ],
+      "solutions": [
+        1
+      ],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "single",
+      "question": "Qui Anakin va-t-il sauver chez les Hommes des sables, sur Tatooine ?",
+      "category": "Épisode II : L'Attaque des clones",
+      "note": "Sa mère Shmi, enlevée par les Tuskens. Elle meurt dans ses bras, et Anakin se venge sur tout le campement.",
+      "answers": [
+        "Padmé",
+        "Sa mère, Shmi",
+        "Watto",
+        "Beru"
+      ],
+      "solutions": [
+        1
+      ],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "single",
+      "question": "Comment s'appelle la chasseuse de primes qui tente de tuer Padmé sur Coruscant ?",
+      "category": "Épisode II : L'Attaque des clones",
+      "note": "Zam Wesell, une métamorphe engagée par Jango Fett. Il l'élimine avant qu'elle ne parle.",
+      "answers": [
+        "Aurra Sing",
+        "Zam Wesell",
+        "Bossk",
+        "Sabé"
+      ],
+      "solutions": [
+        1
+      ],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "single",
+      "question": "Quelle créature affronte Padmé dans l'arène de Geonosis ?",
+      "category": "Épisode II : L'Attaque des clones",
+      "note": "Un nexu, une sorte de grand félin. Anakin affronte un reek et Obi-Wan un acklay.",
+      "answers": [
+        "Un rancor",
+        "Un acklay",
+        "Un reek",
+        "Un nexu"
+      ],
+      "solutions": [
+        3
+      ],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "single",
+      "question": "Comment s'appelle le Premier ministre de Kamino ?",
+      "category": "Épisode II : L'Attaque des clones",
+      "note": "Lama Su. Taun We est l'assistante qui fait visiter les installations à Obi-Wan.",
+      "answers": [
+        "Taun We",
+        "Lama Su",
+        "San Hill",
+        "Nute Gunray"
+      ],
+      "solutions": [
+        1
+      ],
+      "cooldown": 5,
+      "time": 25
+    },
+    {
+      "type": "single",
+      "question": "D'après les Kaminiens, quel maître Jedi a commandé l'armée des clones ?",
+      "category": "Épisode II : L'Attaque des clones",
+      "note": "Sifo-Dyas, mort depuis des années. La commande avait été passée dix ans plus tôt.",
+      "answers": [
+        "Sifo-Dyas",
+        "Yoda",
+        "Plo Koon",
+        "Ki-Adi-Mundi"
+      ],
+      "solutions": [
+        0
+      ],
+      "cooldown": 5,
+      "time": 25
+    },
+    {
+      "type": "single",
+      "question": "Quel nom Anakin reçoit-il en passant du côté obscur ?",
+      "category": "Épisode III : La Revanche des Sith",
+      "note": "Dark Vador, nouvel apprenti de Dark Sidious.",
+      "answers": [
+        "Dark Maul",
+        "Dark Vador",
+        "Dark Tyranus",
+        "Dark Plagueis"
+      ],
+      "solutions": [
+        1
+      ],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "single",
+      "question": "Comment s'appellent les jumeaux de Padmé ?",
+      "category": "Épisode III : La Revanche des Sith",
+      "note": "Luke et Leia, séparés à la naissance pour les cacher de l'Empereur.",
+      "answers": [
+        "Luke et Leia",
+        "Han et Leia",
+        "Luke et Ben",
+        "Owen et Beru"
+      ],
+      "solutions": [
+        0
+      ],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "single",
+      "question": "Sur quelle planète de lave Obi-Wan et Anakin s'affrontent-ils ?",
+      "category": "Épisode III : La Revanche des Sith",
+      "note": "Mustafar, où Anakin vient d'éliminer les chefs séparatistes.",
+      "answers": [
+        "Hoth",
+        "Mustafar",
+        "Utapau",
+        "Kashyyyk"
+      ],
+      "solutions": [
+        1
+      ],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "single",
+      "question": "Quel ordre Palpatine donne-t-il aux clones pour éliminer les Jedi ?",
+      "category": "Épisode III : La Revanche des Sith",
+      "note": "L'ordre 66 : les clones se retournent contre leurs généraux Jedi dans toute la galaxie.",
+      "answers": [
+        "L'ordre 42",
+        "L'ordre 66",
+        "L'ordre 99",
+        "L'ordre 501"
+      ],
+      "solutions": [
+        1
+      ],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "single",
+      "question": "Quel titre Palpatine se donne-t-il devant le Sénat ?",
+      "category": "Épisode III : La Revanche des Sith",
+      "note": "Empereur : la République devient le premier Empire galactique… sous un tonnerre d'applaudissements.",
+      "answers": [
+        "Roi",
+        "Empereur",
+        "Chancelier à vie",
+        "Grand Moff"
+      ],
+      "solutions": [
+        1
+      ],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "single",
+      "question": "Combien de sabres laser le général Grievous manie-t-il à la fois contre Obi-Wan ?",
+      "category": "Épisode III : La Revanche des Sith",
+      "note": "Quatre, un dans chaque main : ses bras se dédoublent pour le combat.",
+      "answers": [
+        "2",
+        "3",
+        "4",
+        "6"
+      ],
+      "solutions": [
+        2
+      ],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "single",
+      "question": "Sur quelle planète Obi-Wan retrouve-t-il le général Grievous ?",
+      "category": "Épisode III : La Revanche des Sith",
+      "note": "Utapau, une planète criblée de gouffres géants.",
+      "answers": [
+        "Utapau",
+        "Felucia",
+        "Kashyyyk",
+        "Mustafar"
+      ],
+      "solutions": [
+        0
+      ],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "single",
+      "question": "Sur quelle planète Yoda combat-il aux côtés des Wookiees ?",
+      "category": "Épisode III : La Revanche des Sith",
+      "note": "Kashyyyk, la planète des Wookiees. On y aperçoit Chewbacca !",
+      "answers": [
+        "Endor",
+        "Kashyyyk",
+        "Dagobah",
+        "Felucia"
+      ],
+      "solutions": [
+        1
+      ],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "single",
+      "question": "Qui adopte la petite Leia ?",
+      "category": "Épisode III : La Revanche des Sith",
+      "note": "Le sénateur Bail Organa et sa femme, sur Alderaan. Luke, lui, est confié à son oncle et sa tante sur Tatooine.",
+      "answers": [
+        "Owen Lars",
+        "Bail Organa",
+        "Obi-Wan Kenobi",
+        "Mon Mothma"
+      ],
+      "solutions": [
+        1
+      ],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "single",
+      "question": "Qui tranche la main de Mace Windu face à Palpatine ?",
+      "category": "Épisode III : La Revanche des Sith",
+      "note": "Anakin, qui choisit de sauver Palpatine. Juste après, il s'agenouille devant lui.",
+      "answers": [
+        "Palpatine",
+        "Anakin",
+        "Le général Grievous",
+        "Le comte Dooku"
+      ],
+      "solutions": [
+        1
+      ],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "single",
+      "question": "Quelle légende Palpatine raconte-t-il à Anakin à l'opéra ?",
+      "category": "Épisode III : La Revanche des Sith",
+      "note": "La tragédie de Dark Plagueis le Sage, un Sith capable d'empêcher la mort… de quoi tenter Anakin.",
+      "answers": [
+        "La tragédie de Dark Plagueis le Sage",
+        "La chute de Dark Bane",
+        "La légende de Dark Revan",
+        "Le secret de Dark Tyranus"
+      ],
+      "solutions": [
+        0
+      ],
+      "cooldown": 5,
+      "time": 25
+    },
+    {
+      "type": "single",
+      "question": "Combien de membres Obi-Wan coupe-t-il à Anakin sur Mustafar ?",
+      "category": "Épisode III : La Revanche des Sith",
+      "note": "Trois : les deux jambes et le bras gauche. Le droit, il l'avait déjà perdu dans l'épisode II.",
+      "answers": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "solutions": [
+        2
+      ],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "single",
+      "question": "Quel est le nom de Sith du comte Dooku ?",
+      "category": "Épisode III : La Revanche des Sith",
+      "note": "Dark Tyranus : c'est sous le nom de Tyranus qu'il avait recruté Jango Fett.",
+      "answers": [
+        "Dark Plagueis",
+        "Dark Tyranus",
+        "Dark Bane",
+        "Dark Sidious"
+      ],
+      "solutions": [
+        1
+      ],
+      "cooldown": 5,
+      "time": 25
+    },
+    {
+      "type": "single",
+      "question": "Quel commandant clone ordonne d'abattre Obi-Wan sur Utapau ?",
+      "category": "Épisode III : La Revanche des Sith",
+      "note": "Le commandant Cody, qui venait pourtant de lui rendre son sabre laser.",
+      "answers": [
+        "Rex",
+        "Cody",
+        "Bly",
+        "Gree"
+      ],
+      "solutions": [
+        1
+      ],
+      "cooldown": 5,
+      "time": 25
+    },
+    {
+      "type": "single",
+      "question": "Question finale, points doublés ! Où Padmé donne-t-elle naissance à Luke et Leia ?",
+      "category": "Épisode III : La Revanche des Sith",
+      "note": "Sur Polis Massa, un avant-poste médical caché dans un champ d'astéroïdes. Padmé y meurt juste après.",
+      "answers": [
+        "Sur Naboo",
+        "Sur Alderaan",
+        "Sur l'astéroïde Polis Massa",
+        "Sur Coruscant"
+      ],
+      "solutions": [
+        2
+      ],
+      "cooldown": 5,
+      "time": 25,
+      "maxPoints": 2000
+    }
+  ]
+}
