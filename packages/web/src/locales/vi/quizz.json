@@ -105,10 +105,12 @@
   "gages": {
     "button": "Hình phạt",
     "title": "Hình phạt cho người thua",
-    "hint": "Khi bắt đầu trò chơi, mỗi người chơi bình chọn một hình phạt. Hình phạt nhiều phiếu nhất được chọn và người xếp cuối phải thực hiện. Để trống để chơi không có hình phạt.",
+    "hint": "Khi bắt đầu trò chơi, mỗi người chơi viết một hình phạt trên điện thoại, sau đó mọi người bình chọn. Hình phạt nhiều phiếu nhất được chọn và người xếp cuối phải thực hiện.",
     "placeholder": "VD: bắt chước Jar Jar Binks trong 1 phút",
     "add": "Thêm hình phạt",
     "remove": "Xóa hình phạt",
-    "label": "Hình phạt {{number}}"
+    "label": "Hình phạt {{number}}",
+    "enable": "Người chơi đề xuất hình phạt khi bắt đầu trò chơi",
+    "fallback": "Hình phạt dự phòng, dùng khi người chơi đề xuất ít hơn hai:"
   }
 }

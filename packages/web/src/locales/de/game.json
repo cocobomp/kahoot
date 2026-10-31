@@ -72,6 +72,13 @@
     "tie": "(Gleichstand: ausgelost)",
     "chosen": "Die Strafe steht fest, schau auf den Bildschirm!",
     "forLosers": "Strafe für {{names}}: {{gage}}",
-    "youLose": "Du musst die Strafe machen: {{gage}}"
+    "youLose": "Du musst die Strafe machen: {{gage}}",
+    "proposeTitle": "Schlagt eure Strafen vor!",
+    "proposeHint": "Jeder schreibt eine Strafe auf sein Handy, dann stimmen alle ab.",
+    "proposePlaceholder": "Deine Strafidee…",
+    "proposalSent": "Strafe gesendet! Warte auf die anderen Spieler…",
+    "proposals": "Strafen",
+    "ownProposal": "dein Vorschlag",
+    "resultTitle": "Abstimmungsergebnis"
   }
 }

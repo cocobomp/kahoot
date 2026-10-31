@@ -27,6 +27,7 @@ import {
 export interface QuizzFormValues {
   gameMode: QuizzMode
   subject: string
+  gageVote?: boolean
   gages?: string[]
   questions: Question[]
 }
@@ -77,6 +78,8 @@ export const QuizzEditorProvider = ({
     defaultValues: {
       gameMode: initialData?.gameMode ?? QUIZZ_MODES.QUIZ,
       subject: initialData?.subject ?? "Untitled Quizz",
+      // Players propose gages by default in new quizzes
+      gageVote: initialData ? (initialData.gageVote ?? false) : true,
       gages: initialData?.gages ?? [],
       questions: initialData ? initialData.questions : [defaultQuestion()],
     },

@@ -73,6 +73,13 @@
     "tie": "(égalité : tiré au sort)",
     "chosen": "Le gage est choisi, regarde l'écran !",
     "forLosers": "Gage pour {{names}} : {{gage}}",
-    "youLose": "C'est toi qui fais le gage : {{gage}}"
+    "youLose": "C'est toi qui fais le gage : {{gage}}",
+    "proposeTitle": "Proposez vos gages !",
+    "proposeHint": "Chacun écrit un gage sur son téléphone, puis tout le monde vote.",
+    "proposePlaceholder": "Ton idée de gage…",
+    "proposalSent": "Gage envoyé ! En attente des autres joueurs…",
+    "proposals": "Gages",
+    "ownProposal": "ta proposition",
+    "resultTitle": "Résultat du vote"
   }
 }

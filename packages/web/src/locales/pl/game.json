@@ -72,6 +72,13 @@
     "tie": "(remis: losowanie)",
     "chosen": "Kara wybrana, spójrz na ekran!",
     "forLosers": "Kara dla: {{names}} – {{gage}}",
-    "youLose": "To ty wykonujesz karę: {{gage}}"
+    "youLose": "To ty wykonujesz karę: {{gage}}",
+    "proposeTitle": "Zaproponujcie kary!",
+    "proposeHint": "Każdy wpisuje karę na swoim telefonie, a potem wszyscy głosują.",
+    "proposePlaceholder": "Twój pomysł na karę…",
+    "proposalSent": "Kara wysłana! Czekamy na pozostałych graczy…",
+    "proposals": "Kary",
+    "ownProposal": "twoja propozycja",
+    "resultTitle": "Wynik głosowania"
   }
 }

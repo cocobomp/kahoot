@@ -72,6 +72,13 @@
     "tie": "（同票のため抽選）",
     "chosen": "罰ゲームが決まりました。画面を見てね！",
     "forLosers": "罰ゲーム（{{names}}）：{{gage}}",
-    "youLose": "あなたが罰ゲームを行います：{{gage}}"
+    "youLose": "あなたが罰ゲームを行います：{{gage}}",
+    "proposeTitle": "罰ゲームを提案しよう！",
+    "proposeHint": "それぞれがスマホに罰ゲームを書き、そのあと全員で投票します。",
+    "proposePlaceholder": "罰ゲームのアイデア…",
+    "proposalSent": "罰ゲームを送信しました！ほかのプレイヤーを待っています…",
+    "proposals": "罰ゲーム",
+    "ownProposal": "あなたの提案",
+    "resultTitle": "投票結果"
   }
 }

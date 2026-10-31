@@ -18,6 +18,9 @@ export const STATUS = {
   FINISHED: "FINISHED",
   SUMMARY: "SUMMARY",
   WAIT: "WAIT",
+  SHOW_GAGE_PROPOSALS: "SHOW_GAGE_PROPOSALS",
+  SHOW_GAGE_VOTE: "SHOW_GAGE_VOTE",
+  SHOW_GAGE_RESULT: "SHOW_GAGE_RESULT",
 } as const
 
 export type Status = (typeof STATUS)[keyof typeof STATUS]
@@ -43,7 +46,6 @@ export interface CommonStatusDataMap {
     questionType: QuestionType
     options?: QuestionOptions
     answersOnly: boolean
-    isGageVote?: boolean
   }
   SHOW_RESULT: {
     correct: boolean
@@ -62,6 +64,14 @@ export interface CommonStatusDataMap {
     isLoser?: boolean
   }
   SUMMARY: { subject: string; totalPlayers: number; totalQuestions: number }
+  SHOW_GAGE_PROPOSALS: { time: number; totalPlayer: number }
+  SHOW_GAGE_VOTE: {
+    choices: string[]
+    time: number
+    totalPlayer: number
+    /** Indexes of the player's own proposals, which they cannot vote for */
+    ownChoices?: number[]
+  }
 }
 
 interface ManagerExtraStatus {
@@ -75,10 +85,14 @@ interface ManagerExtraStatus {
     type: QuestionType
     options?: QuestionOptions
     note?: string
-    isGageVote?: boolean
-    gageTie?: boolean
   }
   SHOW_LEADERBOARD: { oldLeaderboard: Player[]; leaderboard: Player[] }
+  SHOW_GAGE_RESULT: {
+    choices: string[]
+    votes: number[]
+    winner: number
+    tie: boolean
+  }
 }
 
 export type PlayerStatusDataMap = CommonStatusDataMap

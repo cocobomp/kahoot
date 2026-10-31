@@ -73,6 +73,13 @@
     "tie": "(pareggio: estratta a sorte)",
     "chosen": "La penitenza è scelta, guarda lo schermo!",
     "forLosers": "Penitenza per {{names}}: {{gage}}",
-    "youLose": "Tocca a te fare la penitenza: {{gage}}"
+    "youLose": "Tocca a te fare la penitenza: {{gage}}",
+    "proposeTitle": "Proponete le vostre penitenze!",
+    "proposeHint": "Ognuno scrive una penitenza sul telefono, poi tutti votano.",
+    "proposePlaceholder": "La tua idea di penitenza…",
+    "proposalSent": "Penitenza inviata! In attesa degli altri giocatori…",
+    "proposals": "Penitenze",
+    "ownProposal": "la tua proposta",
+    "resultTitle": "Risultato del voto"
   }
 }

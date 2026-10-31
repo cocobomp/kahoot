@@ -72,6 +72,13 @@
     "tie": "(empate: sorteo)",
     "chosen": "¡La prenda está elegida, mira la pantalla!",
     "forLosers": "Prenda para {{names}}: {{gage}}",
-    "youLose": "Te toca hacer la prenda: {{gage}}"
+    "youLose": "Te toca hacer la prenda: {{gage}}",
+    "proposeTitle": "¡Proponed vuestras prendas!",
+    "proposeHint": "Cada uno escribe una prenda en su móvil y luego todos votan.",
+    "proposePlaceholder": "Tu idea de prenda…",
+    "proposalSent": "¡Prenda enviada! Esperando a los demás jugadores…",
+    "proposals": "Prendas",
+    "ownProposal": "tu propuesta",
+    "resultTitle": "Resultado de la votación"
   }
 }

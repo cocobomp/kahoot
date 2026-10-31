@@ -105,10 +105,12 @@
   "gages": {
     "button": "Gages",
     "title": "Gages du perdant",
-    "hint": "Au début de la partie, chaque joueur vote pour un gage. Le plus voté est validé et le dernier du classement devra le faire. Laisse vide pour jouer sans gage.",
+    "hint": "Au début de la partie, chaque joueur écrit un gage sur son téléphone, puis tout le monde vote. Le plus voté est validé et le dernier du classement devra le faire.",
     "placeholder": "Ex. : imiter Jar Jar Binks pendant 1 minute",
     "add": "Ajouter un gage",
     "remove": "Retirer le gage",
-    "label": "Gage {{number}}"
+    "label": "Gage {{number}}",
+    "enable": "Les joueurs proposent des gages au début de la partie",
+    "fallback": "Gages de secours, utilisés si les joueurs en proposent moins de deux :"
   }
 }

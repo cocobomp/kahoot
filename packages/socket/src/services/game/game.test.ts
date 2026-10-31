@@ -670,43 +670,57 @@ describe("manager grace period", () => {
 })
 
 describe("gages", () => {
-  // 3 s start screen + 3 s countdown before the vote
-  const GAGE_VOTE_DELAY_MS = 6000
+  // 3 s start screen + 3 s countdown before the proposals
+  const GAGE_DELAY_MS = 6000
 
-  const withGages = (gages: string[], questions = [createQuestion()]) => ({
-    ...createQuizz(questions),
-    gages,
-  })
+  const withGageVote = (
+    questions: Question[] = [createQuestion()],
+    gages?: string[],
+  ): Quizz => ({ ...createQuizz(questions), gageVote: true, gages })
 
-  it("lets players vote, then gives the gage to the last player", async () => {
+  it("lets players propose and vote, then gives the gage to the last player", async () => {
     const question = createQuestion()
     const { game, manager, sockets, status, reachAnswers } = setup(
-      withGages(["Chanter", "Danser", "  "], [question]),
+      withGageVote([question]),
+      ["Alice", "Bob", "Carol"],
     )
-    const [alice, bob] = sockets
+    const [alice, bob, carol] = sockets
 
     void game.start(manager)
-    await vi.advanceTimersByTimeAsync(GAGE_VOTE_DELAY_MS)
+    await vi.advanceTimersByTimeAsync(GAGE_DELAY_MS)
 
-    expect(status(game.gameId)).toMatchObject({
-      name: STATUS.SELECT_ANSWER,
-      data: { answers: ["Chanter", "Danser"], isGageVote: true },
+    expect(status(game.gameId)?.name).toBe(STATUS.SHOW_GAGE_PROPOSALS)
+
+    game.proposeGage(alice, "  Chanter   fort ")
+    game.proposeGage(alice, "Encore")
+    game.proposeGage(bob, "Danser")
+
+    expect(status("alice")).toMatchObject({
+      name: STATUS.WAIT,
+      data: { text: "game:gage.proposalSent" },
     })
 
-    game.selectAnswer(alice, [1])
-    game.selectAnswer(bob, [1])
+    game.advance()
     await vi.advanceTimersByTimeAsync(TICK_MS)
 
     expect(status(MANAGER)).toMatchObject({
-      name: STATUS.SHOW_RESPONSES,
-      data: {
-        isGageVote: true,
-        responses: { 1: 2 },
-        solutions: [1],
-        gageTie: false,
-      },
+      name: STATUS.SHOW_GAGE_VOTE,
+      data: { choices: ["Chanter fort", "Danser"] },
     })
-    expect(status("alice")).toMatchObject({
+    expect(status("alice")?.data).toMatchObject({ ownChoices: [0] })
+    expect(status("carol")?.data).toMatchObject({ ownChoices: [] })
+
+    game.selectAnswer(bob, [1])
+    game.selectAnswer(bob, [0])
+    game.selectAnswer(alice, [1])
+    game.selectAnswer(carol, [1])
+    await vi.advanceTimersByTimeAsync(TICK_MS)
+
+    expect(status(MANAGER)).toMatchObject({
+      name: STATUS.SHOW_GAGE_RESULT,
+      data: { votes: [1, 2], winner: 1, tie: false },
+    })
+    expect(status("bob")).toMatchObject({
       name: STATUS.WAIT,
       data: { text: "game:gage.chosen" },
     })
@@ -714,10 +728,9 @@ describe("gages", () => {
     game.advance()
     await reachAnswers(question, false)
 
-    expect(status(game.gameId)?.data.isGageVote).toBeUndefined()
-
     game.selectAnswer(alice, [0])
     game.selectAnswer(bob, [1])
+    game.selectAnswer(carol, [0])
     await vi.advanceTimersByTimeAsync(TICK_MS)
     game.advance()
 
@@ -725,10 +738,7 @@ describe("gages", () => {
       name: STATUS.FINISHED,
       data: { gage: { text: "Danser", losers: ["Bob"] } },
     })
-    expect(status("bob")?.data).toMatchObject({
-      isLoser: true,
-      gage: { text: "Danser" },
-    })
+    expect(status("bob")?.data).toMatchObject({ isLoser: true })
     expect(status("alice")?.data).toMatchObject({ isLoser: false })
     expect(getResultById(getResultsMeta()[0].id).gage).toEqual({
       text: "Danser",
@@ -736,68 +746,114 @@ describe("gages", () => {
     })
   })
 
-  it("draws the gage among the most voted ones", async () => {
-    const random = vi.spyOn(Math, "random").mockReturnValue(0.99)
-    const { game, manager, sockets, status } = setup(withGages(["A", "B", "C"]))
-    const [alice, bob] = sockets
+  it("merges identical proposals and shortens long ones", async () => {
+    const { game, manager, sockets, status } = setup(withGageVote(), [
+      "Alice",
+      "Bob",
+      "Carol",
+    ])
+    const [alice, bob, carol] = sockets
 
     void game.start(manager)
-    await vi.advanceTimersByTimeAsync(GAGE_VOTE_DELAY_MS)
-    game.selectAnswer(alice, [0])
-    game.selectAnswer(bob, [2])
+    await vi.advanceTimersByTimeAsync(GAGE_DELAY_MS)
+    game.proposeGage(alice, "Chanter")
+    game.proposeGage(bob, "  CHANTER ")
+    game.proposeGage(carol, "x".repeat(200))
     await vi.advanceTimersByTimeAsync(TICK_MS)
 
     expect(status(MANAGER)?.data).toMatchObject({
-      solutions: [2],
-      gageTie: true,
+      choices: ["Chanter", "x".repeat(80)],
     })
-
-    random.mockRestore()
+    expect(status("bob")?.data).toMatchObject({ ownChoices: [0] })
   })
 
-  it("ignores invalid votes and lets the manager end the vote", async () => {
-    const random = vi.spyOn(Math, "random").mockReturnValue(0)
-    const { game, manager, sockets, status } = setup(withGages(["A", "B"]))
+  it("adds the quiz's gages when fewer than two are proposed", async () => {
+    const { game, manager, sockets, status } = setup(
+      withGageVote(undefined, ["Danser", "Mimer"]),
+    )
     const [alice] = sockets
 
     void game.start(manager)
-    await vi.advanceTimersByTimeAsync(GAGE_VOTE_DELAY_MS)
-    game.selectAnswer(alice, [5])
-    game.selectAnswer(alice, [0, 1])
+    await vi.advanceTimersByTimeAsync(GAGE_DELAY_MS)
+    game.proposeGage(alice, "Chanter")
+    game.advance()
+    await vi.advanceTimersByTimeAsync(TICK_MS)
+
+    expect(status(MANAGER)?.data).toMatchObject({
+      choices: ["Chanter", "Danser", "Mimer"],
+    })
+  })
+
+  it("validates a single gage without a vote", async () => {
+    const { game, manager, sockets, status } = setup(withGageVote())
+    const [alice] = sockets
+
+    void game.start(manager)
+    await vi.advanceTimersByTimeAsync(GAGE_DELAY_MS)
+    game.proposeGage(alice, "Chanter")
     game.advance()
     await vi.advanceTimersByTimeAsync(TICK_MS)
 
     expect(status(MANAGER)).toMatchObject({
-      name: STATUS.SHOW_RESPONSES,
-      data: { responses: {}, solutions: [0], gageTie: true },
+      name: STATUS.SHOW_GAGE_RESULT,
+      data: { choices: ["Chanter"], votes: [0], winner: 0, tie: false },
+    })
+  })
+
+  it("starts the questions when no gage is proposed", async () => {
+    const question = createQuestion()
+    const { game, manager, status, reachAnswers } = setup(
+      withGageVote([question]),
+    )
+
+    void game.start(manager)
+    await vi.advanceTimersByTimeAsync(GAGE_DELAY_MS)
+    game.advance()
+    await vi.advanceTimersByTimeAsync(TICK_MS)
+    await reachAnswers(question, false)
+    await vi.advanceTimersByTimeAsync(question.time * 1000)
+    game.advance()
+
+    expect(status(MANAGER)?.name).toBe(STATUS.FINISHED)
+    expect(status(MANAGER)?.data).not.toHaveProperty("gage")
+  })
+
+  it("draws the gage among the most voted ones", async () => {
+    const random = vi.spyOn(Math, "random").mockReturnValue(0.99)
+    const { game, manager, sockets, status } = setup(withGageVote())
+    const [alice, bob] = sockets
+
+    void game.start(manager)
+    await vi.advanceTimersByTimeAsync(GAGE_DELAY_MS)
+    game.proposeGage(alice, "Chanter")
+    game.proposeGage(bob, "Danser")
+    await vi.advanceTimersByTimeAsync(TICK_MS)
+    game.selectAnswer(alice, [1])
+    game.selectAnswer(bob, [0])
+    await vi.advanceTimersByTimeAsync(TICK_MS)
+
+    expect(status(MANAGER)?.data).toMatchObject({
+      votes: [1, 1],
+      winner: 1,
+      tie: true,
     })
 
     random.mockRestore()
   })
 
-  it("validates a single gage without a vote and shares it on a tie", async () => {
-    const { game, status, start } = setup(withGages(["Seul gage"]))
-
-    await start()
-
-    expect(status(game.gameId)?.data.isGageVote).toBeUndefined()
-
-    await vi.advanceTimersByTimeAsync(10_000)
-    game.advance()
-
-    expect(status(MANAGER)?.data).toMatchObject({
-      gage: { text: "Seul gage", losers: ["Alice", "Bob"] },
-    })
-  })
-
-  it("ignores gages in survey mode", async () => {
-    const { game, status, start } = setup({
+  it("has no gage phase in survey mode or when the quiz disables it", async () => {
+    const survey = setup({
       ...createQuizz([createQuestion()], QUIZZ_MODES.SURVEY),
+      gageVote: true,
+    })
+
+    await survey.start()
+
+    const disabled = setup({
+      ...createQuizz([createQuestion()]),
       gages: ["A", "B"],
     })
 
-    await start()
-
-    expect(status(game.gameId)?.data.isGageVote).toBeUndefined()
+    await disabled.start()
   })
 })

@@ -73,6 +73,13 @@
     "tie": "(hòa: bốc thăm ngẫu nhiên)",
     "chosen": "Hình phạt đã được chọn, hãy nhìn lên màn hình!",
     "forLosers": "Hình phạt cho {{names}}: {{gage}}",
-    "youLose": "Bạn phải thực hiện hình phạt: {{gage}}"
+    "youLose": "Bạn phải thực hiện hình phạt: {{gage}}",
+    "proposeTitle": "Hãy đề xuất hình phạt!",
+    "proposeHint": "Mỗi người viết một hình phạt trên điện thoại, sau đó mọi người bình chọn.",
+    "proposePlaceholder": "Ý tưởng hình phạt của bạn…",
+    "proposalSent": "Đã gửi hình phạt! Đang chờ những người chơi khác…",
+    "proposals": "Hình phạt",
+    "ownProposal": "đề xuất của bạn",
+    "resultTitle": "Kết quả bình chọn"
   }
 }

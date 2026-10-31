@@ -49,7 +49,8 @@ Quiz Options:
 
 - `gameMode`: `"quiz"` (default) or `"survey"`, see [Survey mode](#survey-mode)
 - `subject`: Title/topic of the quiz
-- `gages`: Optional list of up to 4 forfeits. Players vote for one before the first question; the most voted one (a tie is drawn at random) goes to the last player of the leaderboard (all of them on a tie) and is shown on the podium. A single gage is used without a vote. Ignored in `"survey"` mode
+- `gageVote`: `true` to start the game with forfeits ("gages"): each player proposes one on their phone, then everyone votes (not for their own). The most voted one (a tie is drawn at random) goes to the last player of the leaderboard (all of them on a tie) and is shown on the podium. Ignored in `"survey"` mode
+- `gages`: Optional list of up to 4 backup forfeits, used when players propose fewer than 2
 - `questions`: Array of question objects containing:
   - `type`: `"single"` (exactly one answer), `"multi"` (one or more) or `"estimation"` (a number, see [Estimation questions](#estimation-questions)). Defaults to `"single"` when omitted
   - `question`: The question text

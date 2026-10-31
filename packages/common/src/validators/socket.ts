@@ -1,4 +1,4 @@
-import { EVENTS, MAX_ANSWERS } from "@razzia/common/constants"
+import { EVENTS, MAX_ANSWERS, MAX_GAGE_LENGTH } from "@razzia/common/constants"
 import { z } from "zod"
 
 const gameMessageValidator = z.object({ gameId: z.string().min(1) })
@@ -24,5 +24,8 @@ export const clientEventValidators = {
   [EVENTS.PLAYER.LEAVE]: gameMessageValidator,
   [EVENTS.PLAYER.SELECTED_ANSWER]: gameMessageValidator.extend({
     data: z.object({ answerKeys: answerKeysValidator }),
+  }),
+  [EVENTS.PLAYER.PROPOSE_GAGE]: gameMessageValidator.extend({
+    gage: z.string().max(MAX_GAGE_LENGTH * 4),
   }),
 }

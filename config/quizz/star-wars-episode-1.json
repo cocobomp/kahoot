@@ -2,6 +2,7 @@
   "id": "star-wars-episode-1",
   "gameMode": "quiz",
   "subject": "Star Wars Épisode I : La Menace fantôme",
+  "gageVote": true,
   "gages": [
     "Imiter Jar Jar Binks pendant 1 minute",
     "Chanter « Duel of the Fates » a cappella",

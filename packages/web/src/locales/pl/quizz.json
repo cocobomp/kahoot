@@ -105,10 +105,12 @@
   "gages": {
     "button": "Kary",
     "title": "Kary dla przegranego",
-    "hint": "Na początku gry każdy gracz głosuje na karę. Najczęściej wybrana zostaje zatwierdzona, a ostatnia osoba w rankingu musi ją wykonać. Zostaw puste, aby grać bez kary.",
+    "hint": "Na początku gry każdy gracz wpisuje karę na swoim telefonie, a potem wszyscy głosują. Najczęściej wybrana zostaje zatwierdzona, a ostatnia osoba w rankingu musi ją wykonać.",
     "placeholder": "Np. naśladuj Jar Jar Binksa przez 1 minutę",
     "add": "Dodaj karę",
     "remove": "Usuń karę",
-    "label": "Kara {{number}}"
+    "label": "Kara {{number}}",
+    "enable": "Gracze proponują kary na początku gry",
+    "fallback": "Kary zapasowe, używane, gdy gracze zaproponują mniej niż dwie:"
   }
 }

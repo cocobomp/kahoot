@@ -105,10 +105,12 @@
   "gages": {
     "button": "Prendas",
     "title": "Prendas del perdedor",
-    "hint": "Al empezar la partida, cada jugador vota una prenda. La más votada queda elegida y el último de la clasificación tendrá que hacerla. Déjalo vacío para jugar sin prenda.",
+    "hint": "Al empezar la partida, cada jugador escribe una prenda en su móvil y luego todos votan. La más votada queda elegida y el último de la clasificación tendrá que hacerla.",
     "placeholder": "Ej.: imitar a Jar Jar Binks durante 1 minuto",
     "add": "Añadir una prenda",
     "remove": "Quitar la prenda",
-    "label": "Prenda {{number}}"
+    "label": "Prenda {{number}}",
+    "enable": "Los jugadores proponen prendas al empezar la partida",
+    "fallback": "Prendas de reserva, usadas si los jugadores proponen menos de dos:"
   }
 }

@@ -72,6 +72,13 @@
     "tie": "(eşitlik: kurayla seçildi)",
     "chosen": "Ceza seçildi, ekrana bak!",
     "forLosers": "{{names}} için ceza: {{gage}}",
-    "youLose": "Cezayı sen yapacaksın: {{gage}}"
+    "youLose": "Cezayı sen yapacaksın: {{gage}}",
+    "proposeTitle": "Cezalarınızı önerin!",
+    "proposeHint": "Herkes telefonuna bir ceza yazar, ardından herkes oy verir.",
+    "proposePlaceholder": "Ceza fikrin…",
+    "proposalSent": "Ceza gönderildi! Diğer oyuncular bekleniyor…",
+    "proposals": "Cezalar",
+    "ownProposal": "senin önerin",
+    "resultTitle": "Oylama sonucu"
   }
 }

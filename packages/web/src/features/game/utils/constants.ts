@@ -1,4 +1,7 @@
 import Answers from "@razzia/web/features/game/components/states/Answers"
+import GageProposals from "@razzia/web/features/game/components/states/GageProposals"
+import GageResult from "@razzia/web/features/game/components/states/GageResult"
+import GageVote from "@razzia/web/features/game/components/states/GageVote"
 import Leaderboard from "@razzia/web/features/game/components/states/Leaderboard"
 import PlayerFinished from "@razzia/web/features/game/components/states/PlayerFinished"
 import Podium from "@razzia/web/features/game/components/states/Podium"
@@ -42,6 +45,8 @@ export const GAME_STATE_COMPONENTS = {
   [STATUS.SHOW_PREPARED]: Prepared,
   [STATUS.FINISHED]: PlayerFinished,
   [STATUS.SUMMARY]: Summary,
+  [STATUS.SHOW_GAGE_PROPOSALS]: GageProposals,
+  [STATUS.SHOW_GAGE_VOTE]: GageVote,
 }
 
 export const GAME_STATE_COMPONENTS_MANAGER = {
@@ -50,6 +55,7 @@ export const GAME_STATE_COMPONENTS_MANAGER = {
   [STATUS.SHOW_RESPONSES]: Responses,
   [STATUS.SHOW_LEADERBOARD]: Leaderboard,
   [STATUS.FINISHED]: Podium,
+  [STATUS.SHOW_GAGE_RESULT]: GageResult,
 }
 
 export const SFX = {
@@ -87,4 +93,7 @@ export const MANAGER_SKIP_BTN = {
   [STATUS.FINISHED]: "common:exit",
   [STATUS.SUMMARY]: "common:exit",
   [STATUS.WAIT]: null,
+  [STATUS.SHOW_GAGE_PROPOSALS]: "common:skip",
+  [STATUS.SHOW_GAGE_VOTE]: "common:skip",
+  [STATUS.SHOW_GAGE_RESULT]: "common:next",
 }

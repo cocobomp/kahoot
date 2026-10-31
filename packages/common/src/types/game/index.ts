@@ -80,7 +80,9 @@ export interface Question {
 export interface Quizz {
   gameMode: QuizzMode
   subject: string
-  /** Forfeits voted on before the first question; the last player does the winner. */
+  /** Players propose forfeits ("gages") and vote before the first question. */
+  gageVote?: boolean
+  /** Fallback forfeits, used when players propose fewer than 2. */
   gages?: string[]
   questions: Question[]
 }

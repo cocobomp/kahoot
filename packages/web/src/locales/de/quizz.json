@@ -105,10 +105,12 @@
   "gages": {
     "button": "Strafen",
     "title": "Strafen für den Verlierer",
-    "hint": "Zu Beginn des Spiels stimmt jeder Spieler für eine Strafe ab. Die meistgewählte gilt, und der Letzte muss sie machen. Leer lassen, um ohne Strafe zu spielen.",
+    "hint": "Zu Beginn des Spiels schreibt jeder Spieler eine Strafe auf sein Handy, dann stimmen alle ab. Die meistgewählte gilt, und der Letzte muss sie machen.",
     "placeholder": "z. B. 1 Minute lang Jar Jar Binks nachmachen",
     "add": "Strafe hinzufügen",
     "remove": "Strafe entfernen",
-    "label": "Strafe {{number}}"
+    "label": "Strafe {{number}}",
+    "enable": "Die Spieler schlagen zu Beginn des Spiels Strafen vor",
+    "fallback": "Ersatzstrafen, falls die Spieler weniger als zwei vorschlagen:"
   }
 }

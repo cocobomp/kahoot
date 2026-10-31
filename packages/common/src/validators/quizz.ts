@@ -66,6 +66,7 @@ export const quizzValidator = z
   .object({
     gameMode: z.enum(QUIZZ_MODES),
     subject: z.string().min(1, "errors:quizz.subjectEmpty"),
+    gageVote: z.boolean().optional(),
     gages: z
       .array(z.string())
       .max(MAX_GAGES, "errors:quizz.tooManyGages")

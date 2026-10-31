@@ -105,10 +105,12 @@
   "gages": {
     "button": "Forfeits",
     "title": "Loser's forfeits",
-    "hint": "At the start of the game, each player votes for a forfeit. The most voted one is chosen and the last player has to do it. Leave empty to play without a forfeit.",
+    "hint": "At the start of the game, each player writes a forfeit on their phone, then everyone votes. The most voted one is chosen and the last player has to do it.",
     "placeholder": "E.g. imitate Jar Jar Binks for 1 minute",
     "add": "Add a forfeit",
     "remove": "Remove the forfeit",
-    "label": "Forfeit {{number}}"
+    "label": "Forfeit {{number}}",
+    "enable": "Players propose forfeits at the start of the game",
+    "fallback": "Backup forfeits, used if players propose fewer than two:"
   }
 }

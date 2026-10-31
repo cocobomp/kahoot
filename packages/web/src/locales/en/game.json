@@ -75,6 +75,13 @@
     "tie": "(tie: drawn at random)",
     "chosen": "The forfeit is chosen, look at the screen!",
     "forLosers": "Forfeit for {{names}}: {{gage}}",
-    "youLose": "You have to do the forfeit: {{gage}}"
+    "youLose": "You have to do the forfeit: {{gage}}",
+    "proposeTitle": "Propose your forfeits!",
+    "proposeHint": "Everyone writes a forfeit on their phone, then everyone votes.",
+    "proposePlaceholder": "Your forfeit idea…",
+    "proposalSent": "Forfeit sent! Waiting for the other players…",
+    "proposals": "Forfeits",
+    "ownProposal": "your proposal",
+    "resultTitle": "Vote results"
   }
 }

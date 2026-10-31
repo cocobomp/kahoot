@@ -34,7 +34,6 @@ const Answers = ({
     questionType,
     options,
     answersOnly,
-    isGageVote,
   },
 }: Props) => {
   const { socket } = useSocket()
@@ -44,7 +43,6 @@ const Answers = ({
   const [totalAnswer, setTotalAnswer] = useState(0)
   const { t } = useTranslation()
   const { width } = useScreenSize()
-  const title = isGageVote ? t("game:gage.voteTitle") : question
 
   const popupMedia: QuestionMediaType[] = [MEDIA_TYPES.IMAGE, MEDIA_TYPES.VIDEO]
   const isPopupMedia = popupMedia.includes(media?.type)
@@ -112,7 +110,7 @@ const Answers = ({
       {showAnswersOnly ? (
         <>
           <QuestionDialog
-            question={title}
+            question={question}
             media={isPopupMedia ? media : undefined}
             label={t("game:question.show")}
             className="hover:bg-accent absolute top-4 right-4 flex size-11 items-center justify-center rounded-md bg-white text-black"
@@ -123,25 +121,19 @@ const Answers = ({
 
           {media?.type === MEDIA_TYPES.AUDIO && (
             <div className="flex justify-center">
-              <QuestionMedia media={media} alt={title} />
+              <QuestionMedia media={media} alt={question} />
             </div>
           )}
         </>
       ) : (
         <div className="mx-auto inline-flex h-full min-h-0 w-full max-w-7xl flex-1 flex-col items-center justify-center gap-5">
           <h2 className="text-center text-2xl font-bold text-white drop-shadow-lg md:text-4xl lg:text-5xl">
-            {title}
+            {question}
           </h2>
-
-          {isGageVote && (
-            <p className="text-center text-lg font-semibold text-white drop-shadow-lg md:text-2xl">
-              {t("game:gage.voteHint")}
-            </p>
-          )}
 
           {showMediaInPopup ? (
             <QuestionDialog
-              question={title}
+              question={question}
               media={media}
               className="hover:bg-accent flex items-center gap-2 rounded-lg bg-white px-4 py-2 font-bold text-black drop-shadow-md"
             >
@@ -153,7 +145,7 @@ const Answers = ({
               )}
             </QuestionDialog>
           ) : (
-            <QuestionMedia media={media} alt={title} />
+            <QuestionMedia media={media} alt={question} />
           )}
         </div>
       )}

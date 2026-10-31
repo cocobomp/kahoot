@@ -381,6 +381,10 @@ class Game {
     this.round.selectAnswer(socket, answerIds)
   }
 
+  proposeGage(socket: Socket, gage: string) {
+    this.round.proposeGage(socket, gage)
+  }
+
   advance() {
     this.round.advance()
   }

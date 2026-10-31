@@ -19,6 +19,7 @@ export const EVENTS = {
     RECONNECT: "player:reconnect",
     LEAVE: "player:leave",
     SELECTED_ANSWER: "player:selectedAnswer",
+    PROPOSE_GAGE: "player:proposeGage",
   },
   MANAGER: {
     SUCCESS_RECONNECT: "manager:successReconnect",
@@ -63,10 +64,15 @@ export const MIN_ANSWERS = 2
 
 export const MAX_ANSWERS = 4
 
-// Forfeits ("gages") players vote on before the first question
+// Forfeits ("gages"): before the first question, players propose some and
+// vote; the quiz's own gages are only used when fewer than 2 are proposed
 export const MAX_GAGES = 4
 
-export const GAGE_VOTE_TIME = 20
+export const MAX_GAGE_LENGTH = 80
+
+export const GAGE_PROPOSAL_TIME = 60
+
+export const GAGE_VOTE_TIME = 30
 
 export const QUIZZ_MODES = {
   QUIZ: "quiz",

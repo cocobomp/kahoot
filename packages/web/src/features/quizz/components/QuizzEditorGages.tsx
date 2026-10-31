@@ -1,16 +1,17 @@
 import { MAX_GAGES, QUIZZ_MODES } from "@razzia/common/constants"
 import Button from "@razzia/web/components/Button"
 import Input from "@razzia/web/components/Input"
+import Switch from "@razzia/web/components/Switch"
 import {
   useQuizzEditor,
   type QuizzFormValues,
 } from "@razzia/web/features/quizz/contexts/quizz-editor-context"
 import { Dices, Plus, X } from "lucide-react"
 import { Dialog } from "radix-ui"
-import { useFormContext, useWatch } from "react-hook-form"
+import { Controller, useFormContext, useWatch } from "react-hook-form"
 import { useTranslation } from "react-i18next"
 
-/** Forfeits voted on by the players before the first question. */
+/** Forfeits ("gages") players propose and vote on before the first question. */
 const QuizzEditorGages = () => {
   const { gameMode } = useQuizzEditor()
   const { control, setValue } = useFormContext<QuizzFormValues>()
@@ -20,8 +21,6 @@ const QuizzEditorGages = () => {
   if (gameMode !== QUIZZ_MODES.QUIZ) {
     return null
   }
-
-  const filled = gages.filter((gage) => gage.trim()).length
 
   const update = (next: string[]) => {
     setValue("gages", next, { shouldDirty: true })
@@ -33,7 +32,6 @@ const QuizzEditorGages = () => {
         <Button className="bg-accent text-accent-foreground text-md px-4 py-2 font-semibold">
           <Dices className="size-5" />
           {t("quizz:gages.button")}
-          {filled > 0 && ` (${filled})`}
         </Button>
       </Dialog.Trigger>
 
@@ -57,6 +55,25 @@ const QuizzEditorGages = () => {
           <Dialog.Description className="text-muted-foreground text-sm">
             {t("quizz:gages.hint")}
           </Dialog.Description>
+
+          <Controller
+            control={control}
+            name="gageVote"
+            render={({ field }) => (
+              <label className="text-foreground flex items-center justify-between gap-4 font-semibold">
+                {t("quizz:gages.enable")}
+                <Switch
+                  aria-label={t("quizz:gages.enable")}
+                  checked={field.value ?? false}
+                  onCheckedChange={field.onChange}
+                />
+              </label>
+            )}
+          />
+
+          <p className="text-muted-foreground text-sm">
+            {t("quizz:gages.fallback")}
+          </p>
 
           {gages.length > 0 && (
             <div className="flex flex-col gap-2">
