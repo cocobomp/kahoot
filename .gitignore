@@ -1,5 +1,10 @@
 /node_modules
-/config
+# Quiz, photos et thème versionnés (dont le quiz Star Wars d'exemple),
+# mais pas les résultats de parties.
+/config/*
+!/config/quizz/
+!/config/media/
+!/config/branding/
 .env
 .secrets
 release.json
