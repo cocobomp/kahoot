@@ -3,7 +3,9 @@
 .git
 
 # gitignored / secrets - must never enter the build context
-config
+# (config/ itself is copied: the quizzes, media and theme of this repository
+# ship with the image; only local game results stay out)
+config/results
 .env
 .secrets
 release.json

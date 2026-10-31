@@ -29,6 +29,10 @@ COPY --chmod=755 docker/s6 /etc/s6
 COPY --from=builder /app/packages/web/dist /app/web
 COPY --from=builder /app/packages/socket/dist/index.cjs /app/socket/index.cjs
 
+# Quizzes, media and theme of this repository, used when no config volume is
+# mounted (e.g. on Render). A mounted ./config folder replaces them.
+COPY config /app/config
+
 EXPOSE 3000
 
 CMD ["s6-svscan", "/etc/s6"]
