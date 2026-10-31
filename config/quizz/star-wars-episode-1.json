@@ -155,6 +155,22 @@
     },
     {
       "type": "single",
+      "question": "À 16 min 14 du film, que dit Padmé ?",
+      "note": "« On perd un temps précieux, capitaine. » Bravo à ceux qui connaissent le film par cœur !",
+      "answers": [
+        "On perd un temps précieux, capitaine.",
+        "Préparez mon vaisseau, capitaine.",
+        "Mon peuple compte sur nous, capitaine.",
+        "Nous devons rester sur Naboo, capitaine."
+      ],
+      "solutions": [
+        0
+      ],
+      "cooldown": 7,
+      "time": 25
+    },
+    {
+      "type": "single",
       "question": "Quel droïde célèbre Anakin a-t-il construit lui-même ?",
       "note": "Anakin a assemblé C-3PO avec des pièces de récupération. Le droïde n'a pas encore son revêtement doré !",
       "answers": [
@@ -205,22 +221,38 @@
     },
     {
       "type": "single",
-      "question": "Ray Park, ici en photo, incarne Dark Maul. Quelle est la particularité de son sabre laser ?",
-      "note": "Un sabre laser rouge à double lame ! Expert en arts martiaux, Ray Park a tourné lui-même ses scènes de combat.",
+      "question": "Ray Park, ici en photo, joue le Sith au visage rouge et noir. Comment s'appelle ce personnage ?",
+      "note": "C'est Dark Maul, l'apprenti de Dark Sidious, avec son sabre laser rouge à double lame. Expert en arts martiaux, Ray Park a tourné lui-même ses scènes de combat.",
       "media": {
         "type": "image",
         "url": "/media/ray-park.jpg"
       },
       "answers": [
-        "Il est vert",
-        "Il a deux lames",
-        "Sa poignée est courbée",
-        "Il est noir"
+        "Dark Vador",
+        "Dark Maul",
+        "Dark Sidious",
+        "Comte Dooku"
       ],
       "solutions": [
         1
       ],
       "cooldown": 6,
+      "time": 20
+    },
+    {
+      "type": "single",
+      "question": "Combien de cornes Dark Maul a-t-il sur la tête ?",
+      "note": "On en compte généralement 10 : deux sur les tempes et une couronne autour du crâne. Dark Maul est un Zabrak, un peuple aux cornes naturelles.",
+      "answers": [
+        "2",
+        "6",
+        "10",
+        "16"
+      ],
+      "solutions": [
+        2
+      ],
+      "cooldown": 5,
       "time": 20
     },
     {
@@ -233,12 +265,12 @@
       },
       "answers": [
         "Hans Zimmer",
-        "Howard Shore",
         "John Williams",
+        "Howard Shore",
         "Ennio Morricone"
       ],
       "solutions": [
-        2
+        1
       ],
       "cooldown": 6,
       "time": 20
@@ -280,6 +312,22 @@
         "step": 1,
         "margin": 2
       }
+    },
+    {
+      "type": "single",
+      "question": "Quand ils reprennent le palais de Theed, comment s'appelle le pistolet qui leur permet de grimper jusqu'aux fenêtres ?",
+      "note": "Le blaster ascensionnel tire un grappin relié à un câble : Padmé et ses gardes s'en servent pour atteindre les étages du palais.",
+      "answers": [
+        "Blaster d'abordage",
+        "Blaster ascensionnel",
+        "Pistolet magnétique",
+        "Blaster à répulsion"
+      ],
+      "solutions": [
+        1
+      ],
+      "cooldown": 6,
+      "time": 20
     },
     {
       "type": "single",
