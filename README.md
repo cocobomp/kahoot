@@ -4,7 +4,7 @@ Un jeu de quiz multijoueur en temps réel, façon Kahoot, à héberger soi-même
 
 Ce dépôt est un fork de **[Razzia](https://github.com/Ralex91/Razzia)** (anciennement _Rahoot_), un clone open-source de Kahoot sous licence MIT. Tout le moteur de jeu vient de Razzia : pas besoin de réinventer la roue. Ce fork ajoute :
 
-- un quiz d'exemple **Star Wars Épisode I : La Menace fantôme** (16 questions, 7 photos libres de droits, une anecdote à chaque réponse) ;
+- un quiz d'exemple **Star Wars Épisode I : La Menace fantôme** (16 questions, 8 photos libres de droits, une anecdote à chaque réponse) ;
 - un fond étoilé pour les écrans de jeu ;
 - cette documentation en français.
 
@@ -119,8 +119,8 @@ Les quiz sont enregistrés dans `config/quizz/` (un fichier JSON par quiz) et le
 
 Le fichier [`config/quizz/star-wars-episode-1.json`](config/quizz/star-wars-episode-1.json) contient 16 questions en français :
 
-- 12 questions à choix unique (dont un vrai ou faux), 1 à choix multiple, 2 estimations au curseur ;
-- 7 questions avec photo : acteurs, lieux de tournage, réalisateur, compositeur ;
+- 13 questions à choix unique (dont un vrai ou faux), 1 à choix multiple, 2 estimations au curseur ;
+- 8 questions avec photo : acteurs, lieux de tournage, réalisateur, compositeur ;
 - une anecdote affichée à chaque réponse, et une dernière question à points doublés.
 
 Compte environ 15 minutes de jeu. Le quiz se modifie dans l'éditeur comme n'importe quel autre.
@@ -153,6 +153,17 @@ En cas de conflit sur `README.md` ou `compose.yml`, garde la version de ce dép�
 
 - Moteur de jeu : [Razzia](https://github.com/Ralex91/Razzia) par Ralex91 et ses contributeurs, licence [MIT](LICENSE).
 - Fond étoilé : image originale générée pour ce projet.
-- Photos du quiz : [Wikimedia Commons](https://commons.wikimedia.org/), chacune sous sa licence d'origine (liste détaillée ajoutée avec les photos).
+- Photos du quiz : [Wikimedia Commons](https://commons.wikimedia.org/). Elles ont été redimensionnées et leurs métadonnées retirées ; chacune reste sous sa licence d'origine (les versions modifiées d'une photo CC BY-SA doivent garder la même licence). Les captures d'écran de `docs/captures/` contiennent certaines de ces photos.
+
+| Photo                                                       | Sujet                                                                                                                                            | Auteur          | Licence                                                         |
+| ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | --------------- | --------------------------------------------------------------- |
+| [`liam-neeson.jpg`](config/media/liam-neeson.jpg)           | [Liam Neeson au festival de Toronto 2008](https://commons.wikimedia.org/wiki/File:Liam_Neeson_at_2008_TIFF.jpg)                                  | Karen Seto      | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/)       |
+| [`mos-espa-tunisie.jpg`](config/media/mos-espa-tunisie.jpg) | [Décor de Mos Espa, Ong Jemel (Tunisie)](https://commons.wikimedia.org/wiki/File:Tatooine%28js%295.jpg)                                          | Jerzystrzelecki | [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/)       |
+| [`natalie-portman.jpg`](config/media/natalie-portman.jpg)   | [Natalie Portman à la Berlinale 2015](https://commons.wikimedia.org/wiki/File:Natalie_Portman_Berlin_2015_3.jpg)                                 | Siebbi          | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) |
+| [`reggia-caserta.jpg`](config/media/reggia-caserta.jpg)     | [Grand escalier du palais royal de Caserte](https://commons.wikimedia.org/wiki/File:Reggia_di_Caserta,_scalone_d%27onore._-_panoramio.jpg)       | Carlo Pelagalli | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) |
+| [`keira-knightley.jpg`](config/media/keira-knightley.jpg)   | [Keira Knightley en 2012](https://commons.wikimedia.org/wiki/File:Keira_Knightley_2012.jpg)                                                      | Paul Bird       | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/)       |
+| [`ray-park.jpg`](config/media/ray-park.jpg)                 | [Ray Park en 2012](https://commons.wikimedia.org/wiki/File:Ray_Park_%287281768204%29.jpg)                                                        | Gordon Tarpley  | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/)       |
+| [`john-williams.jpg`](config/media/john-williams.jpg)       | [John Williams dirigeant le Boston Pops, 2011](https://commons.wikimedia.org/wiki/File:John_Williams_with_Boston_Pops-1.jpg)                     | Chris Devers    | [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/) |
+| [`george-lucas.jpg`](config/media/george-lucas.jpg)         | [George Lucas à la Mostra de Venise 2009](https://commons.wikimedia.org/wiki/File:George_Lucas_66%C3%A8me_Festival_de_Venise_%28Mostra%29_5.jpg) | Nicolas Genin   | [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/) |
 
 Ce quiz est un projet de fan, non officiel, sans lien avec Lucasfilm Ltd. ou The Walt Disney Company. Star Wars est une marque de Lucasfilm Ltd. Kahoot! est une marque de Kahoot! ASA ; ce projet n'est ni affilié à Kahoot ni approuvé par Kahoot.

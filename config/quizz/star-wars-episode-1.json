@@ -112,8 +112,12 @@
     },
     {
       "type": "single",
-      "question": "Vrai ou faux : Keira Knightley joue dans La Menace fantôme.",
+      "question": "Vrai ou faux : Keira Knightley, ici en photo, joue dans La Menace fantôme.",
       "note": "Vrai ! Keira Knightley, 12 ans à l'époque, joue Sabé, la servante qui se fait passer pour la reine Amidala.",
+      "media": {
+        "type": "image",
+        "url": "/media/keira-knightley.jpg"
+      },
       "answers": ["Vrai", "Faux"],
       "solutions": [0],
       "cooldown": 4,
