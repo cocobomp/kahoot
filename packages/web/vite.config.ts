@@ -84,9 +84,21 @@ const configServer = (): Plugin => ({
 const webPort = Number(process.env.WEB_PORT) || 3000
 const socketUrl = `http://localhost:${Number(process.env.SOCKET_PORT) || 3001}`
 
+// Domain names accepted besides localhost and IP addresses: GitHub Codespaces,
+// Cloudflare quick tunnels, and any listed in ALLOWED_HOSTS (comma-separated).
+const allowedHosts = [
+  ".app.github.dev",
+  ".trycloudflare.com",
+  ...(process.env.ALLOWED_HOSTS ?? "")
+    .split(",")
+    .map((host) => host.trim())
+    .filter(Boolean),
+]
+
 const serverOptions = {
   port: webPort,
   host: "0.0.0.0",
+  allowedHosts,
   proxy: {
     "/ws": {
       target: socketUrl,
