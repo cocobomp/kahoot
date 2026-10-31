@@ -360,6 +360,246 @@
     },
     {
       "type": "single",
+      "question": "Comment s'appelle la course de modules que gagne Anakin ?",
+      "note": "La Classique de la veille de Boonta (Boonta Eve Classic), organisée par Jabba le Hutt à Mos Espa.",
+      "answers": [
+        "Le Grand Prix de Malastare",
+        "La Classique de la veille de Boonta",
+        "La Coupe de Mos Espa",
+        "La Vinta Harvest Classic"
+      ],
+      "solutions": [
+        1
+      ],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "single",
+      "question": "Combien de tours compte la course de modules gagnée par Anakin ?",
+      "note": "Trois tours, à travers les canyons et le désert de Tatooine.",
+      "answers": [
+        "2",
+        "3",
+        "5",
+        "7"
+      ],
+      "solutions": [
+        1
+      ],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "single",
+      "question": "Quelle pièce Qui-Gon doit-il trouver sur Tatooine pour réparer le vaisseau de la reine ?",
+      "note": "Un générateur d'hyperpropulsion T-14. Watto en a un… mais il refuse les crédits de la République.",
+      "answers": [
+        "Un bouclier déflecteur",
+        "Un générateur d'hyperpropulsion T-14",
+        "Un moteur ionique",
+        "Un droïde astromécano"
+      ],
+      "solutions": [
+        1
+      ],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "single",
+      "question": "Comment s'appelle la servante qui se fait passer pour la reine Amidala ?",
+      "note": "Sabé, jouée par Keira Knightley, 12 ans à l'époque. La vraie reine se cache parmi ses servantes sous le nom de Padmé.",
+      "answers": [
+        "Rabé",
+        "Sabé",
+        "Eirtaé",
+        "Shmi"
+      ],
+      "solutions": [
+        1
+      ],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "single",
+      "question": "Quel âge a la reine Amidala dans le film ?",
+      "note": "14 ans seulement ! Sur Naboo, les souverains sont élus et peuvent être très jeunes.",
+      "answers": [
+        "14 ans",
+        "18 ans",
+        "21 ans",
+        "25 ans"
+      ],
+      "solutions": [
+        0
+      ],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "single",
+      "question": "D'après le texte qui défile au début du film, qu'est-ce qui provoque la crise ?",
+      "note": "La taxation des routes commerciales vers les systèmes éloignés. Pour protester, la Fédération du commerce bloque Naboo.",
+      "answers": [
+        "La taxation des routes commerciales",
+        "Une épidémie sur Naboo",
+        "La mort du chancelier",
+        "Une révolte des droïdes"
+      ],
+      "solutions": [
+        0
+      ],
+      "cooldown": 5,
+      "time": 25
+    },
+    {
+      "type": "single",
+      "question": "Comment s'appelle le vice-roi de la Fédération du commerce ?",
+      "note": "Nute Gunray, le Neimoidien qui obéit en secret à Dark Sidious.",
+      "answers": [
+        "Rune Haako",
+        "Boss Nass",
+        "Nute Gunray",
+        "Wat Tambor"
+      ],
+      "solutions": [
+        2
+      ],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "single",
+      "question": "Comment s'appelle la cité sous-marine des Gungans ?",
+      "note": "Otoh Gunga, au fond d'un lac de Naboo : une ville faite de bulles, dirigée par Boss Nass.",
+      "answers": [
+        "Theed",
+        "Otoh Gunga",
+        "Mos Espa",
+        "Moenia"
+      ],
+      "solutions": [
+        1
+      ],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "single",
+      "question": "Avant la course, Qui-Gon truque un lancer de dé de Watto grâce à la Force. Qu'obtient-il ?",
+      "note": "Le dé tombe du bon côté : si Anakin gagne la course, il est libre. Sa mère Shmi, elle, reste esclave.",
+      "answers": [
+        "La liberté de Shmi",
+        "Un vaisseau neuf",
+        "La liberté d'Anakin",
+        "Les pièces gratuitement"
+      ],
+      "solutions": [
+        2
+      ],
+      "cooldown": 5,
+      "time": 25
+    },
+    {
+      "type": "single",
+      "question": "Comment s'appellent les droïdes qui roulent en boule et se protègent avec un bouclier ?",
+      "note": "Les droïdekas, ou droïdes destructeurs : même Qui-Gon et Obi-Wan préfèrent fuir devant eux.",
+      "answers": [
+        "Les droïdes B1",
+        "Les droïdekas",
+        "Les droïdes sondes",
+        "Les MagnaGardes"
+      ],
+      "solutions": [
+        1
+      ],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "single",
+      "question": "Dans la version de 1999 sortie au cinéma, comment Yoda est-il animé ?",
+      "note": "Une marionnette animée par Frank Oz. En 2011, elle a été remplacée par un Yoda en images de synthèse pour la sortie en Blu-ray.",
+      "answers": [
+        "En images de synthèse",
+        "Par un acteur maquillé",
+        "C'est une marionnette",
+        "Par un robot"
+      ],
+      "solutions": [
+        2
+      ],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "single",
+      "question": "Quel acteur prête sa voix et ses mouvements à Jar Jar Binks ?",
+      "note": "Ahmed Best, filmé en costume puis remplacé à l'image par Jar Jar en images de synthèse.",
+      "answers": [
+        "Andy Serkis",
+        "Ahmed Best",
+        "Warwick Davis",
+        "Anthony Daniels"
+      ],
+      "solutions": [
+        1
+      ],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "single",
+      "question": "Avec quel sabre laser Obi-Wan bat-il Dark Maul ?",
+      "note": "Son sabre est tombé au fond du puits : accroché au bord, Obi-Wan attire celui de Qui-Gon avec la Force et coupe Maul en deux.",
+      "answers": [
+        "Le sien",
+        "Celui de Qui-Gon",
+        "Celui de Dark Maul",
+        "Celui de Mace Windu"
+      ],
+      "solutions": [
+        1
+      ],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "single",
+      "question": "Dans les profondeurs de Naboo, un monstre marin se fait dévorer par un plus gros. Que dit Qui-Gon ?",
+      "note": "« Il y a toujours un plus gros poisson. » Une des répliques cultes de Qui-Gon.",
+      "answers": [
+        "« J'ai un mauvais pressentiment. »",
+        "« Il y a toujours un plus gros poisson. »",
+        "« Que la Force soit avec toi. »",
+        "« Ce ne sont pas les droïdes que vous cherchez. »"
+      ],
+      "solutions": [
+        1
+      ],
+      "cooldown": 5,
+      "time": 25
+    },
+    {
+      "type": "single",
+      "question": "Comment s'appelle le capitaine chargé de la sécurité de la reine ?",
+      "note": "Le capitaine Panaka. Dans l'épisode II, c'est son neveu, le capitaine Typho, qui protège Padmé.",
+      "answers": [
+        "Capitaine Typho",
+        "Capitaine Tarpals",
+        "Capitaine Panaka",
+        "Capitaine Olié"
+      ],
+      "solutions": [
+        2
+      ],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "single",
       "question": "Question finale, points doublés ! Qui est élu Chancelier suprême de la République à la fin du film ?",
       "note": "Le sénateur Palpatine profite de la crise de Naboo pour se faire élire… Personne ne se doute qu'il est en réalité Dark Sidious !",
       "answers": [
