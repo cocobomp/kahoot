@@ -1,13 +1,19 @@
 services:
   razzia:
-    image: ralex91/razzia:latest
+    # Construit l'image à partir des sources de ce dépôt (quelques minutes la
+    # première fois). Pour démarrer plus vite avec l'image officielle de Razzia,
+    # remplace « build: . » par :
+    #   image: ralex91/razzia:4.0.2
+    build: .
+    restart: unless-stopped
     ports:
       - "3000:3000"
     volumes:
+      # Quiz, photos, thème et résultats des parties.
       - ./config:/app/config
     env_file:
       - .env
-    # Or set them inline instead of using an .env file:
+    # Ou définis les variables ici au lieu d'utiliser un fichier .env :
     # environment:
-    #   MANAGER_PASSWORD: "change-me"
-    #   JWT_SECRET: "" # optional, 32+ characters
+    #   MANAGER_PASSWORD: "change-moi"
+    #   JWT_SECRET: "" # optionnel, 32 caractères minimum
