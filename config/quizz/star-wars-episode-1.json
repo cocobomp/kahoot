@@ -1,0 +1,207 @@
+{
+  "id": "star-wars-episode-1",
+  "gameMode": "quiz",
+  "subject": "Star Wars Épisode I : La Menace fantôme",
+  "questions": [
+    {
+      "type": "single",
+      "question": "Quel personnage cet acteur joue-t-il dans La Menace fantôme ?",
+      "note": "Liam Neeson joue Qui-Gon Jinn, le maître Jedi qui découvre le jeune Anakin sur Tatooine.",
+      "media": {
+        "type": "image",
+        "url": "/media/liam-neeson.jpg"
+      },
+      "answers": ["Obi-Wan Kenobi", "Mace Windu", "Qui-Gon Jinn", "Dark Sidious"],
+      "solutions": [2],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "single",
+      "question": "Les scènes de Tatooine ont été tournées dans ce décor, toujours debout aujourd'hui. Dans quel pays se trouve-t-il ?",
+      "note": "Le village de Mos Espa a été construit près de Tozeur, dans le sud de la Tunisie. Le nom « Tatooine » vient d'ailleurs de la ville tunisienne de Tataouine !",
+      "media": {
+        "type": "image",
+        "url": "/media/mos-espa-tunisie.jpg"
+      },
+      "answers": ["Maroc", "Égypte", "Jordanie", "Tunisie"],
+      "solutions": [3],
+      "cooldown": 6,
+      "time": 20
+    },
+    {
+      "type": "single",
+      "question": "Quel âge a Anakin Skywalker quand Qui-Gon le rencontre ?",
+      "note": "Anakin a 9 ans : il vit en esclavage avec sa mère Shmi chez le ferrailleur Watto. Son interprète, Jake Lloyd, avait 8 ans au début du tournage.",
+      "answers": ["6 ans", "9 ans", "12 ans", "15 ans"],
+      "solutions": [1],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "single",
+      "question": "Cette actrice joue la jeune reine de Naboo. Comment s'appelle la reine ?",
+      "note": "Natalie Portman joue la reine Amidala, qui n'a que 14 ans ! Elle se cache parfois parmi ses servantes sous son vrai prénom : Padmé.",
+      "media": {
+        "type": "image",
+        "url": "/media/natalie-portman.jpg"
+      },
+      "answers": ["Amidala", "Leia", "Shmi", "Mon Mothma"],
+      "solutions": [0],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "multi",
+      "question": "Plusieurs bonnes réponses ! Lesquels de ces personnages apparaissent dans le film ?",
+      "note": "Jar Jar Binks et Yoda sont bien là. Han Solo et Chewbacca, eux, n'apparaissent pas dans l'épisode I.",
+      "answers": ["Han Solo", "Jar Jar Binks", "Chewbacca", "Yoda"],
+      "solutions": [1, 3],
+      "cooldown": 6,
+      "time": 30,
+      "options": {
+        "scoringMode": "balanced"
+      }
+    },
+    {
+      "type": "single",
+      "question": "Qui est le grand rival d'Anakin pendant la course de modules ?",
+      "note": "Sebulba, le Dug, multiplie les coups bas, mais Anakin remporte la course et gagne sa liberté !",
+      "answers": ["Watto", "Jabba", "Boss Nass", "Sebulba"],
+      "solutions": [3],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "estimation",
+      "question": "D'après Obi-Wan, le taux de midi-chloriens d'Anakin dépasse… combien ?",
+      "note": "Plus de 20 000 ! C'est plus que maître Yoda : aucun Jedi n'a jamais eu un taux aussi élevé.",
+      "answers": [],
+      "solutions": [20000],
+      "cooldown": 5,
+      "time": 30,
+      "options": {
+        "inputMode": "slider",
+        "min": 0,
+        "max": 50000,
+        "step": 1000,
+        "margin": 5000
+      }
+    },
+    {
+      "type": "single",
+      "question": "Ce palais italien a servi de décor au palais royal de Theed. Sur quelle planète se trouve Theed ?",
+      "note": "Le palais royal de Caserte, près de Naples, a prêté ses somptueux intérieurs au palais de la reine Amidala, à Theed, capitale de Naboo.",
+      "media": {
+        "type": "image",
+        "url": "/media/reggia-caserta.jpg"
+      },
+      "answers": ["Coruscant", "Naboo", "Tatooine", "Alderaan"],
+      "solutions": [1],
+      "cooldown": 6,
+      "time": 20
+    },
+    {
+      "type": "single",
+      "question": "Quel droïde célèbre Anakin a-t-il construit lui-même ?",
+      "note": "Anakin a assemblé C-3PO avec des pièces de récupération. Le droïde n'a pas encore son revêtement doré !",
+      "answers": ["R2-D2", "BB-8", "C-3PO", "IG-88"],
+      "solutions": [2],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "single",
+      "question": "Vrai ou faux : Keira Knightley joue dans La Menace fantôme.",
+      "note": "Vrai ! Keira Knightley, 12 ans à l'époque, joue Sabé, la servante qui se fait passer pour la reine Amidala.",
+      "answers": ["Vrai", "Faux"],
+      "solutions": [0],
+      "cooldown": 4,
+      "time": 15
+    },
+    {
+      "type": "single",
+      "question": "Pourquoi le tour de l'esprit Jedi de Qui-Gon ne marche-t-il pas sur Watto ?",
+      "note": "Les Toydariens résistent aux tours de l'esprit. Comme le dit Watto, seul l'argent marche sur lui !",
+      "answers": [
+        "Il est sourd",
+        "C'est un droïde",
+        "Il porte un casque anti-Force",
+        "C'est un Toydarien"
+      ],
+      "solutions": [3],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "single",
+      "question": "Ray Park, ici en photo, incarne Dark Maul. Quelle est la particularité de son sabre laser ?",
+      "note": "Un sabre laser rouge à double lame ! Expert en arts martiaux, Ray Park a tourné lui-même ses scènes de combat.",
+      "media": {
+        "type": "image",
+        "url": "/media/ray-park.jpg"
+      },
+      "answers": [
+        "Il est vert",
+        "Il a deux lames",
+        "Sa poignée est courbée",
+        "Il est noir"
+      ],
+      "solutions": [1],
+      "cooldown": 6,
+      "time": 20
+    },
+    {
+      "type": "single",
+      "question": "Ce compositeur a signé la musique du film, dont le célèbre « Duel of the Fates ». Qui est-ce ?",
+      "note": "John Williams a composé la musique des neuf films de la saga Skywalker. « Duel of the Fates » accompagne le combat contre Dark Maul.",
+      "media": {
+        "type": "image",
+        "url": "/media/john-williams.jpg"
+      },
+      "answers": ["Hans Zimmer", "Howard Shore", "John Williams", "Ennio Morricone"],
+      "solutions": [2],
+      "cooldown": 6,
+      "time": 20
+    },
+    {
+      "type": "single",
+      "question": "Qui a écrit et réalisé La Menace fantôme ?",
+      "note": "George Lucas n'avait plus réalisé de film depuis le tout premier Star Wars, en 1977 !",
+      "media": {
+        "type": "image",
+        "url": "/media/george-lucas.jpg"
+      },
+      "answers": ["George Lucas", "Steven Spielberg", "J. J. Abrams", "Irvin Kershner"],
+      "solutions": [0],
+      "cooldown": 5,
+      "time": 20
+    },
+    {
+      "type": "estimation",
+      "question": "En quelle année La Menace fantôme est-il sorti au cinéma ?",
+      "note": "Le film sort en mai 1999 aux États-Unis et en octobre 1999 en France, 16 ans après Le Retour du Jedi.",
+      "answers": [],
+      "solutions": [1999],
+      "cooldown": 5,
+      "time": 30,
+      "options": {
+        "inputMode": "slider",
+        "min": 1990,
+        "max": 2010,
+        "step": 1,
+        "margin": 2
+      }
+    },
+    {
+      "type": "single",
+      "question": "Question finale, points doublés ! Qui est élu Chancelier suprême de la République à la fin du film ?",
+      "note": "Le sénateur Palpatine profite de la crise de Naboo pour se faire élire… Personne ne se doute qu'il est en réalité Dark Sidious !",
+      "answers": ["Valorum", "Mace Windu", "Bail Organa", "Palpatine"],
+      "solutions": [3],
+      "cooldown": 6,
+      "time": 20,
+      "maxPoints": 2000
+    }
+  ]
+}
