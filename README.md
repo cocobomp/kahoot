@@ -1,129 +1,158 @@
-<p align="center">
-  <img width="450" height="120" align="center" src=".github/logo.svg">
-  <br>
-  <div align="center">
-    <img alt="Visitor Badge" src="https://api.visitorbadge.io/api/visitors?path=https://github.com/Ralex91/Razzia/edit/main/README.md&countColor=%23FF9900">
-    <img src="https://img.shields.io/docker/pulls/ralex91/razzia?style=for-the-badge&color=FF9900" alt="Docker Pulls">
-  </div>
-</p>
+# Quiz Star Wars façon Kahoot
 
-## 🧩 What is this project?
+Un jeu de quiz multijoueur en temps réel, façon Kahoot, à héberger soi-même. L'animateur projette les questions sur un grand écran, les joueurs répondent depuis leur téléphone avec un code PIN.
 
-Razzia is a straightforward and open-source quiz platform, allowing users to host it on their own server for smaller events.
+Ce dépôt est un fork de **[Razzia](https://github.com/Ralex91/Razzia)** (anciennement _Rahoot_), un clone open-source de Kahoot sous licence MIT. Tout le moteur de jeu vient de Razzia : pas besoin de réinventer la roue. Ce fork ajoute :
 
-> **Disclaimer**: Razzia is an independent, open-source software project. It is not affiliated with, endorsed by, or sponsored by any third-party quiz platform or service. Any resemblance to other quiz platforms is purely incidental.
+- un quiz d'exemple **Star Wars Épisode I : La Menace fantôme** (16 questions, 7 photos libres de droits, une anecdote à chaque réponse) ;
+- un fond étoilé pour les écrans de jeu ;
+- cette documentation en français.
 
-<p align="center">
-  <img width="30%" src=".github/previews/1.png" alt="Login">
-  <img width="30%" src=".github/previews/2.png" alt="Manager Room">
-  <img width="30%" src=".github/previews/3.png" alt="Question Screen">
-</p>
+## Fonctionnalités
 
-## 📖 Getting Started
+- **Parties en temps réel** : code PIN et QR code, les joueurs rejoignent depuis le navigateur de leur téléphone (aucune appli à installer).
+- **Éditeur de quiz intégré** : questions à choix unique, à choix multiple ou d'estimation (curseur), 2 à 4 réponses, photos, vidéos et sons, temps de réponse, points, pénalités, manches et explications affichées à la révélation.
+- **Classement** après chaque question, **podium** final, historique des résultats.
+- Reconnexion des joueurs, verrouillage de la salle, exclusion d'un joueur, avance automatique, mode sondage.
+- Interface en français (et en 8 autres langues).
 
-### 🐳 Using Docker (Recommended)
+## Démarrage
 
-Requires Docker and Docker Compose.
+### Avec Docker (recommandé)
 
-> The image is also available on GHCR: `ghcr.io/ralex91/razzia:latest`.
-
-1. Create a `compose.yml`:
-
-```yaml
-services:
-  razzia:
-    image: ralex91/razzia:latest
-    ports:
-      - "3000:3000"
-    volumes:
-      - ./config:/app/config
-    env_file:
-      - .env
-```
-
-2. Create a `.env` next to it:
+Il faut [Docker Desktop](https://www.docker.com/products/docker-desktop/) (ou Docker + Docker Compose).
 
 ```bash
-MANAGER_PASSWORD=your-password
+git clone https://github.com/cocobomp/kahoot.git
 ```
-
-3. Start it:
 
 ```bash
-docker compose up -d
+cd kahoot
 ```
-
-Open http://localhost:3000 to play and http://localhost:3000/manager to host a game.
-
-Your quizzes and results are stored in `./config`, created on first run with an example quiz. Edit them from your host, they persist across updates.
-
-<details>
-<summary>Without Compose</summary>
-
-```bash
-docker run -d \
-  -p 3000:3000 \
-  -e MANAGER_PASSWORD=your-password \
-  -v ./config:/app/config \
-  ralex91/razzia:latest
-```
-
-</details>
-
-### 🛠️ Without Docker
-
-Requires Node.js 24 and [pnpm](https://pnpm.io/) 10.16+.
-
-1. Clone and install:
-
-```bash
-git clone https://github.com/Ralex91/Razzia.git
-cd Razzia
-pnpm install
-```
-
-2. Create your `.env` and set `MANAGER_PASSWORD` in it. `WEB_PORT` (default `3000`) and `SOCKET_PORT` (default `3001`) are optional:
 
 ```bash
 cp .env.example .env
 ```
 
-3. Build and start:
+Ouvre le fichier `.env` et choisis le mot de passe de l'animateur, par exemple `MANAGER_PASSWORD=maitre-yoda`. Puis lance le jeu :
+
+```bash
+docker compose up -d --build
+```
+
+La première fois, la construction prend quelques minutes. Le jeu tourne ensuite sur le port 3000. Pour l'arrêter : `docker compose down`.
+
+### Sans Docker
+
+Il faut [Node.js 24](https://nodejs.org/) et [pnpm](https://pnpm.io/fr/installation) (`npm install -g pnpm`). Depuis le dossier du dépôt :
+
+```bash
+pnpm install
+```
+
+```bash
+cp .env.example .env
+```
+
+Choisis le mot de passe dans `.env` (`MANAGER_PASSWORD=...`), puis :
 
 ```bash
 pnpm build
+```
+
+```bash
 pnpm start
 ```
 
-Open http://localhost:3000 to play and http://localhost:3000/manager to host a game.
+Au démarrage, la ligne `Network: http://192.168.x.x:3000/` indique l'adresse à utiliser depuis les téléphones.
 
-> Want to work on the code? See [CONTRIBUTING.md](.github/CONTRIBUTING.md) to run it in development mode.
+## Lancer une partie
 
-## 📚 Documentation
+1. Sur l'ordinateur branché au vidéoprojecteur ou à la télé, ouvre `http://ADRESSE-IP:3000/manager` (voir ci-dessous) et entre le mot de passe.
+2. Onglet **Jouer** : choisis **Star Wars Épisode I : La Menace fantôme**, puis **Démarrer la partie**.
+3. Les joueurs scannent le QR code, ou vont sur `http://ADRESSE-IP:3000` et tapent le code PIN, puis leur pseudo.
+4. Quand tout le monde est là, clique sur **Démarrer**. Ensuite, **Suivant** fait avancer la partie (réponse, classement, question suivante).
 
-- [Configuration](docs/configuration.md): environment variables and the `config` folder.
-- [Quiz](docs/quiz.md): creating and structuring quizzes.
-- [Branding](docs/branding.md): optional custom theming.
-- [Reverse Proxy](docs/reverse-proxy.md): running behind Traefik, Nginx, Caddy, or another reverse proxy.
-- [WebSocket Protocol](docs/websocket-protocol.md): build a custom client (e.g. an ESP32 physical buzzer).
-- [HTTP API](docs/http-api.md): the `/api` surface — sessions, quiz and result CRUD, game creation.
+L'icône d'engrenage de la salle d'attente donne accès aux réglages : avance automatique, pseudos générés, réponses seules sur les téléphones.
 
-Full index in [docs/](docs/README.md).
+### Connecter les téléphones (important)
 
-## 🎮 How to Play
+Les téléphones doivent être sur **le même Wi-Fi** que l'ordinateur, et la page manager doit être ouverte avec **l'adresse IP de l'ordinateur, pas `localhost`**. L'adresse affichée aux joueurs et le QR code reprennent l'adresse de la page manager : avec `localhost`, les téléphones ne trouveront pas le jeu.
 
-1. Access the manager interface at http://localhost:3000/manager
-2. Enter the manager password (defined by `MANAGER_PASSWORD`)
-3. Share the game URL (http://localhost:3000) and room code with participants
-4. Wait for players to join
-5. Click the start button to begin the game
+Pour trouver l'adresse IP de l'ordinateur :
 
-## 📝 Contributing
+| Système | Commande                 | À lire              |
+| ------- | ------------------------ | ------------------- |
+| Windows | `ipconfig`               | « Adresse IPv4 »    |
+| macOS   | `ipconfig getifaddr en0` | l'adresse affichée  |
+| Linux   | `hostname -I`            | la première adresse |
 
-Contributions are welcome! Please read the [CONTRIBUTING.md](.github/CONTRIBUTING.md) guide before submitting a pull request.
+Par exemple, si l'adresse est `192.168.1.42`, ouvre `http://192.168.1.42:3000/manager`. Si les téléphones n'arrivent toujours pas à se connecter, autorise le port 3000 dans le pare-feu de l'ordinateur (sous Windows, accepte la demande d'accès « réseaux privés » au premier lancement).
 
-For bug reports or feature requests, please [create an issue](https://github.com/Ralex91/Razzia/issues).
+### Jouer à distance
 
-## ⭐ Star History
+Si les joueurs ne sont pas sur le même réseau, le plus simple est un tunnel Cloudflare gratuit, sans compte. Installe [`cloudflared`](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/downloads/) (`brew install cloudflared` sur macOS, `winget install --id Cloudflare.cloudflared` sur Windows), puis lance :
 
-[![Star History Chart](https://api.star-history.com/svg?repos=Ralex91/Razzia&type=date&logscale=&legend=bottom-right)](https://www.star-history.com/#Ralex91/Razzia&type=date&logscale=&legend=bottom-right)
+```bash
+cloudflared tunnel --url http://localhost:3000
+```
+
+Il affiche une adresse du type `https://xxxx.trycloudflare.com`. Ouvre `https://xxxx.trycloudflare.com/manager` : le QR code et l'adresse affichée aux joueurs utiliseront cette adresse publique.
+
+Pour un hébergement permanent (serveur, nom de domaine, HTTPS), voir [docs/reverse-proxy.md](docs/reverse-proxy.md).
+
+## Créer ses propres quiz
+
+1. Ouvre `/manager`, onglet **Quizz**, puis **Créer un quizz** (ou l'icône crayon pour modifier un quiz existant, comme celui de Star Wars).
+2. Donne un titre au quiz. Pour chaque question :
+   - écris la question et 2 à 4 réponses, puis clique sur le rond d'une réponse pour la marquer comme bonne ;
+   - choisis le **Mode de réponse** : choix unique, choix multiple (plusieurs bonnes réponses) ou estimation (un nombre à trouver avec un curseur) ;
+   - ajoute une photo, une vidéo ou un son dans la zone média : **Importer** envoie un fichier depuis ton ordinateur, **Médiathèque** réutilise un fichier déjà importé, **Ajouter depuis une URL** utilise une image en ligne ;
+   - règle le **Temps de réponse**, l'**Affichage de la question** (délai avant l'apparition des réponses), les **Points max** et l'**Explication** affichée quand la réponse est révélée.
+3. **Ajouter une question** pour la suivante, puis **Enregistrer**.
+
+Astuces : un « vrai ou faux » est une question à choix unique avec deux réponses ; des points doublés, c'est **Points max** à 2000.
+
+Les quiz sont enregistrés dans `config/quizz/` (un fichier JSON par quiz) et les photos dans `config/media/`. Ces dossiers sont suivis par git : fais un commit pour sauvegarder tes quiz. Tu peux aussi exporter ou importer un quiz en JSON depuis l'onglet **Quizz**. Le format des fichiers est décrit dans [docs/quiz.md](docs/quiz.md).
+
+## Le quiz Star Wars d'exemple
+
+Le fichier [`config/quizz/star-wars-episode-1.json`](config/quizz/star-wars-episode-1.json) contient 16 questions en français :
+
+- 12 questions à choix unique (dont un vrai ou faux), 1 à choix multiple, 2 estimations au curseur ;
+- 7 questions avec photo : acteurs, lieux de tournage, réalisateur, compositeur ;
+- une anecdote affichée à chaque réponse, et une dernière question à points doublés.
+
+Compte environ 15 minutes de jeu. Le quiz se modifie dans l'éditeur comme n'importe quel autre.
+
+## Personnaliser
+
+- **Fond des écrans de jeu** : défini dans [`config/branding/theme.json`](config/branding/theme.json). Supprime le dossier `config/branding/` pour revenir au décor d'origine (une salle de classe).
+- **Nom, couleurs, logo, police** : ajoute les champs correspondants dans `theme.json`, voir [docs/branding.md](docs/branding.md).
+- **Variables d'environnement** (ports, secret de session) : voir [docs/configuration.md](docs/configuration.md).
+
+## Mettre à jour Razzia
+
+Ce dépôt contient l'historique complet de Razzia. Pour récupérer une nouvelle version (remplace `4.1.0` par la dernière [version publiée](https://github.com/Ralex91/Razzia/tags)) :
+
+```bash
+git remote add upstream https://github.com/Ralex91/Razzia.git
+```
+
+```bash
+git fetch upstream --tags
+```
+
+```bash
+git merge 4.1.0
+```
+
+En cas de conflit sur `README.md` ou `compose.yml`, garde la version de ce dépôt. Relance ensuite `docker compose up -d --build` (ou `pnpm install && pnpm build`). La première commande n'est à faire qu'une fois.
+
+## Crédits et licences
+
+- Moteur de jeu : [Razzia](https://github.com/Ralex91/Razzia) par Ralex91 et ses contributeurs, licence [MIT](LICENSE).
+- Fond étoilé : image originale générée pour ce projet.
+- Photos du quiz : [Wikimedia Commons](https://commons.wikimedia.org/), chacune sous sa licence d'origine (liste détaillée ajoutée avec les photos).
+
+Ce quiz est un projet de fan, non officiel, sans lien avec Lucasfilm Ltd. ou The Walt Disney Company. Star Wars est une marque de Lucasfilm Ltd. Kahoot! est une marque de Kahoot! ASA ; ce projet n'est ni affilié à Kahoot ni approuvé par Kahoot.
